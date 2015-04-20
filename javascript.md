@@ -323,6 +323,25 @@ var foo = ['a', 'b', 'c'];
 
 ## Properties
 
++ Use property value shorthand.
+
+```javascript
+const name = 'Derek Zoolander';
+const age = 25;
+
+// BAD:
+const foo = {
+  name: name,
+  age: age
+}
+
+// GOOD:
+const foo = {
+  name,
+  age
+}
+```
+
 + Use dot-notation when accessing properties.
 
 ```javascript
