@@ -365,21 +365,28 @@ foo[propertyName];
 
 ## Functions
 
-+ Make sure to name functions when you define them.
++ Use object method shorthand.
 
 ```javascript
-function fooBar() {
-}
+// BAD:
+const foo = {
+  value: 0,
 
-var foo = {
-  bar: function foo_bar() {
-    // code
+  bar: function bar(value) {
+    return foo.value + value;
   }
-};
+}
+```
 
-var foo = function foo() {
-  // code
-};
+```javascript
+// GOOD:
+const foo = {
+  value: 0,
+
+  bar(value) {
+    return foo.value + value;
+  }
+}
 ```
 
 + Use scope to lookup functions (not variables).
