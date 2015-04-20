@@ -321,6 +321,19 @@ foo.push(...bar);
 const foo = ['a', 'b', 'c'];
 ```
 
++ Use array destructuring.
+
+```javascript
+const arr = [1, 2, 3, 4];
+
+// BAD:
+const head = arr.shift();
+const tail = arr;
+
+// GOOD:
+const [ head, ...tail ] = arr;
+```
+
 ## Properties
 
 + Use property value shorthand.
