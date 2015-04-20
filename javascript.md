@@ -45,11 +45,11 @@ switch (condition) {
 }
 
 // loops
-for (var key in keys) {
+for (const key in keys) {
   // code
 }
 
-for (var i = 0, l = keys.length; i < l; i++) {
+for (let i = 0, l = keys.length; i < l; i++) {
   // code
 }
 
@@ -68,7 +68,7 @@ try {
 
 ```javascript
 function foo() {
-  var obj = {
+  const obj = {
     val: 'test'
   };
 
@@ -81,7 +81,7 @@ if (foo === 1) {
   foo();
 }
 
-for (var key in keys) {
+for (let key in keys) {
   bar(e);
 }
 
@@ -144,15 +144,15 @@ if (foo === 'bar') {
 + Skip trailing commas.
 
 ```javascript
-var foo = [1, 2, 3];
-var bar = { a: 'a' };
+const foo = [1, 2, 3];
+const bar = { a: 'a' };
 ```
 
 + Skip trailing and leading commas.
 
 ```javascript
-var foo = [1, 2, 3];
-var bar = {
+const foo = [1, 2, 3];
+const bar = {
   a: 'a',
   b: 'b'
 };
@@ -178,7 +178,7 @@ var bar = {
 
 ```javascript
 function foo() {
-  var bar = 5;
+  let bar = 5;
 
   // multiplies `bar` by 2.
   fooBar(bar);
@@ -201,21 +201,21 @@ const a = [1, 2, 3];
 + Put all non-assigning declarations on one line.
 
 ```javascript
-var a, b;
+let a, b;
 ```
 
-+ Use a single `var` declaration for each assignment.
++ Use a single `const` declaration for each assignment.
 
 ```javascript
-var a = 1;
-var b = 2;
+const a = 1;
+const b = 2;
 ```
 
 + Declare variables at the top of their block scope.
 
 ```javascript
 function foo() {
-  var bar;
+  let bar;
 
   console.log('foo bar!');
 
@@ -223,11 +223,11 @@ function foo() {
 }
 
 function bar() {
-  var coolList;
+  let coolList;
 
   // code
 
-  for (var index = 0, length = coolThing.length; index < length; index++) {
+  for (let index = 0, length = coolThing.length; index < length; index++) {
     // code
   }
 }
@@ -239,7 +239,7 @@ function bar() {
 
 ```javascript
 function() {
-∙∙var name;
+∙∙const name;
 }
 ```
 
@@ -257,7 +257,7 @@ test('foo-bar', function() {
 + No spaces before semicolons.
 
 ```javascript
-var foo = {};
+const foo = {};
 ```
 
 + Keep parenthesis adjacent to the function name when declared or called.
@@ -276,13 +276,13 @@ foo();
 + Use literal form for object creation.
 
 ```javascript
-var foo = {};
+const foo = {};
 ```
 
 + Pad single-line objects with white-space.
 
 ```javascript
-var bar = { color: 'orange' };
+const bar = { color: 'orange' };
 ```
 
 ## Arrays
@@ -290,19 +290,19 @@ var bar = { color: 'orange' };
 + Use literal form for array creation (unless you know the exact length).
 
 ```javascript
-var foo = [];
+const foo = [];
 ```
 
 + Use new Array if you know the exact length of the array and know that its length will not change.
 
 ```javascript
-var foo = new Array(16);
+const foo = new Array(16);
 ```
 
 + Use `push` to add an item to an array.
 
 ```javascript
-var foo = [];
+let foo = [];
 foo.push('bar');
 ```
 
@@ -318,7 +318,7 @@ foo.push(...bar);
 + Join single line array items with a space.
 
 ```javascript
-var foo = ['a', 'b', 'c'];
+const foo = ['a', 'b', 'c'];
 ```
 
 ## Properties
@@ -345,7 +345,7 @@ const foo = {
 + Use dot-notation when accessing properties.
 
 ```javascript
-var foo = {
+const foo = {
   bar: 'bar'
 };
 
@@ -355,8 +355,8 @@ foo.bar;
 + Use `[]` when accessing properties via a variable.
 
 ```javascript
-var propertyName = 'bar';
-var foo = {
+const propertyName = 'bar';
+const foo = {
   bar: 'bar'
 };
 
@@ -403,7 +403,7 @@ function foo() {
 
 // BAD:
 function foo() {
-  var bar = function bar() {
+  const bar = function bar() {
     // code
   }
 
@@ -446,7 +446,7 @@ function fooBar(opt) {
 
 // Use a new variable if you need to assign the value of an argument
 function fooBar(_opt) {
-  var opt = _opt;
+  const opt = _opt;
 
   opt = 3;
 }
