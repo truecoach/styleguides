@@ -363,6 +363,26 @@ const foo = {
 foo[propertyName];
 ```
 
++ Use object destructuring when accessing multiple properties on an object.
+
+```javascript
+// BAD:
+function foo(person) {
+  const name = person.name;
+  const age = person.age;
+  const height = person.height;
+
+  return `${name} is ${age} years old and ${height} tall.`
+}
+
+// GOOD:
+function foo(person) {
+  const { name, age, height } = person;
+
+  return `${name} is ${age} years old and ${height} tall.`
+}
+```
+
 ## Functions
 
 + Use object method shorthand.
