@@ -191,6 +191,13 @@ function foo() {
 
 ## Variables
 
++ Never use `var`. Prefer `const` to declare variables, unless explicitly
+requiring mutability.
+
+```javascript
+const a = [1, 2, 3];
+```
+
 + Put all non-assigning declarations on one line.
 
 ```javascript
