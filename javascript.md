@@ -413,22 +413,23 @@ function foo() {
 
 ## Function Arguments
 
-`arguments` object must not be passed or leaked anywhere.
-See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
-
-+ Use a `for` loop with `arguments` (instead of `slice`).
++ Never use `arguments` – use rest instead.
 
 ```javascript
-function fooBar() {
-  var args = new Array(arguments.length);
+// BAD:
+function foo() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join('');
+}
 
-  for (var i = 0; i < args.length; ++i) {
-    args[i] = arguments[i];
-  }
-
-  return args;
+// GOOD:
+function foo(...args) {
+  return args.join('');
 }
 ```
+
+`arguments` object must not be passed or leaked anywhere.
+See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
 
 + Don't re-assign the arguments.
 
