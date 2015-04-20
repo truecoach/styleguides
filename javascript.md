@@ -452,12 +452,23 @@ function fooBar(_opt) {
 }
 ```
 
-+ Use a new variable if you need to re-assign an argument.
++ Use default params instead of mutating them.
 
 ```javascript
-function fooBar(opt) {
-  var options = opt;
+// BAD:
+function fooBar(obj, key = 'id', value = 0) {
+  obj = obj || {};
+  key = key || 'id';
+  // ...
+}
 
-  options = 3;
+// GOOD:
+function fooBar(obj = {}, key = 'id', value = 0) {
+  if (key) {
+    return obj[key];
+  } else {
+    obj[key] = value;
+    return obj[key];
+  }
 }
 ```
