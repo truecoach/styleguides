@@ -306,6 +306,15 @@ var foo = [];
 foo.push('bar');
 ```
 
++ Use spread to join 2 arrays.
+
+```javascript
+let foo = [0, 1, 2];
+let bar = [3, 4, 5];
+
+foo.push(...bar);
+```
+
 + Join single line array items with a space.
 
 ```javascript
