@@ -5,7 +5,7 @@
 ### Grammar
 
 * [Block Statements](#block-statements)
-* [Conditional Statements] (#conditional-statements)
+* [Conditional Statements](#conditional-statements)
 * [Commas](#commas)
 * [Semicolons](#semicolons)
 * [Comments](#comments)
@@ -410,6 +410,29 @@ function foo() {
   bar();
 }
 ```
+
++ Use fat arrows to preserve `this` when using function expressions or
+anonymous functions.
+
+```javascript
+const foo = {
+  base: 0,
+
+  // BAD:
+  bar(items) {
+    const _this = this;
+    return items.map(function(item) {
+      return _this.base + item.value;
+    });
+  }
+
+  // GOOD:
+  bar(items) {
+    return items.map((item) => {
+      return this.base + item.value;
+    });
+  }
+}
 
 ## Function Arguments
 
