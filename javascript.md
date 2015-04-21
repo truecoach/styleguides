@@ -17,6 +17,10 @@
 * [Objects](#objects)
 * [Properties](#properties)
 
+### Strings
+
+* [Strings](#strings)
+
 ### Arrays
 
 * [Arrays](#arrays)
@@ -283,6 +287,32 @@ const foo = {};
 
 ```javascript
 const bar = { color: 'orange' };
+```
+
+## Strings
+
++ Prefer single quotes, and use double quotes to avoid escaping.
+
+```javascript
+// BAD:
+const foo = "bar";
+
+// GOOD:
+const foo = 'bar';
+const baz = "What's this?;
+```
+
++ When constructing strings with dynamic values, prefer template strings.
+
+```javascript
+const prefix = 'Hello';
+const suffix = 'and have a good day.';
+
+// BAD:
+return prefix + ' world, ' + suffix;
+
+// GOOD:
+return `${prefix} world, ${suffix}`
 ```
 
 ## Arrays
