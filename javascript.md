@@ -202,6 +202,17 @@ requiring mutability.
 const a = [1, 2, 3];
 ```
 
++ Note that both `let` and `const` are block scoped.
+
+```javascript
+{
+  let a = 1;
+  const b = 2;
+}
+console.log(a); // ReferenceError
+console.log(b); // ReferenceError
+```
+
 + Put all non-assigning declarations on one line.
 
 ```javascript
