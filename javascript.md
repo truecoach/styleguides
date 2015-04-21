@@ -542,6 +542,19 @@ const foo = {
 [1, 2, 3].map((x) => x * x);
 ```
 
++ If the function body fits on one line, feel free to omit the braces and use
+implicit return. Otherwise, add the braces and use a return statement.
+
+```javascript
+// GOOD:
+[1, 2, 3].map((x) => x * x);
+
+// GOOD:
+[1, 2, 3].map((x) => {
+  return { number: x };
+});
+```
+
 ## Function Arguments
 
 + Never use `arguments` – use rest instead.
