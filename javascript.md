@@ -299,7 +299,7 @@ const foo = "bar";
 
 // GOOD:
 const foo = 'bar';
-const baz = "What's this?;
+const baz = "What's this?";
 ```
 
 + When constructing strings with dynamic values, prefer template strings.
