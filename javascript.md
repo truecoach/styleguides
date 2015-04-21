@@ -12,6 +12,10 @@
 * [Variables](#variables)
 * [Whitespace](#whitespace)
 
+### Constructors
+
+* [Constructors](#constructors)
+
 ### Objects
 
 * [Objects](#objects)
@@ -301,6 +305,46 @@ foo();
 ```
 
 + No trailing whitespace.
+
+## Constructors
+
++ Use `class` instead of manipulating `prototype`.
+
+```javascript
+// BAD:
+function Car(make = 'Tesla') {
+  this.make = make;
+  this.position = { x: 0, y: 0 };
+}
+
+Car.prototype.move = function(x = 0, y = 0) {
+  this.position = { x, y };
+  return this.position;
+}
+
+// GOOD:
+class Car {
+  constructor(make = 'Tesla') {
+    this.make = make;
+    this.position = { x: 0, y: 0 };
+  }
+
+  move(x = 0, y = 0) {
+    this.position = { x, y };
+    return this.position;
+  }
+}
+```
+
++ Use `extends` for inheritance.
+
+```javascript
+class HondaCivic extends Car {
+  constructor() {
+    super('Honda');
+  }
+}
+```
 
 ## Objects
 
