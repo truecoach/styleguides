@@ -376,13 +376,13 @@ const age = 25;
 const foo = {
   name: name,
   age: age
-}
+};
 
 // GOOD:
 const foo = {
   name,
   age
-}
+};
 ```
 
 + Use dot-notation when accessing properties.
@@ -438,7 +438,7 @@ const foo = {
   bar: function bar(value) {
     return foo.value + value;
   }
-}
+};
 ```
 
 ```javascript
@@ -449,7 +449,7 @@ const foo = {
   bar(value) {
     return foo.value + value;
   }
-}
+};
 ```
 
 + Use scope to lookup functions (not variables).
@@ -487,7 +487,7 @@ const foo = {
     return items.map(function(item) {
       return _this.base + item.value;
     });
-  }
+  },
 
   // GOOD:
   bar(items) {
@@ -495,7 +495,7 @@ const foo = {
       return this.base + item.value;
     });
   }
-}
+};
 
 ## Function Arguments
 
@@ -520,12 +520,12 @@ See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-k
 + Don't re-assign the arguments.
 
 ```javascript
-// Don't re-assigning the arguments
+// Don't re-assign the arguments
 function fooBar() {
   arguments = 3;
 }
 
-// Don't re-assigning the arguments
+// Don't re-assign the arguments
 function fooBar(opt) {
   opt = 3;
 }
@@ -542,7 +542,7 @@ function fooBar(_opt) {
 
 ```javascript
 // BAD:
-function fooBar(obj, key = 'id', value = 0) {
+function fooBar(obj, key, value) {
   obj = obj || {};
   key = key || 'id';
   // ...
