@@ -11,6 +11,7 @@
 * [Comments](#comments)
 * [Variables](#variables)
 * [Whitespace](#whitespace)
+* [Naming conventions](#naming-conventions)
 
 ### Constructors
 
@@ -309,6 +310,67 @@ foo();
 ```
 
 + No trailing whitespace.
+
+## Naming Conventions
+
++ Be descriptive with naming.
+
+```javascript
+// BAD:
+function check(k, v = 0) {
+  // ...
+}
+
+// GOOD:
+function checkValidKey(key, value = 0) {
+  // ...
+}
+```
+
++ Use PascalCase only for constructors or classes.
+
+```javascript
+// BAD:
+
+function Validate(options) {
+  // ...
+}
+
+const validatedItem = Validate(item);
+
+// GOOD:
+class Validator {
+  constructor(options) {
+    this.rules = options.rules;
+  }
+}
+
+const presenceValidator = new Validator({
+  rules: {}
+})
+```
+
++ Prefix with an underscore `_` when naming private properties or methods.
+
+```javascript
+// BAD:
+const foo = {
+  __firstName__: 'Yehuda',
+
+  somePrivateMethod_() {
+    console.log(this.__firstName__);
+  }
+}
+
+// GOOD:
+const foo = {
+  _firstName: 'Yehuda',
+
+  _somePrivateMethod() {
+    console.log(this._firstName);
+  }
+}
+```
 
 ## Constructors
 
