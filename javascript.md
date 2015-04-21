@@ -77,7 +77,8 @@ try {
 }
 ```
 
-+ Opening curly brace (`{`) should be on the same line as the beginning of a statement or declaration.
++ Opening curly brace (`{`) should be on the same line as the beginning of a
+statement or declaration.
 
 ```javascript
 function foo() {
@@ -132,7 +133,8 @@ if (notFound) {
 }
 ```
 
-+ Use explicit conditions when checking for non `null`, `undefined`, `true`, `false` values.
++ Use explicit conditions when checking for non `null`, `undefined`, `true`,
+`false` values.
 
 ```javascript
 if (arr.length > 0) {
@@ -347,7 +349,7 @@ class Validator {
 
 const presenceValidator = new Validator({
   rules: {}
-})
+});
 ```
 
 + Prefix with an underscore `_` when naming private properties or methods.
@@ -360,7 +362,7 @@ const foo = {
   somePrivateMethod_() {
     console.log(this.__firstName__);
   }
-}
+};
 
 // GOOD:
 const foo = {
@@ -369,7 +371,7 @@ const foo = {
   _somePrivateMethod() {
     console.log(this._firstName);
   }
-}
+};
 ```
 
 ## Constructors
@@ -460,7 +462,8 @@ return `${prefix} world, ${suffix}`;
 const foo = [];
 ```
 
-+ Use new Array if you know the exact length of the array and know that its length will not change.
++ Use `new Array`` if you know the exact length of the array and know that its
+length will not change.
 
 ```javascript
 const foo = new Array(16);
@@ -654,6 +657,11 @@ const foo = {
     return items.map((item) => {
       return this.base + item.value;
     });
+  }
+
+  // GOOD:
+  bar(items) {
+    return items.map((item) => this.base + item.value);
   }
 };
 ```
