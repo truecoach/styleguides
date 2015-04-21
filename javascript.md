@@ -532,6 +532,16 @@ const foo = {
 };
 ```
 
++ Always use parentheses around arguments.
+
+```javascript
+// BAD:
+[1, 2, 3].map(x => x * x);
+
+// GOOD:
+[1, 2, 3].map((x) => x * x);
+```
+
 ## Function Arguments
 
 + Never use `arguments` – use rest instead.
