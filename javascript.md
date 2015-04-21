@@ -312,7 +312,7 @@ const suffix = 'and have a good day.';
 return prefix + ' world, ' + suffix;
 
 // GOOD:
-return `${prefix} world, ${suffix}`
+return `${prefix} world, ${suffix}`;
 ```
 
 ## Arrays
