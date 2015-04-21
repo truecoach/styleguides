@@ -213,6 +213,22 @@ console.log(a); // ReferenceError
 console.log(b); // ReferenceError
 ```
 
++ Group your `const`s and then group your `let`s.
+
+```javascript
+// BAD:
+let foo;
+const bar = 123;
+let arr = [1, 2, 3];
+const isTrue = true;
+
+// GOOD:
+const isTrue = true;
+const bar = 123;
+let foo;
+let arr = [1, 2, 3];
+```
+
 + Put all non-assigning declarations on one line.
 
 ```javascript
