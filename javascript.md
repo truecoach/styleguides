@@ -35,10 +35,6 @@
 * [Functions](#functions)
 * [Function Arguments](#function-arguments)
 
-### Modules
-
-* [Modules](#modules)
-
 ## Block Statements
 
 + Use spaces before leading brace.
@@ -749,28 +745,4 @@ function fooBar(obj = {}, key = 'id', value = 0) {
     return obj[key];
   }
 }
-```
-
-## Modules
-
-+ Do not use wildcard imports.
-
-```javascript
-// BAD:
-import * as Ember from 'ember';
-
-// GOOD:
-import Ember from 'ember';
-```
-
-+ Do not `export` directly from an `import`.
-
-```javascript
-// BAD:
-export { Mixin as default } from 'my-mixin';
-
-// GOOD:
-import { Mixin } from 'my-mixin';
-
-export default Mixin;
 ```
