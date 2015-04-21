@@ -396,6 +396,29 @@ const foo = {
 };
 ```
 
++ Group shorthand properties at the beginning.
+
+```javascript
+const name = 'Derek Zoolander';
+const age = 25;
+
+// BAD:
+const foo = {
+  currentShow: 'Derelicte',
+  name,
+  enemy: 'Hansel',
+  age
+};
+
+// GOOD:
+const foo = {
+  name,
+  age,
+  currentShow: 'Derelicte',
+  enemy: 'Hansel'
+};
+```
+
 + Use dot-notation when accessing properties.
 
 ```javascript
@@ -507,6 +530,7 @@ const foo = {
     });
   }
 };
+```
 
 ## Function Arguments
 
