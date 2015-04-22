@@ -5,23 +5,32 @@
 ### Grammar
 
 * [Block Statements](#block-statements)
-* [Conditional Statements] (#conditional-statements)
+* [Conditional Statements](#conditional-statements)
 * [Commas](#commas)
 * [Semicolons](#semicolons)
 * [Comments](#comments)
 * [Variables](#variables)
 * [Whitespace](#whitespace)
+* [Naming conventions](#naming-conventions)
+
+### Constructors
+
+* [Constructors](#constructors)
 
 ### Objects
 
 * [Objects](#objects)
 * [Properties](#properties)
 
+### Strings
+
+* [Strings](#strings)
+
 ### Arrays
 
 * [Arrays](#arrays)
 
-## Functions
+### Functions
 
 * [Functions](#functions)
 * [Function Arguments](#function-arguments)
@@ -45,11 +54,11 @@ switch (condition) {
 }
 
 // loops
-for (var key in keys) {
+for (const key in keys) {
   // code
 }
 
-for (var i = 0, l = keys.length; i < l; i++) {
+for (let i = 0, l = keys.length; i < l; i++) {
   // code
 }
 
@@ -64,11 +73,12 @@ try {
 }
 ```
 
-+ Opening curly brace (`{`) should be on the same line as the beginning of a statement or declaration.
++ Opening curly brace (`{`) should be on the same line as the beginning of a
+statement or declaration.
 
 ```javascript
 function foo() {
-  var obj = {
+  const obj = {
     val: 'test'
   };
 
@@ -81,7 +91,7 @@ if (foo === 1) {
   foo();
 }
 
-for (var key in keys) {
+for (let key in keys) {
   bar(e);
 }
 
@@ -119,7 +129,8 @@ if (notFound) {
 }
 ```
 
-+ Use explicit conditions when checking for non `null`, `undefined`, `true`, `false` values.
++ Use explicit conditions when checking for non `null`, `undefined`, `true`,
+`false` values.
 
 ```javascript
 if (arr.length > 0) {
@@ -144,15 +155,15 @@ if (foo === 'bar') {
 + Skip trailing commas.
 
 ```javascript
-var foo = [1, 2, 3];
-var bar = { a: 'a' };
+const foo = [1, 2, 3];
+const bar = { a: 'a' };
 ```
 
 + Skip trailing and leading commas.
 
 ```javascript
-var foo = [1, 2, 3];
-var bar = {
+const foo = [1, 2, 3];
+const bar = {
   a: 'a',
   b: 'b'
 };
@@ -178,7 +189,7 @@ var bar = {
 
 ```javascript
 function foo() {
-  var bar = 5;
+  const bar = 5;
 
   // multiplies `bar` by 2.
   fooBar(bar);
@@ -191,24 +202,80 @@ function foo() {
 
 ## Variables
 
++ Never use `var`. Prefer `const` to declare variables with a constant reference
+(not value), and `let` to declare variables with a variable reference.
+
+```javascript
+// BAD:
+var a = [1, 2, 3];
+let b = [1, 2, 3];
+
+// GOOD:
+const a = [1, 2, 3];
+let b = [4, 5, 6];
+
+function doStuff() {
+  b = [1, 2, 3];
+
+  return b;
+}
+```
+
++ Note that `const` refers to a **constant reference**, not a constant value.
+
+```javascript
+const coolKids = ['Estelle', 'Lauren', 'Romina'];
+coolKids.push('Marin');
+console.log(coolKids); // ['Estelle', 'Lauren', 'Romina', 'Marin']
+
+coolKids = ['Doug', 'Lin', 'Dan']; // SyntaxError: "coolKids" is read-only
+```
+
++ Note that both `let` and `const` are block scoped.
+
+```javascript
+{
+  let a = 1;
+  const b = 2;
+}
+console.log(a); // ReferenceError
+console.log(b); // ReferenceError
+```
+
++ Group your `const`s and then group your `let`s.
+
+```javascript
+// BAD:
+let foo;
+const bar = 123;
+let arr = [1, 2, 3];
+const isTrue = true;
+
+// GOOD:
+const isTrue = true;
+const bar = 123;
+let foo;
+let arr = [1, 2, 3];
+```
+
 + Put all non-assigning declarations on one line.
 
 ```javascript
-var a, b;
+let a, b;
 ```
 
-+ Use a single `var` declaration for each assignment.
++ Use a single `const` declaration for each assignment.
 
 ```javascript
-var a = 1;
-var b = 2;
+const a = 1;
+const b = 2;
 ```
 
 + Declare variables at the top of their block scope.
 
 ```javascript
 function foo() {
-  var bar;
+  let bar;
 
   console.log('foo bar!');
 
@@ -216,11 +283,11 @@ function foo() {
 }
 
 function bar() {
-  var coolList;
+  let coolList;
 
   // code
 
-  for (var index = 0, length = coolThing.length; index < length; index++) {
+  for (let index = 0, length = coolThing.length; index < length; index++) {
     // code
   }
 }
@@ -232,7 +299,7 @@ function bar() {
 
 ```javascript
 function() {
-∙∙var name;
+∙∙const name;
 }
 ```
 
@@ -250,7 +317,7 @@ test('foo-bar', function() {
 + No spaces before semicolons.
 
 ```javascript
-var foo = {};
+const foo = {};
 ```
 
 + Keep parenthesis adjacent to the function name when declared or called.
@@ -264,18 +331,145 @@ foo();
 
 + No trailing whitespace.
 
+## Naming Conventions
+
++ Be descriptive with naming.
+
+```javascript
+// BAD:
+function check(k, v = 0) {
+  // ...
+}
+
+// GOOD:
+function checkValidKey(key, value = 0) {
+  // ...
+}
+```
+
++ Use PascalCase only for constructors or classes.
+
+```javascript
+// BAD:
+
+function Validate(options) {
+  // ...
+}
+
+const validatedItem = Validate(item);
+
+// GOOD:
+class Validator {
+  constructor(options) {
+    this.rules = options.rules;
+  }
+}
+
+const presenceValidator = new Validator({
+  rules: {}
+});
+```
+
++ Prefix with an underscore `_` when naming private properties or methods.
+
+```javascript
+// BAD:
+const foo = {
+  __firstName__: 'Yehuda',
+
+  somePrivateMethod_() {
+    console.log(this.__firstName__);
+  }
+};
+
+// GOOD:
+const foo = {
+  _firstName: 'Yehuda',
+
+  _somePrivateMethod() {
+    console.log(this._firstName);
+  }
+};
+```
+
+## Constructors
+
++ Use `class` instead of manipulating `prototype`.
+
+```javascript
+// BAD:
+function Car(make = 'Tesla') {
+  this.make = make;
+  this.position = { x: 0, y: 0 };
+}
+
+Car.prototype.move = function(x = 0, y = 0) {
+  this.position = { x, y };
+  return this.position;
+}
+
+// GOOD:
+class Car {
+  constructor(make = 'Tesla') {
+    this.make = make;
+    this.position = { x: 0, y: 0 };
+  }
+
+  move(x = 0, y = 0) {
+    this.position = { x, y };
+    return this.position;
+  }
+}
+```
+
++ Use `extends` for inheritance.
+
+```javascript
+class HondaCivic extends Car {
+  constructor() {
+    super('Honda');
+  }
+}
+```
+
 ## Objects
 
 + Use literal form for object creation.
 
 ```javascript
-var foo = {};
+const foo = {};
 ```
 
 + Pad single-line objects with white-space.
 
 ```javascript
-var bar = { color: 'orange' };
+const bar = { color: 'orange' };
+```
+
+## Strings
+
++ Prefer single quotes, and use double quotes to avoid escaping.
+
+```javascript
+// BAD:
+const foo = "bar";
+
+// GOOD:
+const foo = 'bar';
+const baz = "What's this?";
+```
+
++ When constructing strings with dynamic values, prefer template strings.
+
+```javascript
+const prefix = 'Hello';
+const suffix = 'and have a good day.';
+
+// BAD:
+return prefix + ' world, ' + suffix;
+
+// GOOD:
+return `${prefix} world, ${suffix}`;
 ```
 
 ## Arrays
@@ -283,34 +477,109 @@ var bar = { color: 'orange' };
 + Use literal form for array creation (unless you know the exact length).
 
 ```javascript
-var foo = [];
+const foo = [];
 ```
 
-+ Use new Array if you know the exact length of the array and know that its length will not change.
++ Use `new Array`` if you know the exact length of the array and know that its
+length will not change.
 
 ```javascript
-var foo = new Array(16);
+const foo = new Array(16);
 ```
 
 + Use `push` to add an item to an array.
 
 ```javascript
-var foo = [];
+const foo = [];
 foo.push('bar');
+```
+
++ Use spread.
+
+```javascript
+// join 2 arrays
+const foo = [0, 1, 2];
+const bar = [3, 4, 5];
+
+foo.push(...bar);
+
+// avoid using `Function.prototype.apply`
+const values = [25, 50, 75, 100];
+
+// good
+const max = Math.max.apply(Math, values);
+
+// better
+const max = Math.max(...values);
 ```
 
 + Join single line array items with a space.
 
 ```javascript
-var foo = ['a', 'b', 'c'];
+const foo = ['a', 'b', 'c'];
+```
+
++ Use array destructuring.
+
+```javascript
+const arr = [1, 2, 3, 4];
+
+// BAD:
+const head = arr.shift();
+const tail = arr;
+
+// GOOD:
+const [head, ...tail] = arr;
 ```
 
 ## Properties
 
++ Use property value shorthand.
+
+```javascript
+const name = 'Derek Zoolander';
+const age = 25;
+
+// BAD:
+const foo = {
+  name: name,
+  age: age
+};
+
+// GOOD:
+const foo = {
+  name,
+  age
+};
+```
+
++ Group shorthand properties at the beginning.
+
+```javascript
+const name = 'Derek Zoolander';
+const age = 25;
+
+// BAD:
+const foo = {
+  currentShow: 'Derelicte',
+  name,
+  enemy: 'Hansel',
+  age
+};
+
+// GOOD:
+const foo = {
+  name,
+  age,
+  currentShow: 'Derelicte',
+  enemy: 'Hansel'
+};
+```
+
 + Use dot-notation when accessing properties.
 
 ```javascript
-var foo = {
+const foo = {
   bar: 'bar'
 };
 
@@ -320,30 +589,57 @@ foo.bar;
 + Use `[]` when accessing properties via a variable.
 
 ```javascript
-var propertyName = 'bar';
-var foo = {
+const propertyName = 'bar';
+const foo = {
   bar: 'bar'
 };
 
 foo[propertyName];
 ```
 
-## Functions
-
-+ Make sure to name functions when you define them.
++ Use object destructuring when accessing multiple properties on an object.
 
 ```javascript
-function fooBar() {
+// BAD:
+function foo(person) {
+  const name = person.name;
+  const age = person.age;
+  const height = person.height;
+
+  return `${name} is ${age} years old and ${height} tall.`
 }
 
-var foo = {
-  bar: function foo_bar() {
-    // code
+// GOOD:
+function foo(person) {
+  const { name, age, height } = person;
+
+  return `${name} is ${age} years old and ${height} tall.`
+}
+```
+
+## Functions
+
++ Use object method shorthand.
+
+```javascript
+// BAD:
+const foo = {
+  value: 0,
+
+  bar: function bar(value) {
+    return foo.value + value;
   }
 };
+```
 
-var foo = function foo() {
-  // code
+```javascript
+// GOOD:
+const foo = {
+  value: 0,
+
+  bar(value) {
+    return foo.value + value;
+  }
 };
 ```
 
@@ -361,7 +657,7 @@ function foo() {
 
 // BAD:
 function foo() {
-  var bar = function bar() {
+  const bar = function bar() {
     // code
   }
 
@@ -369,52 +665,116 @@ function foo() {
 }
 ```
 
++ Use fat arrows to preserve `this` when using function expressions or
+anonymous functions.
+
+```javascript
+const foo = {
+  base: 0,
+
+  // BAD:
+  bar(items) {
+    const _this = this;
+    return items.map(function(item) {
+      return _this.base + item.value;
+    });
+  },
+
+  // GOOD:
+  bar(items) {
+    return items.map((item) => {
+      return this.base + item.value;
+    });
+  }
+
+  // GOOD:
+  bar(items) {
+    return items.map((item) => this.base + item.value);
+  }
+};
+```
+
++ Always use parentheses around arguments.
+
+```javascript
+// BAD:
+[1, 2, 3].map(x => x * x);
+
+// GOOD:
+[1, 2, 3].map((x) => x * x);
+```
+
++ If the function body fits on one line, feel free to omit the braces and use
+implicit return. Otherwise, add the braces and use a return statement.
+
+```javascript
+// GOOD:
+[1, 2, 3].map((x) => x * x);
+
+// GOOD:
+[1, 2, 3].map((x) => {
+  return { number: x };
+});
+```
+
 ## Function Arguments
+
++ Never use `arguments` – use rest instead.
+
+```javascript
+// BAD:
+function foo() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join('');
+}
+
+// GOOD:
+function foo(...args) {
+  return args.join('');
+}
+```
 
 `arguments` object must not be passed or leaked anywhere.
 See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
 
-+ Use a `for` loop with `arguments` (instead of `slice`).
-
-```javascript
-function fooBar() {
-  var args = new Array(arguments.length);
-
-  for (var i = 0; i < args.length; ++i) {
-    args[i] = arguments[i];
-  }
-
-  return args;
-}
-```
-
 + Don't re-assign the arguments.
 
 ```javascript
-// Don't re-assigning the arguments
+// Don't re-assign the arguments
 function fooBar() {
   arguments = 3;
 }
 
-// Don't re-assigning the arguments
+// Don't re-assign the arguments
 function fooBar(opt) {
   opt = 3;
 }
 
 // Use a new variable if you need to assign the value of an argument
 function fooBar(_opt) {
-  var opt = _opt;
+  const opt = _opt;
 
   opt = 3;
 }
 ```
 
-+ Use a new variable if you need to re-assign an argument.
++ Use default params instead of mutating them.
 
 ```javascript
-function fooBar(opt) {
-  var options = opt;
+// BAD:
+function fooBar(obj, key, value) {
+  obj = obj || {};
+  key = key || 'id';
+  // ...
+}
 
-  options = 3;
+// GOOD:
+function fooBar(obj = {}, key = 'id', value = 0) {
+  if (key) {
+    return obj[key];
+  } else {
+    obj[key] = value;
+    return obj[key];
+  }
 }
 ```
