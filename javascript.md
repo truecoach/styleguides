@@ -189,7 +189,7 @@ const bar = {
 
 ```javascript
 function foo() {
-  let bar = 5;
+  const bar = 5;
 
   // multiplies `bar` by 2.
   fooBar(bar);
@@ -490,7 +490,7 @@ const foo = new Array(16);
 + Use `push` to add an item to an array.
 
 ```javascript
-let foo = [];
+const foo = [];
 foo.push('bar');
 ```
 
@@ -498,8 +498,8 @@ foo.push('bar');
 
 ```javascript
 // join 2 arrays
-let foo = [0, 1, 2];
-let bar = [3, 4, 5];
+const foo = [0, 1, 2];
+const bar = [3, 4, 5];
 
 foo.push(...bar);
 
@@ -513,8 +513,6 @@ const max = Math.max.apply(Math, values);
 const max = Math.max(...values);
 ```
 
-+ Use spre
-
 + Join single line array items with a space.
 
 ```javascript
@@ -524,7 +522,7 @@ const foo = ['a', 'b', 'c'];
 + Use array destructuring.
 
 ```javascript
-let arr = [1, 2, 3, 4];
+const arr = [1, 2, 3, 4];
 
 // BAD:
 const head = arr.shift();
