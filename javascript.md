@@ -494,14 +494,26 @@ let foo = [];
 foo.push('bar');
 ```
 
-+ Use spread to join 2 arrays.
++ Use spread.
 
 ```javascript
+// join 2 arrays
 let foo = [0, 1, 2];
 let bar = [3, 4, 5];
 
 foo.push(...bar);
+
+// avoid using `Function.prototype.apply`
+const values = [25, 50, 75, 100];
+
+// good
+const max = Math.max.apply(Math, values);
+
+// better
+const max = Math.max(...values);
 ```
+
++ Use spre
 
 + Join single line array items with a space.
 
