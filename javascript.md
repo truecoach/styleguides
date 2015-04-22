@@ -202,8 +202,8 @@ function foo() {
 
 ## Variables
 
-+ Never use `var`. Prefer `const` to declare variables, unless explicitly
-requiring mutability.
++ Never use `var`. Prefer `const` to declare variables with a constant reference
+(not value), and `let` to declare variables with a variable reference.
 
 ```javascript
 // BAD:
@@ -219,6 +219,16 @@ function doStuff() {
 
   return b;
 }
+```
+
++ Note that `const` refers to a **constant reference**, not a constant value.
+
+```javascript
+const coolKids = ['Estelle', 'Lauren', 'Romina'];
+coolKids.push('Marin');
+console.log(coolKids); // ['Estelle', 'Lauren', 'Romina', 'Marin']
+
+coolKids = ['Doug', 'Lin', 'Dan']; // SyntaxError: "coolKids" is read-only
 ```
 
 + Note that both `let` and `const` are block scoped.
