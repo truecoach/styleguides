@@ -206,7 +206,19 @@ function foo() {
 requiring mutability.
 
 ```javascript
+// BAD:
+var a = [1, 2, 3];
+let b = [1, 2, 3];
+
+// GOOD:
 const a = [1, 2, 3];
+let b = [4, 5, 6];
+
+function doStuff() {
+  b = [1, 2, 3];
+
+  return b;
+}
 ```
 
 + Note that both `let` and `const` are block scoped.
