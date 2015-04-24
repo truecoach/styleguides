@@ -202,8 +202,7 @@ function foo() {
 
 ## Variables
 
-+ Never use `var`. Prefer `const` to declare variables with a constant reference
-(not value), and `let` to declare variables with a variable reference.
++ Never use `var`. Prefer [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) to declare a block scope local variable; use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) to declare a constant whose value can not be re-assigned in the given scope (global or local).
 
 ```javascript
 // BAD:
