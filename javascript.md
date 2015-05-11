@@ -40,80 +40,58 @@
 + Use spaces before leading brace.
 
 ```javascript
-// conditional
-if (notFound) {
-  return 0;
-} else {
-  return 1;
-}
+// good
+function doStuff(foo) {
+  return foo;
+};
 
-switch (condition) {
-  case 'yes':
-    // code
-    break;
-}
-
-// loops
-for (const key in keys) {
-  // code
-}
-
-for (let i = 0, l = keys.length; i < l; i++) {
-  // code
-}
-
-while (true) {
-  // code
-}
-
-try {
-  // code that throws an error
-} catch(e) {
-  // code that handles an error
-}
+// bad
+function doStuff(foo){
+  return foo;
+};
 ```
 
 + Opening curly brace (`{`) should be on the same line as the beginning of a
 statement or declaration.
 
 ```javascript
-function foo() {
-  const obj = {
-    val: 'test'
-  };
+// good
+return fooBar(foo, (bars) => {
+  return bars.map((bar) => {
+    return bar * 2;
+  });
+});
 
-  return {
-    data: obj
-  };
-}
-
-if (foo === 1) {
-  foo();
-}
-
-for (let key in keys) {
-  bar(e);
-}
-
-while (true) {
-  foo();
-}
+//bad
+return fooBar(foo, (bars) =>
+{
+  return bars.map((bar) =>
+  {
+    return bar * 2;
+  });
+});
 ```
 
 + Keep `else` and its accompanying braces on the same line.
 
 ```javascript
+let bar;
+
+// good
 if (foo === 1) {
   bar = 2;
 } else {
   bar = '2';
 }
 
+// bad
 if (foo === 1) {
   bar = 2;
-} else if (foo === 2) {
+}
+else if (foo === 2) {
   bar = 1;
-} else {
+}
+else {
   bar = 3;
 }
 ```
@@ -121,33 +99,60 @@ if (foo === 1) {
 ## Conditional Statements
 
 + Use strict equality (`===` and `!==`).
+
 + Use curly braces for all conditional blocks.
 
 ```javascript
+// good
 if (notFound) {
-  // code
+  doBarrelRoll();
+} else {
+  jumpOnCouch();
 }
+
+// bad
+if (notFound)
+  doBarrelRoll();
+else
+  jumpOnCouch();
 ```
 
 + Use explicit conditions when checking for non `null`, `undefined`, `true`,
 `false` values.
 
 ```javascript
+const foo = 'foo';
+const arr = [1, 2, 3];
+
+// good
 if (arr.length > 0) {
-  // code
+  return;
 }
 
 if (foo !== '') {
   // code
+}
+
+// bad
+if (!arr.length) {
+  return;
+}
+
+if (!foo) {
+  return;
 }
 ```
 
 + Use multiline format.
 
 ```javascript
+// good
 if (foo === 'bar') {
   return;
 }
+
+// bad
+if (foo === 'bar') { return; }
 ```
 
 ## Commas
@@ -155,46 +160,95 @@ if (foo === 'bar') {
 + Skip trailing commas.
 
 ```javascript
-const foo = [1, 2, 3];
-const bar = { a: 'a' };
+// good
+const foo = {
+  bar: [1, 2, 3],
+  baz: {
+    a: 'a'
+  }
+}
+
+// bad
+const foo = {
+  bar: [1, 2, 3],
+  baz: {
+    a: 'a',
+  },
+}
 ```
 
-+ Skip trailing and leading commas.
++ Skip leading commas.
 
 ```javascript
-const foo = [1, 2, 3];
-const bar = {
-  a: 'a',
-  b: 'b'
-};
+// good
+const potato = [
+  'potatoes',
+  'are',
+  'delicious'
+];
+
+// bad
+const potato = [
+  'potatoes'
+, 'are'
+, 'delicious'
+];
 ```
 
 ## Semicolons
 
-+ Use semicolons.
++ Use semicolons`;`
 
 ## Comments
 
 + Use multiline comments with two leading asterisks for documentation.
 
 ```javascript
+// good
 /**
   This is documentation for something just below.
 */
+function isItLunchTimeYet(time) {
+  if (time) {
+    return 'Yes.';
+  }
+}
+
+// bad
+//
+// This is documentation for something just below.
+//
+function isItLunchTimeYet(time) {
+  if (time) {
+    return 'Yes.';
+  }
+}
 ```
 
 + Use [YUIDoc](http://yui.github.io/yuidoc/syntax/index.html) comments for
   documenting functions.
+
 + Use `//` for non-documenting comments (both single and multiline).
 
 ```javascript
+// good
 function foo() {
   const bar = 5;
 
   // multiplies `bar` by 2.
-  fooBar(bar);
+  const newBar = fooBar(bar);
 
-  console.log(bar);
+  console.log(newBar);
+}
+
+// bad
+function foo() {
+  const bar = 5;
+
+  /* multiplies `bar` by 2. */
+  const newBar = fooBar(bar);
+
+  console.log(newBar);
 }
 ```
 
@@ -206,11 +260,7 @@ function foo() {
 (not value), and `let` to declare variables with a variable reference.
 
 ```javascript
-// BAD:
-var a = [1, 2, 3];
-let b = [1, 2, 3];
-
-// GOOD:
+// good
 const a = [1, 2, 3];
 let b = [4, 5, 6];
 
@@ -219,6 +269,10 @@ function doStuff() {
 
   return b;
 }
+
+// bad
+var a = [1, 2, 3];
+let b = [1, 2, 3];
 ```
 
 + Note that `const` refers to a **constant reference**, not a constant value.
@@ -245,51 +299,79 @@ console.log(b); // ReferenceError
 + Group your `const`s and then group your `let`s.
 
 ```javascript
-// BAD:
-let foo;
-const bar = 123;
-let arr = [1, 2, 3];
+// good
 const isTrue = true;
+const bar = 123;
+let foo;
+let arr = [1, 2, 3];
 
-// GOOD:
-const isTrue = true;
-const bar = 123;
+// bad
 let foo;
+const bar = 123;
 let arr = [1, 2, 3];
+const isTrue = true;
 ```
 
 + Put all non-assigning declarations on one line.
 
 ```javascript
+// good
 let a, b;
+
+// bad
+let a,
+b;
 ```
 
 + Use a single `const` declaration for each assignment.
 
 ```javascript
+// good
 const a = 1;
 const b = 2;
+
+// bad
+const a = 1, b = 2;
 ```
 
 + Declare variables at the top of their block scope.
 
 ```javascript
-function foo() {
-  let bar;
-
-  console.log('foo bar!');
-
-  bar = getBar();
+function mutate(thing) {
+  return new Promise((resolve) => {
+    resolve(thing);
+  });
 }
 
+// good
 function bar() {
-  let coolList;
+  const itemToPush = 'foo';
+  const coolList = [1, 2, 3, 4, 5, 6];
+  let updatedList = coolList.filter((item) => {
+    return (item % 2) === 0;
+  });
 
-  // code
+  mutate(updatedList).then((list) => {
+    updatedList = list.push(itemToPush);
+  });
 
-  for (let index = 0, length = coolThing.length; index < length; index++) {
-    // code
-  }
+  return updatedList;
+}
+
+// bad
+function bar() {
+  let updatedList = coolList.filter((item) => {
+    return (item % 2) === 0;
+  });
+
+  const coolList = [1, 2, 3, 4, 5, 6];
+
+  mutate(updatedList).then((list) => {
+    updatedList = list.push(result);
+  });
+
+  const result = 'foo';
+  return updatedList;
 }
 ```
 
@@ -298,51 +380,77 @@ function bar() {
 + Use soft tabs set to 2 spaces.
 
 ```javascript
+// good
 function() {
 ∙∙const name;
+}
+
+// bad
+function() {
+⇥const name;
 }
 ```
 
 + Place 1 space before a leading brace (`{`).
 
 ```javascript
+// good
 obj.set('foo', {
   foo: 'bar'
 });
 
 test('foo-bar', function() {
 });
+
+// bad
+obj.set('foo',{
+  foo: 'bar'
+});
+
+test('foo-bar', ()=>{
+});
 ```
 
 + No spaces before semicolons.
 
 ```javascript
+// good
 const foo = {};
+
+// bad
+const foo = {} ;
 ```
 
-+ Keep parenthesis adjacent to the function name when declared or called.
++ Keep parentheses adjacent to the function name when declared or called.
 
 ```javascript
-function foo() {
+// good
+function foo(bar) {
 }
 
-foo();
+foo(1);
+
+// bad
+function foo (bar) {
+}
+
+foo (1);
 ```
 
-+ No trailing whitespace.
++ No trailing whitespaces.
 
 ## Naming Conventions
 
 + Be descriptive with naming.
 
 ```javascript
-// BAD:
-function check(k, v = 0) {
+// good
+function checkValidKey(key, value = 0) {
   // ...
 }
 
-// GOOD:
-function checkValidKey(key, value = 0) {
+// bad
+function check(k, v = 0) {
   // ...
 }
 ```
@@ -350,15 +458,7 @@ function checkValidKey(key, value = 0) {
 + Use PascalCase only for constructors or classes.
 
 ```javascript
-// BAD:
-
-function Validate(options) {
-  // ...
-}
-
-const validatedItem = Validate(item);
-
-// GOOD:
+// good
 class Validator {
   constructor(options) {
     this.rules = options.rules;
@@ -368,26 +468,33 @@ class Validator {
 const presenceValidator = new Validator({
   rules: {}
 });
+
+// bad
+function Validate(options) {
+  return options === true;
+}
+
+const validatedItem = Validate(item);
 ```
 
 + Prefix with an underscore `_` when naming private properties or methods.
 
 ```javascript
-// BAD:
-const foo = {
-  __firstName__: 'Yehuda',
-
-  somePrivateMethod_() {
-    console.log(this.__firstName__);
-  }
-};
-
-// GOOD:
+// good
 const foo = {
   _firstName: 'Yehuda',
 
   _somePrivateMethod() {
     console.log(this._firstName);
+  }
+};
+
+// bad
+const foo = {
+  __firstName__: 'Yehuda',
+
+  somePrivateMethod_() {
+    console.log(this.__firstName__);
   }
 };
 ```
@@ -397,18 +504,7 @@ const foo = {
 + Use `class` instead of manipulating `prototype`.
 
 ```javascript
-// BAD:
-function Car(make = 'Tesla') {
-  this.make = make;
-  this.position = { x: 0, y: 0 };
-}
-
-Car.prototype.move = function(x = 0, y = 0) {
-  this.position = { x, y };
-  return this.position;
-}
-
-// GOOD:
+// good
 class Car {
   constructor(make = 'Tesla') {
     this.make = make;
@@ -419,6 +515,17 @@ class Car {
     this.position = { x, y };
     return this.position;
   }
+}
+
+// bad
+function Car(make = 'Tesla') {
+  this.make = make;
+  this.position = { x: 0, y: 0 };
+}
+
+Car.prototype.move = function(x = 0, y = 0) {
+  this.position = { x, y };
+  return this.position;
 }
 ```
 
@@ -437,13 +544,21 @@ class HondaCivic extends Car {
 + Use literal form for object creation.
 
 ```javascript
-const foo = {};
+// good
+const doug = {};
+
+// bad
+const doug = new Object();
 ```
 
 + Pad single-line objects with white-space.
 
 ```javascript
-const bar = { color: 'orange' };
+// good
+const rob = { likes: 'ember' };
+
+// bad
+const rob = {hates: 'spiders'};
 ```
 
 ## Strings
@@ -451,12 +566,12 @@ const bar = { color: 'orange' };
 + Prefer single quotes, and use double quotes to avoid escaping.
 
 ```javascript
-// BAD:
-const foo = "bar";
-
-// GOOD:
+// good:
 const foo = 'bar';
 const baz = "What's this?";
+
+// bad
+const foo = "bar";
 ```
 
 + When constructing strings with dynamic values, prefer template strings.
@@ -465,11 +580,11 @@ const baz = "What's this?";
 const prefix = 'Hello';
 const suffix = 'and have a good day.';
 
-// BAD:
-return prefix + ' world, ' + suffix;
-
-// GOOD:
+// good
 return `${prefix} world, ${suffix}`;
+
+// bad
+return prefix + ' world, ' + suffix;
 ```
 
 ## Arrays
@@ -477,10 +592,16 @@ return `${prefix} world, ${suffix}`;
 + Use literal form for array creation (unless you know the exact length).
 
 ```javascript
-const foo = [];
+// good
+const foo = [1, 2, 3];
+const bar = new Array(3);
+
+// bad
+const foo = new Array();
+const bar = new Array(1, 2, 3);
 ```
 
-+ Use `new Array`` if you know the exact length of the array and know that its
++ Use `new Array` if you know the exact length of the array and know that its
 length will not change.
 
 ```javascript
@@ -491,7 +612,13 @@ const foo = new Array(16);
 
 ```javascript
 const foo = [];
+const { length } = foo;
+
+// good
 foo.push('bar');
+
+// bad
+foo[length] = 'bar';
 ```
 
 + Use spread.
@@ -516,7 +643,11 @@ const max = Math.max(...values);
 + Join single line array items with a space.
 
 ```javascript
+// good
 const foo = ['a', 'b', 'c'];
+
+// bad
+const foo = ['a','b','c'];
 ```
 
 + Use array destructuring.
@@ -524,12 +655,12 @@ const foo = ['a', 'b', 'c'];
 ```javascript
 const arr = [1, 2, 3, 4];
 
-// BAD:
+// good
+const [head, ...tail] = arr;
+
+// bad
 const head = arr.shift();
 const tail = arr;
-
-// GOOD:
-const [head, ...tail] = arr;
 ```
 
 ## Properties
@@ -540,16 +671,16 @@ const [head, ...tail] = arr;
 const name = 'Derek Zoolander';
 const age = 25;
 
-// BAD:
-const foo = {
-  name: name,
-  age: age
-};
-
-// GOOD:
+// good
 const foo = {
   name,
   age
+};
+
+// bad
+const foo = {
+  name: name,
+  age: age
 };
 ```
 
@@ -559,20 +690,20 @@ const foo = {
 const name = 'Derek Zoolander';
 const age = 25;
 
-// BAD:
-const foo = {
-  currentShow: 'Derelicte',
-  name,
-  enemy: 'Hansel',
-  age
-};
-
-// GOOD:
+// good
 const foo = {
   name,
   age,
   currentShow: 'Derelicte',
   enemy: 'Hansel'
+};
+
+// bad
+const foo = {
+  currentShow: 'Derelicte',
+  name,
+  enemy: 'Hansel',
+  age
 };
 ```
 
@@ -583,7 +714,11 @@ const foo = {
   bar: 'bar'
 };
 
+// good
 foo.bar;
+
+// bad
+foo['bar'];
 ```
 
 + Use `[]` when accessing properties via a variable.
@@ -594,24 +729,28 @@ const foo = {
   bar: 'bar'
 };
 
+// good
 foo[propertyName];
+
+// do you even javascript
+foo.propertyName;
 ```
 
 + Use object destructuring when accessing multiple properties on an object.
 
 ```javascript
-// BAD:
+// good
 function foo(person) {
-  const name = person.name;
-  const age = person.age;
-  const height = person.height;
+  const { name, age, height } = person;
 
   return `${name} is ${age} years old and ${height} tall.`
 }
 
-// GOOD:
+// bad
 function foo(person) {
-  const { name, age, height } = person;
+  const name = person.name;
+  const age = person.age;
+  const height = person.height;
 
   return `${name} is ${age} years old and ${height} tall.`
 }
@@ -622,7 +761,16 @@ function foo(person) {
 + Use object method shorthand.
 
 ```javascript
-// BAD:
+// good
+const foo = {
+  value: 0,
+
+  bar(value) {
+    return foo.value + value;
+  }
+};
+
+// bad
 const foo = {
   value: 0,
 
@@ -632,21 +780,10 @@ const foo = {
 };
 ```
 
-```javascript
-// GOOD:
-const foo = {
-  value: 0,
-
-  bar(value) {
-    return foo.value + value;
-  }
-};
-```
-
 + Use scope to lookup functions (not variables).
 
 ```javascript
-// GOOD:
+// good
 function foo() {
   function bar() {
     // code
@@ -655,7 +792,7 @@ function foo() {
   bar();
 }
 
-// BAD:
+// bad
 function foo() {
   const bar = function bar() {
     // code
@@ -672,24 +809,24 @@ anonymous functions.
 const foo = {
   base: 0,
 
-  // BAD:
+  // good
+  bar(items) {
+    return items.map((item) => {
+      return this.base + item.value;
+    });
+  },
+
+  // good
+  bar(items) {
+    return items.map((item) => this.base + item.value);
+  },
+
+  // bad
   bar(items) {
     const _this = this;
     return items.map(function(item) {
       return _this.base + item.value;
     });
-  },
-
-  // GOOD:
-  bar(items) {
-    return items.map((item) => {
-      return this.base + item.value;
-    });
-  }
-
-  // GOOD:
-  bar(items) {
-    return items.map((item) => this.base + item.value);
   }
 };
 ```
@@ -697,21 +834,21 @@ const foo = {
 + Always use parentheses around arguments.
 
 ```javascript
-// BAD:
-[1, 2, 3].map(x => x * x);
-
-// GOOD:
+// good
 [1, 2, 3].map((x) => x * x);
+
+// bad
+[1, 2, 3].map(x => x * x);
 ```
 
 + If the function body fits on one line, feel free to omit the braces and use
 implicit return. Otherwise, add the braces and use a return statement.
 
 ```javascript
-// GOOD:
+// good
 [1, 2, 3].map((x) => x * x);
 
-// GOOD:
+// good
 [1, 2, 3].map((x) => {
   return { number: x };
 });
@@ -722,38 +859,38 @@ implicit return. Otherwise, add the braces and use a return statement.
 + Never use `arguments` – use rest instead.
 
 ```javascript
-// BAD:
+// good
+function foo(...args) {
+  return args.join('');
+}
+
+// bad
 function foo() {
   const args = Array.prototype.slice.call(arguments);
   return args.join('');
 }
-
-// GOOD:
-function foo(...args) {
-  return args.join('');
-}
 ```
 
-`arguments` object must not be passed or leaked anywhere.
-See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
++ `arguments` object must not be passed or leaked anywhere. See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
 
 + Don't re-assign the arguments.
 
 ```javascript
-// Don't re-assign the arguments
+// good
+// Use a new variable if you need to assign the value of an argument
+function fooBar(opt) {
+  let _opt = opt;
+
+  _opt = 3;
+}
+
+// bad
 function fooBar() {
   arguments = 3;
 }
 
-// Don't re-assign the arguments
+// bad
 function fooBar(opt) {
-  opt = 3;
-}
-
-// Use a new variable if you need to assign the value of an argument
-function fooBar(_opt) {
-  const opt = _opt;
-
   opt = 3;
 }
 ```
@@ -761,14 +898,7 @@ function fooBar(_opt) {
 + Use default params instead of mutating them.
 
 ```javascript
-// BAD:
-function fooBar(obj, key, value) {
-  obj = obj || {};
-  key = key || 'id';
-  // ...
-}
-
-// GOOD:
+// good
 function fooBar(obj = {}, key = 'id', value = 0) {
   if (key) {
     return obj[key];
@@ -776,5 +906,12 @@ function fooBar(obj = {}, key = 'id', value = 0) {
     obj[key] = value;
     return obj[key];
   }
+}
+
+// bad
+function fooBar(obj, key, value) {
+  obj = obj || {};
+  key = key || 'id';
+  // ...
 }
 ```
