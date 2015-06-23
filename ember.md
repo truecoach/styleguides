@@ -154,7 +154,7 @@ export default Controller.extend({
 
 ### Do not use partials
 
-Always use components. Parials share scope with the parent view, use
+Always use components. Partials share scope with the parent view, use
 components will provide a consistent scope.
 
 ### Use block syntax
