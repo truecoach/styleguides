@@ -130,7 +130,7 @@ app
       route.js
       template.hbs
     route.js
-    comment-details/ - used within blog templats
+    comment-details/ - used within blog templates
       component.js
       template.hbs
 
