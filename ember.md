@@ -276,37 +276,40 @@ Definition: Black box testing of the application, often tied directly to high le
 Example: Asserting that when the user visits the blog, a list of posts is shown.
 
 ### Page Objects
-Use page objects for modeling interactions with pages during tests. Functions that are used
-externally in tests should be written from the perspective of a user interacting with the page.
+Use Page Objects for modeling interactions with the application during tests.
+Page Objects are responsible for knowing about the HTML and CSS
+implementation details of the application and providing an API for
+interacting with page elements. This isolates our tests from
+presentation details and provides a single place to fix breakages due to
+changes in presentation.
 
 ```js
 // Good
-// Base Page Object
-export default class PageObject {
+
+// tests/page-objects/base.js
+export default class BaseObject {
   clickWithText(selector, text) {
-    click(selector, `:contains("${text}")`);
+    click(selector, `:contains("${title}")`);
     return this;
   }
 }
 
-// Extending Page Object
-import BaseObject from '../base';
+// tests/page-objects/posts-index.js
+import BaseObject from './base';
 
 export default class PostsIndexObject extends BaseObject {
-  visit() {
-    visit('/blog/posts');
-  }
-
   clickPostTitle(title) {
-    return this.clickWithText('post-item-title', title);
+    click('.post-item', `:contains("${title}")`);
+    return this;
   }
 }
 
 // Test
 test('clicking post title navigates to the post show page', function(assert) {
+  visit('/posts');
+
   new PostsIndexObject({ assert })
-    .visit();
-    .clickPostTitle('Best Post Ever!')
+    .clickPostTitle('Best Post Ever!');
 
   // more test code
 });
@@ -314,28 +317,11 @@ test('clicking post title navigates to the post show page', function(assert) {
 
 ```js
 // Bad
-// Base Page Object
-export default class PageObject {
-  clickWithText(selector, text) {
-    click(testSelector, `:contains("${text}")`);
-    return this;
-  }
-}
-
-// Extending Page Object
-import BaseObject from '../base';
-
-export default class PostsIndexObject extends BaseObject {
-  visit() {
-    visit('/blog/posts');
-  }
-}
 
 // Test
 test('clicking post title navigates to the post show page', function(assert) {
-  new PostsIndexObject({ assert })
-    .visit();
-    .clickWithText('post-item-title', 'Best Post Ever!')
+  visit('/posts');
+  click('.post-item:contains("Best Post Evar!")');
 
   // more test code
 });
@@ -343,15 +329,14 @@ test('clicking post title navigates to the post show page', function(assert) {
 
 ### Data Attributes
 When using data attributes to target page elements, use attribute values
-that are unique between different types of elements. Use the same attribute
-value for elements of the same type.
+that are unique, even between elements of the same 'type'.
 
 ```hbs
 {{! Good }}
 
-<div data-test-selector="posts-list">
-  {{#each posts as |post index|}}
-    {{post-item post=post data-test-selector="posts-list-item"}}
+<div data-auto-id="posts-list">
+  {{#each posts as |post|}}
+    {{post-item post=post data-auto-id=(dasherize-and-concat "post-list-item" post.title)}}
   {{/each}}
 </div>
 ```
@@ -359,10 +344,9 @@ value for elements of the same type.
 ```hbs
 {{! Bad }}
 
-<div data-test-selector="posts-list">
-  {{#each posts as |post index|}}
-    {{! Don't create unique data attribute values for things of the same type }}
-    {{post-item post=post data-test-selector=(concat "post-list-item" "-" index)}}
+<div data-auto-id="posts-list">
+  {{#each posts as |post|}}
+    {{post-item post=post data-auto-id="posts-list-item"}}
   {{/each}}
 </div>
 ```
