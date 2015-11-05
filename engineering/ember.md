@@ -6,7 +6,7 @@
 * [Organizing your modules](#organizing-your-modules)
 * [Controllers](#controllers)
 * [Templates](#templates)
-* [Routes](#routes)
+* [Routing](#routing)
 * [Ember data](#ember-data)
 
 
@@ -219,9 +219,25 @@ more complex logic in this case.
 {{/each}}
 ```
 
-## Routes
+## Routing
 
-### Perform all async actions required for the page to load in `model` hooks
+### Route naming
+Dynamic segments should be underscored. This will allow Ember to resolve
+promises without extra serialization
+work.
+
+```js
+// bad
+this.route('foo', { path: ':fooId' });
+
+// good
+this.route('foo', { path: ':foo_id' });
+```
+
+[Example with broken
+links](https://ember-twiddle.com/0fea52795863b88214cb?numColumns=3).
+
+### Perform all async actions required for the page to load in route `model` hooks
 
 The model hooks are async hooks, and will wait for any promises returned
 to resolve. An example of this would be models needed to fill a drop
