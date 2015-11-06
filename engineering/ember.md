@@ -2,6 +2,14 @@
 
 ## Table Of Contents
 
+* [General](#general)
+* [Organizing your modules](#organizing-your-modules)
+* [Controllers](#controllers)
+* [Templates](#templates)
+* [Routes](#routes)
+* [Ember data](#ember-data)
+
+
 ## General
 
 ### Create local version of Ember.\* and DS.\*
@@ -14,10 +22,16 @@ able to import `Ember.computed` directly as `computed`. This includes
 ```javascript
 // Good
 
-var computed = Ember.computed;
-var alias = computed.alias;
-var attr = DS.attr;
-var Model = DS.Model;
+import Ember from 'ember';
+import DS from 'ember-data';
+
+const {
+  Model,
+  attr
+} = DS;
+
+const { computed } = Ember;
+const { alias } = computed;
 
 export default Model.extend({
   firstName: attr('string'),
@@ -36,8 +50,14 @@ export default DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
 
-  fullName: Ember.computed('firstName', 'lastName', function() {
-    // Code
+  fullName: Ember.computed('firstName', 'lastName', {
+    get() {
+      // Code
+    },
+
+    set() {
+      // Code
+    }
   }),
 
   fullNameBad: function() {
@@ -57,8 +77,14 @@ export default Component.extend({
   post: alias('myPost'),
 
   // Multiline CP
-  authorName: computed('author.firstName', 'author.lastName', function() {
-    // Code
+  authorName: computed('author.firstName', 'author.lastName', {
+    get() {
+      // Code
+    },
+
+    set() {
+      // Code
+    }
   })
 
   actions: {
@@ -76,11 +102,12 @@ Define your object's default values first.
 ### Define single line computed properties second
 
 Define single line computed properties (`thing: alias('myThing')`)
-after default values
+after default values.
 
 ### Define multi-line computed properties third
 
 Multi-line computed properties should follow your single line CPs.
+Please follow the [new computed syntax](http://emberjs.com/blog/2015/05/13/ember-1-12-released.html#toc_new-computed-syntax).
 
 ### Define actions last
 
@@ -97,7 +124,7 @@ init](http://reefpoints.dockyard.com/2014/04/28/dont-override-init.html).
 ### Use Pods structure
 
 Store local components within their pod, global components in the
-`components` structure
+`components` structure.
 
 ```
 app
@@ -111,7 +138,7 @@ app
       route.js
       template.hbs
     route.js
-    comment-details/ - used within blog templats
+    comment-details/ - used within blog templates
       component.js
       template.hbs
 
@@ -154,7 +181,7 @@ export default Controller.extend({
 
 ### Do not use partials
 
-Always use components. Parials share scope with the parent view, use
+Always use components. Partials share scope with the parent view, use
 components will provide a consistent scope.
 
 ### Use block syntax
