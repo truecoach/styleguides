@@ -13,7 +13,7 @@
 
 * Use two-space indentation and spaces around operators, after commas, colons and semicolons.
 
-```
+```elixir
 # bad
 answer=1-3
 
@@ -31,7 +31,7 @@ Enum.map(["cat", "dog"], fn(value) -> IO.puts(value) end)
 
 * **Do not** put spaces around matched pairs like brackets, parentheses, etc.
 
-```
+```elixir
 # bad
 { :ok, result } = { :ok, 13 }
 
@@ -53,7 +53,7 @@ def iterate([head | tail]), do: iterate(tail)
 
 * Use empty lines between function `def`s...
 
-```
+```elixir
 def mark_as_read(email) do
   # ...
 end
@@ -67,7 +67,7 @@ def send, do: # ...
 
 * ...but put function `def`s that match for the same function together.
 
-```
+```elixir
 def sum(nil), do: {:error, "No Value"}
 def sum([]), do: 0
 def sum([head | tail]) do
@@ -83,7 +83,7 @@ end
 * Use parentheses when there are arguments in a function definition. **Do not** use parentheses when there
   are no arguments.
 
-```
+```elixir
 # bad
 def greet name message do
   ...
@@ -115,21 +115,21 @@ result = operation
 result = operation()
 ```
 
-* Use `do:` for single line function definitions.
+* Favor `do:` for single line function definitions.
 
-```
-# bad
+```elixir
+# okay
 def iterate([]) do
  :ok
 end
 
-# good
+# better
 def iterate([]), do: :ok
 ```
 
 * Use parentheses in function calls when passing parameters, especially inside a pipeline.
 
-```
+```elixir
 # bad
 convert_to_celsius 32
 
@@ -149,7 +149,7 @@ convert_to_celsius(32) |> format
 * Never use `do:` for multi-line `if/unless` statements. Instead, use
   the `do ... end` format.
 
-```
+```elixir
 # bad
 if price < 100 do:
   # multiple
@@ -166,14 +166,14 @@ end
 
 * Use `do:` for single line `if/unless` statements.
 
-```
+```elixir
 if price == 100, do: # do stuff
 ```
 
 * Use `true` or an atom as the last (catch-all) condition of a `cond` statement
 (An atom evaluates to a truthy value). Suggested atoms are `:else`, `:default` or `:otherwise`.
 
-```
+```elixir
 cond do
   1 + 1 == 4 ->
     "Close, but no"
@@ -197,7 +197,7 @@ end
 
 * Use the pipeline operator, `|>`, to chain **multiple** functions together.
 
-```
+```elixir
 # bad
 some_string |> String.downcase
 
@@ -205,9 +205,23 @@ some_string |> String.downcase
 String.downcase(some_string)
 ```
 
+* *always* use parenthesis when piping, including the last expression.
+
+```elixir
+# bad
+conn
+|> assign(:foo, bar)
+|> render "index.html"
+
+# good
+conn
+|> assign(:foo, bar)
+|> render("index.html")
+```
+
 * Use a single level of indentation for multi-line pipelines.
 
-```
+```elixir
 # bad
 some_string
   |> String.downcase
@@ -221,7 +235,7 @@ some_string
 
 * Use **bare** variables in the first part of a function chain.
 
-```
+```elixir
 # bad
 String.strip(some_string)
 |> String.downcase
@@ -236,7 +250,7 @@ some_string
 
 * Always start a new line for each pipeline in a function chain.
 
-```
+```elixir
 # bad
 some_string |> String.strip |> String.downcase
 
@@ -269,7 +283,7 @@ another module (such as a test).
 
 * No newline after defmodule, starting with `@moduledoc`, followed by `use`'s, `import`'s, and `alias`'s
 
-```
+```elixir
 defmodule Exam do
   @moduledoc """
   Short one line summary, ending in period.
@@ -296,7 +310,7 @@ end
 * Use a question mark rather than a leading `is_` when naming a function
   that returns a boolean value.
 
-```
+```elixir
 # bad
 def is_acid?(ph) do
   # ph > 7
