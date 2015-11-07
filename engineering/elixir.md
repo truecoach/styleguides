@@ -263,6 +263,7 @@ some_string
 
 * When assigning the result of a pipeline to a variable, the `variable =` should stand on its own, with an indented pipeline below.
 
+```elixir
 # bad
 result = some_string
 |> String.strip
@@ -275,6 +276,7 @@ result =
   |> String.strip
   |> String.downcase
   |> String.codepoints
+```
 
 ### Modules
 
