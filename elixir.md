@@ -11,7 +11,7 @@
 
 ## Whitespace
 
-* Use spaces around operators, after commas, colons and semicolons.
+* Use two-space indentation and spaces around operators, after commas, colons and semicolons.
 
 ```
 # bad
@@ -75,24 +75,6 @@ def sum([head | tail]) do
 end
 ```
 
-* ...however, if you have more than one multi-line function `def`, do not put them together.
-
-```
-def parse(value) when is_number(value) do
-  # some
-  # code
-end
-
-def parse(value) when is_atom(value) do
-  # other
-  # code
-end
-
-def parse([head | tail]) do
-  # more
-  # code
-end
-```
 
 ## Syntax
 
@@ -121,6 +103,16 @@ end
 def respond do
   ...
 end
+```
+...however, favor parenthesis for null arity function calls, when the function is in the local scope.
+
+
+```elixir
+# bad
+result = operation
+
+# good
+result = operation()
 ```
 
 * Use `do:` for single line function definitions.
@@ -255,16 +247,41 @@ some_string
 |> String.codepoints
 ```
 
+* When assigning the result of a pipeline to a variable, the `variable =` should stand on its own, with an indented pipeline below.
+
+# bad
+result = some_string
+|> String.strip
+|> String.downcase
+|> String.codepoints
+
+# good
+result =
+  some_string
+  |> String.strip
+  |> String.downcase
+  |> String.codepoints
+
 ### Modules
 
 * Use one module per file unless the module is only used internally by
 another module (such as a test).
 
-* No newline after defmodule.
+* No newline after defmodule, starting with `@moduledoc`, followed by `use`'s, `import`'s, and `alias`'s
 
 ```
 defmodule Exam do
-  def start do
+  @moduledoc """
+  Short one line summary, ending in period.
+
+  More details as necessary after newline.
+  """
+
+  use GenServer
+  import App.Router.Helpers
+  alias App.Repo
+
+  def start_link do
     ...
   end
 end
