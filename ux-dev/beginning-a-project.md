@@ -12,7 +12,7 @@
 * How do you want us to prepare the deliverables? (Zip, GitHub, etc.)
 * If the project has already begun, can we use
   [BEM]
-  (https://github.com/dockyard/styleguides/blob/master/uxd/class-naming-conventions.md#bem-naming-conventions)
+  (https://github.com/dockyard/styleguides/blob/master/ux-dev/class-naming-conventions.md#bem-naming-conventions)
   naming conventions?
 
 ## Questions to Ask Designer
