@@ -114,12 +114,11 @@ Please follow the [new computed syntax](http://emberjs.com/blog/2015/05/13/ember
 Define your route/component/controller's action last, to provide a
 common place that actions can be found.
 
-### Avoid overwriting init
+### Override init
 
-Unless you want to change an object's `init` function, perform actions
-by hooking into the object's `init` hook via `on`. This prevents you
-from forgetting to call `_super`. [Here is why you shouldn't override
-init](http://reefpoints.dockyard.com/2014/04/28/dont-override-init.html).
+Rather than using the object's `init` hook via `on`, override init and
+call `_super` with `...arguments`. This allows you to control execution
+order. [Don't Don't Override Init](https://dockyard.com/blog/2015/10/19/2015-dont-dont-override-init)
 
 ### Use Pods structure
 
