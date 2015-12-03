@@ -136,7 +136,7 @@ end
 ```
 
 * The `and` and `or` keywords are banned. They have a lower order of
-  precednce and will cause unexpected side effects. Always use `&&` and
+  precedence and will cause unexpected side effects. Always use `&&` and
   `||` instead.
 
 * Modifier `if/unless` usage is okay when the body is simple, the
