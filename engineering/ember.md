@@ -156,8 +156,8 @@ app
 
 ### Define query params first
 
-For consistancy and ease of discover, list your query params first in
-your contoller. These should be listed above default values.
+For consistency and ease of discover, list your query params first in
+your controller. These should be listed above default values.
 
 ### Do not use ObjectController or ArrayController
 
