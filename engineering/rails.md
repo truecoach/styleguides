@@ -27,7 +27,7 @@ fine-tune this behavior.
 ```ruby
 resources :photos, only: [:index, :show]
 
-resouces :photos, except: :destroy
+resources :photos, except: :destroy
 ```
 
 *  When you need to add more actions to a RESTful resource, use `member` and `collection` routes.
@@ -191,7 +191,7 @@ end
 The first line of code below will send 6 (5+1) queries to the database, 1 to fetch the
 5 recent posts and then 5 for their corresponding authors. Instead, use
 the `includes` method to ensure all the associated data is loaded with
-the minumum number of queries.
+the minimum number of queries.
 
 ```ruby
 # bad
