@@ -101,7 +101,7 @@ and the
   summary are all repeated content that are styled in different ways. Body
   / parent classes should be used to scope styles. In this case, the
   element containing the word "rails" would be called `.gem__name` and it
-  would hold styles in common. If we need to target a specfic `.gem__name`,
+  would hold styles in common. If we need to target a specific `.gem__name`,
   we would style it by nesting (`.gems .gem__name` on the index page and
   `.gem .gem__name` on the show / detail page).
 * Plurals should be used when possible for groups of items.
