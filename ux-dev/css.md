@@ -7,9 +7,9 @@ We don’t follow much of what comes after the Syntax section, so the rest
 can be skipped.
 
 We are currently using
-[cssnext](http://cssnext.io/)
-as well as certain
-[PostCSS plugins](http://postcss.parts/). However, some of our older
+[PostCSS](https://github.com/postcss/postcss/)
+along with
+[narwin-pack](https://github.com/dockyard/narwin-pack). However, some of our older
 projects are still written in Sass/SCSS.
 
 ## Required Reading
