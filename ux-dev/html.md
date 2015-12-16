@@ -46,12 +46,9 @@ between the date and its
 
 * [Clear communication through HTML and GitHub]
   (https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
-* Add TODO’s for placeholder links, images and copy that needs to be
-  updated.
-```html
-<!-- TODO update link -->
-<a href="#">This is a link</a>
-```
+* Add TODO’s for incomplete placeholder links, images and copy. Examples
+  of this happening are when we don’t have final copy or when dev needs
+  to make it dynamic.
 * Explain anything that may be confusing like strange calculations or
   weird rules like `-webkit-text-size-adjust: 100%;` for solving mobile
   webkit zooming as told by
@@ -63,7 +60,8 @@ between the date and its
   (http://www.w3.org/International/questions/qa-escapes#use)
 * No need to escape for
   [smartquotes]
-  (http://smartquotesforsmartpeople.com/) or en/em dashes.
+  (http://smartquotesforsmartpeople.com/) or en/em dashes. Makes it
+  easier to read.
 
 ## QA
 
