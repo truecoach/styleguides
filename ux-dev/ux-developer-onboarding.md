@@ -5,6 +5,11 @@ Read all DockYard
 (https://github.com/dockyard/styleguides/tree/master/ux-dev)
 and links included in those styleguides.
 
+* [HTML](https://github.com/dockyard/styleguides/blob/master/ux-dev/html.md)
+* [Class naming conventions](https://github.com/dockyard/styleguides/blob/master/ux-dev/class-naming-conventions.md)
+* [CSS](https://github.com/dockyard/styleguides/blob/master/ux-dev/css.md)
+* [Beginning a project](https://github.com/dockyard/styleguides/blob/master/ux-dev/beginning-a-project.md)
+
 ## Questions to Ask Co-Workers
 
 * Any question you can think of!
