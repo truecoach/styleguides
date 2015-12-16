@@ -44,8 +44,8 @@ between the date and its
 
 ## Comments
 
-* [Pseudo code loops and conditionals to make it easier for engineers.]
-  (http://reefpoints.dockyard.com/2015/03/31/helping-our-engineers.html)
+* [Clear communication through HTML and GitHub]
+  (https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
 * Add TODO’s for placeholder links, images and copy that needs to be
   updated.
 ```html
