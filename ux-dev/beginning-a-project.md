@@ -50,12 +50,12 @@ stylesheets
 @import "modules/footer.css";
 ```
 
-Order should be alphabetical.
+Order should be alphabetical inside `modules` directory.
 
 ## BASE.CSS
 
 Follows
-[SMACSS' Base Rules]
+[SMACSS’ Base Rules]
 (https://smacss.com/book/type-base). Defines major default styling.
 Does not include class or ID selectors.
 
@@ -134,11 +134,11 @@ styling other than `position: relative`.
 }
 ```
 
-`.l-overflow` is used for wrapping `div`’s that do not need any
+`.l-auto` is used for wrapping `div`’s that do not need any
 styling other than `overflow: auto`.
 
 ```css
-.l-overflow {
+.l-auto {
   overflow: auto;
 }
 ```
@@ -166,7 +166,9 @@ be better and would not belong in `layout.css`, but in `header.css`.
 
 ## LOAD.CSS
 
-Includes color and font variables. Here is a sample `load.css` file.
+Includes color and font variables. Here is a sample `load.css` file. So
+far this only works in Firefox, but with PostCSS, we can use it across
+browsers.
 
 ```css
 :root {

@@ -8,7 +8,7 @@ can be skipped.
 
 We are currently using
 [PostCSS](https://github.com/postcss/postcss/)
-along with
+with
 [narwin-pack](https://github.com/dockyard/narwin-pack). However, some of our older
 projects are still written in Sass/SCSS.
 
@@ -45,7 +45,7 @@ When you have free time
 
 ## Selector Order
 
-Order things how in reading order unless it makes more sense to do it
+Order things in HTML order unless it makes more sense to do it
 alphabetically.
 
 ## Declaration Order

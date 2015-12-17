@@ -1,7 +1,7 @@
 #PostCSS
 
-##What is PostCSS
-[PostCSS](https://github.com/postcss/postcss) is meant to give you the leanest development environment you can have. It does this by letting you add CSS development tools modularly.
+##What is PostCSS?
+[PostCSS](https://github.com/postcss/postcss) is meant to help create a lean development environment. It does this by adding CSS development tools modularly.
 
 For example we use the following:
 - Nesting
@@ -26,12 +26,11 @@ $npm install --save ember-cli-postcss
 
 ###Add narwin-pack
 
-Add narwin-pack to your project.
 ```shell
 $npm install --save narwin-pack
 ```
 
-The final step is to add PostCSS to the `ember-cli-build.js` file on the root of your Ember project.
+Add PostCSS to the `ember-cli-build.js` file on the root of the Ember project.
 
 ```js
 var app = new EmberApp(defaults, {
