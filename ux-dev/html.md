@@ -1,8 +1,11 @@
 # HTML
 
-Read and follow the
+Read
 [HTML section of Mark Otto’s (@mdo) code guide]
-(http://codeguide.co/#html).
+(http://codeguide.co/#html)
+and
+[Avoiding common HTML5 Mistakes]
+(http://html5doctor.com/avoiding-common-html5-mistakes/).
 
 In addition to @mdo’s Code Guide:
 
