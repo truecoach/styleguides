@@ -17,14 +17,16 @@
 # bad
 answer=1-3
 
-def square(a) when a>0,do: a * a
+def square(a) when a > 0,
+  do: a * a
 
-Enum.map(["cat","dog"],fn(value)->IO.puts(value)end)
+Enum.map(["cat","dog"], fn(value) -> IO.puts(value) end)
 
 # good
 answer = 1 - 3
 
-def square(a) when a > 0, do: a * a
+def square(a) when a > 0,
+  do: a * a
 
 Enum.map(["cat", "dog"], fn(value) -> IO.puts(value) end)
 ```
@@ -68,13 +70,13 @@ def send, do: # ...
 * ...but put function `def`s that match for the same function together.
 
 ```elixir
-def sum(nil), do: {:error, "No Value"}
+def sum(nil),
+  do: {:error, "No Value"}
 def sum([]), do: 0
 def sum([head | tail]) do
   head + sum(tail)
 end
 ```
-
 
 ## Syntax
 
@@ -125,6 +127,17 @@ end
 
 # better
 def iterate([]), do: :ok
+```
+
+* Favor `do:` on its own line for singline lines expressed in more than a single word
+
+```elixir
+# okay
+def multiply(val), do: val * 20
+
+# better
+def multiply(val),
+  do: val * 20
 ```
 
 * Use parentheses in function calls when passing parameters, especially inside a pipeline.
