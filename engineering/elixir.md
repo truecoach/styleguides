@@ -138,6 +138,13 @@ def multiply(val), do: val * 20
 # better
 def multiply(val),
   do: val * 20
+  
+# bad
+def traverse([]),
+  do: []
+  
+# good
+def traverse([]), do: []
 ```
 
 * Use parentheses in function calls when passing parameters, especially inside a pipeline.
