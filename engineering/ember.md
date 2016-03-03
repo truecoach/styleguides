@@ -85,34 +85,30 @@ export default Component.extend({
     set() {
       // Code
     }
-  })
+  }),
+
+  // Lifecycle hooks
+  didReceiveAttrs() {
+    this._super(...arguments);
+    // code
+  },
 
   actions: {
-    someAction: function() {
+    someAction() {
       // Code
     }
   }
 });
 ```
 
-### Define default values first
-
-Define your object's default values first.
-
-### Define single line computed properties second
-
-Define single line computed properties (`thing: alias('myThing')`)
-after default values.
-
-### Define multi-line computed properties third
-
-Multi-line computed properties should follow your single line CPs.
-Please follow the [new computed syntax](http://emberjs.com/blog/2015/05/13/ember-1-12-released.html#toc_new-computed-syntax).
-
-### Define actions last
-
-Define your route/component/controller's action last, to provide a
-common place that actions can be found.
+- Define your object's default values first.
+- Define single line computed properties (`thing: alias('myThing')`) second.
+- Multi-line computed properties should follow your single line CPs. Please
+  follow the [new computed syntax](http://emberjs.com/blog/2015/05/13/ember-1-12-released.html#toc_new-computed-syntax).
+- Define lifecycle hooks (`init`, `didReceiveAttrs`, `didRender`, `willDestroy`)
+  after computed properties.
+- Define your route/component/controller's action last, to provide a common
+  place that actions can be found.
 
 ### Override init
 
