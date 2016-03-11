@@ -159,13 +159,11 @@ Within each section, the attributes should be ordered alphabetically.
 
 ```js
 // Good
-
-import Ember from 'ember';
 import Model from 'ember-data/model';
+
+import computed from 'ember-computed';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
-
-const { computed } = Ember;
 
 export default Model.extend({
   // Attributes
@@ -183,12 +181,12 @@ export default Model.extend({
 
 // Bad
 
-import Ember from 'ember';
 import Model from 'ember-data/model';
+
+import computed from 'ember-computed';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 
-const { computed } = Ember;
 
 export default Model.extend({
   children: hasMany('child'),
@@ -199,7 +197,6 @@ export default Model.extend({
     // Code
   })
 });
-
 ```
 
 ## Controllers
