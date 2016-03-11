@@ -4,7 +4,6 @@
 
 * [General](#general)
 * [Organizing your modules](#organizing-your-modules)
-* [Models](#models)
 * [Controllers](#controllers)
 * [Templates](#templates)
 * [Routing](#routing)
