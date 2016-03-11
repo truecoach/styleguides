@@ -246,6 +246,18 @@ Use block syntax instead of `in` syntax with block helpers
 {{#each post in posts}}
 ```
 
+### Don't yield `this`
+
+Use the hash helper to yield what you need instead.
+
+```hbs
+{{! Good }}
+{{yield (hash thing=thing action=(action "action"))}}
+
+{{! Bad }}
+{{yield this}}
+```
+
 ### Use components in `{{#each}}` blocks
 
 Contents of your each blocks should be a single line, use components
