@@ -269,6 +269,22 @@ more complex logic in this case.
 {{/each}}
 ```
 
+### Always use the `action` keyword to pass actions.
+
+Although it's not strictly needed to use the `action` keyword to pass on
+actions that have already been passed with the `action` keyword once,
+it's recommended to always use the `action` keyword when passing an action
+to another component. This will prevent some potential bugs that can happen
+and also make it more clear that you are passing an action.
+
+```hbs
+{{! Good }}
+{{edit-post post=post deletePost=(action deletePost)}}
+
+{{! Bad }}
+{{edit-post post=post deletePost=deletePost}}
+```
+
 ## Routing
 
 ### Route naming
