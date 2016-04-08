@@ -13,20 +13,23 @@
 
 ## General
 
-### Import what you use, do not use globals
+### Create local version of Ember.\* and DS.\*
 
 Future versions of Ember will be released as ES2015 modules, so we'll be
-able to import `Ember.computed` directly as `computed`. Use the
-[`ember-cli-shims`](https://github.com/ember-cli/ember-cli-shims) module until
-Ember has been released as a full ES2015 modules project.
+able to import `Ember.computed` directly as `computed`. This includes
+`computed.alias` or `computed.bool`, should be set to `alias` and
+`bool`, respectively. Do not use extend prototype syntax
 
 ```javascript
 // Good
 
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import Ember from 'ember';
+import DS from 'ember-data';
 
-import computed, { alias } from 'ember-computed';
+const {
+  Model,
+  attr
+} = DS;
 
 const { computed } = Ember;
 const { alias } = computed;
