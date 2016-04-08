@@ -306,15 +306,12 @@ transform is used.
 
 ```javascript
 // Good
-
 export default Model.extend({
   firstName: attr('string'),
   jerseyNumber: attr('number')
 });
 
-
 // Bad
-
 export default Model.extend({
   firstName: attr(),
   jerseyNumber: attr()
