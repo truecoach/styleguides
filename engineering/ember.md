@@ -15,21 +15,27 @@
 
 ### Import what you use, do not use globals
 
-Future versions of Ember will be released as ES2015 modules, so we'll be
-able to import `Ember.computed` directly as `computed`. Use the
-[`ember-cli-shims`](https://github.com/ember-cli/ember-cli-shims) module until
-Ember has been released as a full ES2015 modules project.
+For Ember Data, we should import `ember-data` modules.
+For Ember, use destructuring [as Ember's internal organization is
+not intuitive and difficult to grok, and we should wait until Ember has been
+correctly modularized.](https://github.com/ember-cli/ember-cli-shims/issues/53)
+
+[Here is the RFC on ES2015 modules](https://github.com/emberjs/rfcs/pull/68).
+
+Once Ember has officially adopted shims, we will prefer shims over
+destructuring.
 
 ```javascript
 // Good
 
+import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
-import computed, { alias } from 'ember-computed';
-
-const { computed } = Ember;
-const { alias } = computed;
+const {
+  computed,
+  computed: { alias }
+} = Ember;
 
 export default Model.extend({
   firstName: attr('string'),
