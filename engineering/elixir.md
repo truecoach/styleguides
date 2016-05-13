@@ -213,6 +213,29 @@ cond do
 end
 ```
 
+* Prefer `with` ([read more about it here](https://gist.github.com/josevalim/8130b19eb62706e1ab37)) over using deeply nested `case` statements. In this example, `response` is a `HTTPoison` response struct:
+
+```elixir
+# bad
+case response do
+  {:ok, resp} ->
+    case Map.fetch(resp, :body) do
+      {:ok, body} ->
+        case Poison.decode(body) do
+          {:ok, body} -> {:ok, body}
+          _ -> {:error}
+        end
+      :error -> {:error, "No body"}
+    end
+  _ -> {:error}
+end
+
+# good
+with {:ok, %{body: body}} <- response,
+     {:ok, body} <- Poison.decode(body),
+     do: {:ok, body}
+```
+
 ### Pipelines
 
 * Use the pipeline operator, `|>`, to chain **multiple** functions together.
