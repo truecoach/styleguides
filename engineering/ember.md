@@ -299,11 +299,13 @@ promises without extra serialization
 work.
 
 ```js
-// bad
-this.route('foo', { path: ':fooId' });
-
 // good
+
 this.route('foo', { path: ':foo_id' });
+
+// bad
+
+this.route('foo', { path: ':fooId' });
 ```
 
 [Example with broken
@@ -333,7 +335,6 @@ export default Model.extend({
   firstName: attr('string'),
   jerseyNumber: attr('number')
 });
-
 
 // Bad
 
