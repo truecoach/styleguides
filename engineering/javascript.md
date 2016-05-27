@@ -671,6 +671,15 @@ const foo = ['a', 'b', 'c'];
 const foo = ['a','b','c'];
 ```
 
++ Do not use spaces inside array brackets
+
+```javascript
+// good
+const foo = ['a', 'b', 'c'];
+
+// bad
+const foo = [ 'a', 'b', 'c' ];
+
 + Use array destructuring.
 
 ```javascript
