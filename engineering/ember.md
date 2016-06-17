@@ -428,8 +428,3 @@ export default Model.extend({
   jerseyNumber: attr()
 });
 ```
-
-### Organize your models
-
-Group attributes, relations, then computed properties. Organize each
-subgroup alphabetically.
