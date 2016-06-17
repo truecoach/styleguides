@@ -679,6 +679,7 @@ const foo = ['a', 'b', 'c'];
 
 // bad
 const foo = [ 'a', 'b', 'c' ];
+```
 
 + Use array destructuring.
 
