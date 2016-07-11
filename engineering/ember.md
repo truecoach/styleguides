@@ -131,7 +131,7 @@ export default Component.extend({
   post: alias('myPost'),
 
   // Multiline CP
-  authorName: computed('author.firstName', 'author.lastName', {
+  authorName: computed('author.{firstName,lastName}', {
     get() {
       // Code
     },
