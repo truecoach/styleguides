@@ -155,6 +155,49 @@ if (foo === 'bar') {
 if (foo === 'bar') { return; }
 ```
 
++ Avoid use of `switch` statements. It is too easy to make logic mistakes in the code and can increase the code complexity. The same logic can be managed better using [polymorphism](https://sourcemaking.com/refactoring/replace-conditional-with-polymorphism).
+
+```javascript
+// bad
+let className;
+
+switch (state) {
+  case 'success':
+    className = 'text-success';
+    break;
+  case 'error':
+    className = 'text-danger';
+    break;
+  case 'pending':
+    className = 'text-warning';
+    break;
+  default:
+    className = 'text-info';
+}
+
+// good
+const STATE_CLASS_NAMES = {
+  _default: 'text-info',
+  success: 'text-success',
+  error: 'text-danger',
+  pending: 'text-warning'
+};
+
+const STATE_HANDLERS = {
+  _default() { … },
+  success() { … },
+  pending() { … },
+  error() { … }
+};
+
+let className = STATE_CLASS_NAMES[state] || STATE_CLASS_NAMES._default;
+
+let handler = STATE_HANDLERS[state] || STATE_HANDLERS._default;
+handler();
+// If the handlers use `this` you will have to manage the context. For example:
+handler.call(this);
+```
+
 ## Commas
 
 + Skip trailing commas.
