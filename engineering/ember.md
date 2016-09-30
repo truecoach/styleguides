@@ -15,7 +15,8 @@
 
 ### Import what you use, do not use globals
 
-For Ember Data, we should import `ember-data` modules.
+For Ember Data, we should import `DS` from `ember-data`, and then
+destructure our desired modules.
 For Ember, use destructuring [as Ember's internal organization is
 not intuitive and difficult to grok, and we should wait until Ember has been
 correctly modularized.](https://github.com/ember-cli/ember-cli-shims/issues/53)
@@ -29,13 +30,17 @@ destructuring.
 // Good
 
 import Ember from 'ember';
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import DS from 'ember-data';
 
 const {
   computed,
   computed: { alias }
 } = Ember;
+
+const {
+  Model,
+  attr
+} = DS;
 
 export default Model.extend({
   firstName: attr('string'),
@@ -87,7 +92,7 @@ export default Model.extend({
 export default Model.extend({
   firstName: attr('string'),
   lastName: attr('string'),
-  
+
   fullNameBad: function() {
     // Code
   }.property('firstName', 'lastName'),
@@ -235,11 +240,15 @@ Within each section, the attributes should be ordered alphabetically.
 // Good
 
 import Ember from 'ember';
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 
 const { computed } = Ember;
+
+const {
+  Model,
+  attr,
+  hasMany
+} = DS;
 
 export default Model.extend({
   // Attributes
@@ -258,11 +267,15 @@ export default Model.extend({
 // Bad
 
 import Ember from 'ember';
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 
 const { computed } = Ember;
+
+const {
+  Model,
+  attr,
+  hasMany
+} = DS;
 
 export default Model.extend({
   children: hasMany('child'),
