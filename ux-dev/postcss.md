@@ -8,6 +8,7 @@ For example we use the following:
 - Variables
 - Importing other CSS files into one central CSS file
 - Autoprefixer
+- Hex to RGBA Converter
 
 These are only a fraction of the problems PostCSS plugins can solve. Take a look at [http://postcss.parts](http://postcss.parts/), you will see the wide range of plugins that can solve many problems.
 
