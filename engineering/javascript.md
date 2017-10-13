@@ -2,38 +2,27 @@
 
 ## Table Of Contents
 
-### Grammar
-
-* [Block Statements](#block-statements)
-* [Conditional Statements](#conditional-statements)
-* [Commas](#commas)
-* [Semicolons](#semicolons)
-* [Comments](#comments)
-* [Assignment](#assignment)
-* [Whitespace](#whitespace)
-* [Naming conventions](#naming-conventions)
-
-### Constructors
-
-* [Constructors](#constructors)
-
-### Objects
-
-* [Objects](#objects)
-* [Properties](#properties)
-
-### Strings
-
-* [Strings](#strings)
-
-### Arrays
-
-* [Arrays](#arrays)
-
-### Functions
-
-* [Functions](#functions)
-* [Function Arguments](#function-arguments)
+* **Grammar**
+  * [Block Statements](#block-statements)
+  * [Conditional Statements](#conditional-statements)
+  * [Commas](#commas)
+  * [Semicolons](#semicolons)
+  * [Comments](#comments)
+  * [Assignment](#assignment)
+  * [Whitespace](#whitespace)
+  * [Naming conventions](#naming-conventions)
+* **Constructors**
+  * [Constructors](#constructors)
+* **Objects**
+  * [Objects](#objects)
+  * [Properties](#properties)
+* **Strings**
+  * [Strings](#strings)
+* **Arrays**
+  * [Arrays](#arrays)
+* **Functions**
+  * [Functions](#functions)
+  * [Function Arguments](#function-arguments)
 
 ## Block Statements
 
