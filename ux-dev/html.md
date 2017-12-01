@@ -1,11 +1,10 @@
 # HTML
 
-Read
-[HTML section of Mark Otto’s (@mdo) code guide](http://codeguide.co/#html)
+Good reads:
+* [HTML section of Mark Otto’s (@mdo) code guide](http://codeguide.co/#html)
 and
-[Avoiding common HTML5 Mistakes](http://html5doctor.com/avoiding-common-html5-mistakes/).
-
-In addition to @mdo’s Code Guide:
+* [Avoiding common HTML5 Mistakes](http://html5doctor.com/avoiding-common-html5-mistakes/).
+* [HTML: A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 
 ## Indentation and Line Breaks
 
@@ -44,6 +43,7 @@ between the date and its
 ## Comments
 
 * [Clear communication through HTML and GitHub](https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
+* [The Art of Comments](https://css-tricks.com/the-art-of-comments/)
 * Add TODO’s for incomplete placeholder links, images and copy. Examples
   of this happening are when we don’t have final copy or when dev needs
   to make it dynamic.
@@ -51,6 +51,12 @@ between the date and its
   weird rules like `-webkit-text-size-adjust: 100%;` for solving mobile
   webkit zooming as told by
   http://stackoverflow.com/questions/5303263/fix-font-size-issue-on-mobile-safari-iphone-where-text-is-rendered-inconsisten
+
+Example:
+```html
+{{! TODO: Include final copy when it is delivered}}
+<p>Hi! This is fake copy that should never see a production environment</p>
+```
 
 ## Escaping characters
 
