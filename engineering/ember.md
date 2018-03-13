@@ -15,27 +15,16 @@
 
 ### Import what you use, do not use globals
 
-For Ember Data, we should import `DS` from `ember-data`, and then
-destructure our desired modules.
-For Ember, use destructuring [as Ember's internal organization is
-not intuitive and difficult to grok, and we should wait until Ember has been
-correctly modularized.](https://github.com/ember-cli/ember-cli-shims/issues/53)
-
-[Here is the RFC on ES2015 modules](https://github.com/emberjs/rfcs/pull/68).
-
-Once Ember has officially adopted shims, we will prefer shims over
-destructuring.
+For Ember Data, we should import `DS` from `ember-data`, and then destructure 
+our desired modules.
+For Ember, we should only import those modules that will be used.
+Ember's imports can be found in the [JavaScript Module API RFC](https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md) and in the [Ember API docs](https://emberjs.com/api/ember/).
 
 ```javascript
 // Good
-
-import Ember from 'ember';
 import DS from 'ember-data';
-
-const {
-  computed,
-  computed: { alias }
-} = Ember;
+import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 
 const {
   Model,
@@ -54,6 +43,8 @@ export default Model.extend({
 });
 
 // Bad
+import Ember from 'ember';
+import DS from 'ember-data';
 
 export default DS.Model.extend({
   firstName: DS.attr('string'),
@@ -236,11 +227,8 @@ Within each section, the attributes should be ordered alphabetically.
 
 ```js
 // Good
-
-import Ember from 'ember';
 import DS from 'ember-data';
-
-const { computed } = Ember;
+import { computed } from '@ember/object';
 
 const {
   Model,
@@ -263,11 +251,8 @@ export default Model.extend({
 });
 
 // Bad
-
-import Ember from 'ember';
 import DS from 'ember-data';
-
-const { computed } = Ember;
+import { computed } from '@ember/object';
 
 const {
   Model,
