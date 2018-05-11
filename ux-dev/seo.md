@@ -1,4 +1,4 @@
-#SEO
+# SEO
 ## Good reads (found throughout this doc)
 * [benackles SEO Guidelines](https://gist.github.com/benackles/0cac8c561423f01a0e52)
 * [Keyword Reading](https://yoast.com/meta-keywords/)
