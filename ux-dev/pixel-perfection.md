@@ -27,8 +27,8 @@ Designers may benefit from tools to achieve the goals of the project and navigat
 
 * Consider offering tools or guides that help designers to adhere to design systems (grid bookmarklets, living style guides, change logs, notifications, [audit tools](https://cssstats.com), etc.).  
 * Work to consolidate typography and colors styles to a smaller standard set.
- * For colors, consider using [color functions](https://css-tricks.com/the-power-of-rgba/) to produce variations from the standard set.
- * For typography, investigate if the standard set will work responsively. Consider using a web font API to normalize type across appropriate devices.
+  * For colors, consider using [color functions](https://css-tricks.com/the-power-of-rgba/) to produce variations from the standard set.
+  * For typography, investigate if the standard set will work responsively. Consider using a web font API to normalize type across appropriate devices.
 * Assist designers in matching grid systems between the browser and their design tools.
 
 ## Precision UXD
@@ -37,9 +37,9 @@ Hand measurements and distance-based rules are unreliable and can compound error
 
 ### Pixel Perfection Tools
 
-  * [GluePrint](http://glueprintapp.com/) (Free)
-  * [xScope](https://xscopeapp.com/) ($49.99)
-  * [PixelSnap](https://getpixelsnap.com/) ($15)
+* [GluePrint](http://glueprintapp.com/) (Free)
+* [xScope](https://xscopeapp.com/) ($49.99)
+* [PixelSnap](https://getpixelsnap.com/) ($15)
 
 ## Caveats
 
@@ -49,12 +49,12 @@ At times, designs may have errors or deviate slightly from existing conventions,
 
 ### Consider unintended consequences
 
-There may be issues that result in standardizing distances between baselines versus distance between modules or character maps. For instance, `line-height` may not be static across locales. Or two different modules may introduce different vertical flows. Do your best to consider these unintended consequences.
+There may be issues that result from standardizing distances between baselines versus distance between modules or character maps. For instance, `line-height` may not be static across locales. Or two different modules may introduce different vertical flows. Do your best to consider these unintended consequences.
 
 ### Be flexible and weight risks
 
-It may make UX sense for some elements to intentionally deviate from established grids when the risk to scale is low. At the same time, designers should be cognizant that the established design system is what permits the site to easily scale.
+It may make UX sense for some elements to intentionally deviate from established grids, when the risk to scale is low. At the same time, designers should be cognizant that the established design system is what permits the site to easily scale.
 
-## Avoid Over-engineering
+## Avoid over-engineering
 
-There are times you may be tempted to over-engineer a solution in order to achieve pixel perfection. However, this is in and of itself a risk. Err on the side of caution. Achieving pixel perfection is not always worth the risks if it undermines the existing libraries or systems that allow a site to scale. Keep your solutions simple.
+There are times you may be tempted to over-engineer a solution in order to achieve pixel perfection. However, this is in and of itself a risk. Err on the side of caution. Achieving pixel perfection is not always worth the risks if it undermines the existing libraries or design systems that allow a site to scale. Keep your solutions simple.
