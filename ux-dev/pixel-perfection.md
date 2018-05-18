@@ -1,6 +1,6 @@
 # Pixel Perfection
 
-Pixel perfection is regarded by some to be controversial ([meaningless](https://www.designernews.co/comments/222544) or [madness](http://blog.kylegawley.com/pixel-perfection-is-madness/) as described by some) in the sense that designs [are not rendered the same](http://dowebsitesneedtolookexactlythesameineverybrowser.com/) in all browsers or devices. Nevertheless, with the right planning and process, it is possible to approach pixel perfection, for all practical purposes.
+Pixel perfection is regarded by some to be controversial (either [meaningless](https://www.designernews.co/comments/222544) or [madness](http://blog.kylegawley.com/pixel-perfection-is-madness/)) in the sense that designs [are not rendered the same](http://dowebsitesneedtolookexactlythesameineverybrowser.com/) in all devices. Nevertheless, with the right planning and process, it is possible to approach pixel perfection, for all practical purposes.
 
 #### Why Strive for Pixel Perfection?
 
@@ -16,6 +16,8 @@ Achieving pixel perfection starts with planning. Designers must deliver mockups 
 
 * [Handoffs Guide for Pixel Perfect Design. Part II](https://medium.com/pixelpoint/handoffs-guide-for-pixel-perfect-design-part-ii-d91999742dd9)
 * [Handoffs Guide for Pixel Perfect Design. Part III](https://medium.com/pixelpoint/handoffs-guide-for-pixel-perfect-design-part-iii-3acc5a93d3a2)
+
+Generally speaking, brands that want pixel perfection should consider grid-based layouts with established breakpoints. Designers should be well versed in these design systems.
 
 ## Support Designers
 
