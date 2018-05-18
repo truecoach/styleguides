@@ -26,8 +26,8 @@ Generally speaking, brands that want pixel perfection should consider grid-based
 Designers may benefit from tools to achieve the goals of the project and navigate constraints.
 
 * Consider offering tools or guides that help designers to adhere to design systems (grid bookmarklets, living style guides, change logs, notifications, [audit tools](https://cssstats.com), etc.).  
-* Work to consolidate typography and colors styles to a smaller standard set.
-  * For colors, consider using [color functions](https://css-tricks.com/the-power-of-rgba/) to produce variations from the standard set.
+* Work to consolidate typography and colors styles to a condensed standard set.
+  * For colors, consider using [color functions](https://css-tricks.com/the-power-of-rgba/) to produce many variations from the standard set.
   * For typography, investigate if the standard set will work responsively. Consider using a web font API to normalize type across appropriate devices.
 * Assist designers in matching grid systems between the browser and their design tools.
 
