@@ -2,15 +2,15 @@
 
 Pixel perfection is regarded by some to be controversial (either [meaningless](https://www.designernews.co/comments/222544) or [madness](http://blog.kylegawley.com/pixel-perfection-is-madness/)) in the sense that designs [are not rendered the same](http://dowebsitesneedtolookexactlythesameineverybrowser.com/) in all devices. Nevertheless, many clients and their brands require a very high level of UX precision. With the right planning and process, it is possible to approach pixel perfection, for all practical purposes.
 
-#### Why Strive for Pixel Perfection?
+#### Why Strive for Pixel perfection?
 
 * Brand identity preservation
 * Avoid compounding layout errors
 * Reliable and reusable modularity
 * Improved UX
-* Improved Design Quality and aesthetics.
+* Improved design quality and aesthetics.
 
-## Suggested Reading
+## Suggested reading
 
 Achieving pixel perfection starts with planning. Designers must deliver mockups that support mutually agreed-upon design systems.
 
@@ -21,7 +21,7 @@ Achieving pixel perfection starts with planning. Designers must deliver mockups 
 
 Generally speaking, brands that want pixel perfection should consider grid-based layouts with established breakpoints. Designers should be well versed in these design systems.
 
-## Support Designers
+## Support designers
 
 Designers may benefit from tools to achieve the goals of the project and navigate constraints.
 
@@ -35,7 +35,7 @@ Designers may benefit from tools to achieve the goals of the project and navigat
 
 Hand measurements and distance-based rules are unreliable and can compound errors. 
 
-### Pixel Perfection Tools
+### Pixel perfection tools
 
 * [GluePrint](http://glueprintapp.com/) (Free)
 * [xScope](https://xscopeapp.com/) ($49.99)
