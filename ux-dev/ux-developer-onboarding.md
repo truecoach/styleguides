@@ -31,6 +31,7 @@ Below is a list of software that we generally recommend you have to ensure your 
 * Color a11y tools: 
   * [Color Oracle](http://colororacle.org/)
   * [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
+  * [WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
 * Image Optimization Tools
   * [ImageOptim](https://imageoptim.com/mac) (Free)
   * [ImageAlpha](https://pngmini.com/) (Free)
@@ -38,6 +39,7 @@ Below is a list of software that we generally recommend you have to ensure your 
 * Pixel Perfection Tools
   * [GluePrint](http://glueprintapp.com/) (Free)
   * [xScope](https://xscopeapp.com/) ($49.99)
+  * [PixelSnap](https://getpixelsnap.com/) ($15)
 
 *Design Tools:*
 
