@@ -12,23 +12,36 @@ and links included within them:
 
 ## Text Editors and other tools
 
-The UXD team uses a variety of text editors and other tools everyday, below are some recommendations:
-
 *Editors:* 
-* Vim -  [Vim Adventures](http://vim-adventures.com/) is a great resource to getting familiar with Vim. In addition to Vim, using tmux 
-* tmux - Read Brian P. Hogan's book __tmux Productive Mouse-Free Development__  
 
-IMPORTANT: Regardless of your choice of text editor, it should be easily used by other developers when pairing up and also have the ability to accept `.editorconfig`. See [EditorConfig](http://editorconfig.org/#download) for more information.
+Regardless of your choice of text editor, it should be easily used by other developers when pairing up and also have the ability to accept `.editorconfig`. See [EditorConfig](http://editorconfig.org/#download) for more information.
+
+* Vim -  [Vim Adventures](http://vim-adventures.com/) is a great resource to getting familiar with Vim.
+* tmux - Read Brian P. Hogan's book __tmux Productive Mouse-Free Development__
+* Sublime Text 3
+* VSCode
+* And more!
 
 *Tools:*
-* Virtual Machines for Windows: to browser test primarily IE11 and Edge. Windows provides [free downloads](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) of the test VM's to be installed on Virtual Box.*[Genymotion: to test Android devices](https://www.genymotion.com/)
+
+Below is a list of software that we generally recommend you have to ensure your code is browser tested and accessible, your images are optimized, and your output follows designs accurately.
+
+* Virtual Machines for Windows: to browser test primarily IE11 and Edge. Windows provides [free downloads](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) of the test VM's to be installed on Virtual Box.
+* [Genymotion: to test Android devices](https://www.genymotion.com/)
 * Color a11y tools: 
   * [Color Oracle](http://colororacle.org/)
   * [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
 * Image Optimization Tools
-  * [ImageOptim](https://imageoptim.com/mac)
-  * [ImageAlpha](https://pngmini.com/)
-  * [SVGOMG](https://jakearchibald.github.io/svgomg/)
+  * [ImageOptim](https://imageoptim.com/mac) (Free)
+  * [ImageAlpha](https://pngmini.com/) (Free)
+  * [SVGOMG](https://jakearchibald.github.io/svgomg/) (Free and Online)
+* Pixel Perfection Tools
+  * [GluePrint](http://glueprintapp.com/) (Free)
+  * [xScope](https://xscopeapp.com/) ($49.99)
+
+*Design Tools:*
+
+[Sketch](https://www.sketchapp.com/) is our design application and how all assets are delivered to development. See your manager for a license! 
 
 ## Git
 
@@ -42,11 +55,10 @@ IMPORTANT: Regardless of your choice of text editor, it should be easily used by
 If you don’t know the answer to a problem try to solve it yourself
 with Google first. 
 
-* Review [the DockYard Website](https://github.com/dockyard/dockyard.com)
+## Still stumped? Reach out and ask the team anything! 
 
-Still stumped? Reach out and ask the team! 
-
-## Questions to Ask Co-Workers
-
-* Any question you can think of!
+* Can I get a sanity check on an approach I want to use? 
+* Can we discuss this Pull Request?
+* I'm having an issue with an SVG. Anyone have time to help me solve it? 
 * I don’t fully understand this problem even after research, can we pair on it?
+* And anything else you can think of! 
