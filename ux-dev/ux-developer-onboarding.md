@@ -12,7 +12,7 @@ and links included within them:
 
 ## Text Editors and other tools
 
-*Editors:* 
+### Editors:
 
 Regardless of your choice of text editor, it should be easily used by other developers when pairing up and also have the ability to accept `.editorconfig`. See [EditorConfig](http://editorconfig.org/#download) for more information.
 
@@ -22,28 +22,32 @@ Regardless of your choice of text editor, it should be easily used by other deve
 * VSCode
 * And more!
 
-*Tools:*
+### Tools:
 
 Below is a list of software that we generally recommend you have to ensure your code is browser tested and accessible, your images are optimized, and your output follows designs accurately.
 
+#### Browser/device testing
+
 * Virtual Machines for Windows: to browser test primarily IE11 and Edge. Windows provides [free downloads](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) of the test VM's to be installed on Virtual Box.
 * [Genymotion: to test Android devices](https://www.genymotion.com/)
-* Color a11y tools: 
+
+#### Color a11y tools
   * [Color Oracle](http://colororacle.org/)
   * [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
   * [WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
-* Image Optimization Tools
+
+#### Image Optimization Tools
   * [ImageOptim](https://imageoptim.com/mac) (Free)
   * [ImageAlpha](https://pngmini.com/) (Free)
   * [SVGOMG](https://jakearchibald.github.io/svgomg/) (Free and Online)
-* Pixel Perfection Tools
+
+#### Pixel Perfection Tools
   * [GluePrint](http://glueprintapp.com/) (Free)
   * [xScope](https://xscopeapp.com/) ($49.99)
   * [PixelSnap](https://getpixelsnap.com/) ($15)
 
-*Design Tools:*
-
-[Sketch](https://www.sketchapp.com/) is our design application and how all assets are delivered to development. See your manager for a license! 
+#### Design Tools
+* [Sketch](https://www.sketchapp.com/) is our design application and how all assets are delivered to development. See your manager for a license! 
 
 ## Git
 
