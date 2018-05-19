@@ -7,7 +7,7 @@ Scalable Vector Graphics - they're retina-friendly by default and lighter than m
 There are multiple ways to use an SVG in a webpage (but we stick to two):
 
 * inline directly in page markup
-* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - of course, this would just be for art direction and not responsive image, since SVGs are resolution-independent already)
+* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images, since SVGs are resolution-independent already)
 * as the `data` attr in an `<object>` tag
 * as a CSS `background-image` with `url('path/to/file.svg')`
 * as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
@@ -268,4 +268,4 @@ This previewer page will also let you quickly copy the Ember component code need
 * [Jenkov's Tutorials](http://tutorials.jenkov.com/svg/index.html)
 * Sara Soueidan: [her blog](https://www.sarasoueidan.com/blog/), [her CSS-Tricks posts](https://css-tricks.com/author/sarasoueidan/), [anything](https://duckduckgo.com/?q=sara+soueidan+svg)
 * [Sarah Drasner](https://sarahdrasnerdesign.com/)
-* [Una Kravetz](https://una.im/archive/)
+* [Una Kravets](https://una.im/archive/)
