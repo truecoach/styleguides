@@ -7,7 +7,7 @@ Scalable Vector Graphics - they're retina-friendly by default and lighter than m
 There are multiple ways to use an SVG in a webpage (but we stick to two):
 
 * inline directly in page markup
-* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images, since SVGs are resolution-independent already)
+* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images  , since SVGs are resolution-independent already)
 * as the `data` attr in an `<object>` tag
 * as a CSS `background-image` with `url('path/to/file.svg')`
 * as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
