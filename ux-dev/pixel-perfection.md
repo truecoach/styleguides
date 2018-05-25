@@ -51,7 +51,7 @@ At times, designs may have errors or deviate slightly from existing conventions,
 
 There may be issues that result from standardizing distances between baselines versus distance between modules or character maps. For instance, `line-height` may not be static across locales. Or two different modules may introduce different vertical flows. Do your best to consider these unintended consequences.
 
-### Be flexible and weight risks
+### Be flexible and weigh risks
 
 It may make UX sense for some elements to intentionally deviate from established grids, when the risk to scale is low. At the same time, designers should be cognizant that the established design system is what permits the site to easily scale.
 
