@@ -8,15 +8,16 @@
 - [eBay’s MIND Patterns](https://ebay.gitbooks.io/mindpatterns/)
 
 ## Discovery/Testing/Audits
-- VoiceOver
-- [NVDA](https://www.nvaccess.org/)
+- VoiceOver (Mac only, activate with `⌘F5`)
+- [NVDA](https://www.nvaccess.org/) (cross-platform)
 - Contrast ratio checkers
   - [http://accessible-colors.com/](http://accessible-colors.com/)
   - [http://jxnblk.com/colorable/demos/text/](http://jxnblk.com/colorable/demos/text/) (helpful for quickly finding a passing alternative by only adjusting the lightness value)
-  - [https://usecontrast.com/](https://usecontrast.com/)
+  - [Color Oracle](http://colororacle.org/) (also includes tests for color blindness)
+  - [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
 - Chrome Accessibility Audit
 - [Tota11y](http://khan.github.io/tota11y/) by Khan Academy
-- [WAVE Web Accessibility Tool](https://wave.webaim.org/)
+- [WAVE Evaluation Tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
 
 ## Process
 
@@ -35,9 +36,15 @@ When receiving any new design, review all combinations of foreground/background 
 If a color combination fails to meet standards, communicate this issue to the design team, and optionally recommend a close alternative that passes the standard by only adjusting the lightness value of the color.
 
 Recommended color contrast checkers:
-- [http://accessible-colors.com/](http://accessible-colors.com/)
-- [http://jxnblk.com/colorable/demos/text/](http://jxnblk.com/colorable/demos/text/) (helpful for quickly finding a passing alternative by only adjusting the lightness value)
-- [https://usecontrast.com/](https://usecontrast.com/)
+- Contrast ratio checkers
+  - [http://accessible-colors.com/](http://accessible-colors.com/)
+  - [http://jxnblk.com/colorable/demos/text/](http://jxnblk.com/colorable/demos/text/) (helpful for quickly finding a passing alternative by only adjusting the lightness value)
+  - [Color Oracle](http://colororacle.org/) (also includes tests for color blindness)
+  - [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
+
+### Color Blindness
+
+In addition to ensuring colors have sufficient contrast between fore/background elements, it is also important to consider the various types of color blindness users may experience when evaluating color values and combinations.
 
 ### Review/Audit
 
@@ -72,10 +79,10 @@ Please arrive early and check in at the registration table.”
 
 ### Images and Icons
 
-- Decorative images don’t add content or information for a page, and are used solely for layout or visual interest. Decorative images should have an empty alt attribute `alt=“”`. Leaving the alt attribute empty means screenreaders will skip over the image.
+- Decorative images don’t add context or information to a page, and are used solely for layout or visual interest. Decorative images should have an empty alt attribute `alt=“”`. Leaving the alt attribute empty means screenreaders will skip over the image.
 - An effective alt attribute focuses on the function and purpose of the image, rather than a description of the image. It is concise. It avoids phrases such as “picture of,” “graphic of,” etc. For more info, [reference WebAIM’s guidelines](https://webaim.org/techniques/alttext/).
 The alt attribute of a logo doesn’t need to include the word “logo.” A common practice is to set the alt attribute of a logo to the company’s name.
-- To make your svgs accessible, use a `<title>` and if needed a `<desc>` element. `<title>` should be the first child of their parent container and are used to give a title or brief description of the svg’s content. To provide more details about an svg, use the `<desc>` element immediately after the `<title>`.
+- To make your SVGs accessible, use a `<title>` and if needed a `<desc>` element. `<title>` should be the first child of their parent container and are used to give a title or brief description of the SVG’s content. To provide more details about an SVG, use the `<desc>` element immediately after the `<title>`. For further
 
 ### Button/Link Icons
 
@@ -89,6 +96,18 @@ A common UI pattern is to use icon-only interactive buttons/links to make the vi
   </svg>
 </button>
 ```
+
+or
+
+```hbs
+<a href="…">
+  <span class=”t-hidden”>Close</span>
+  <svg>
+    …
+  </svg>
+</a>
+```
+
 Both `<button>` and `<a>` are phrasing content, which should contain text to be considered valid. For more information, [reference MDN’s Content Categories](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories).
 
 ### Focus States
@@ -252,7 +271,7 @@ Focus should be trapped within the dialog when it is open. This is guaranteed by
 
 If the user interacts with the dialog close button, the main content element should be reset to `aria-hidden=”false”`, the dialog markup should be hidden, and focus should return to the button that originally opened the dialog.
 
-For further reference and example patterns, check out eBay’s MIND Patterns for dialogs and A11ycasts’ episode on dialogs.
+For further reference and example patterns, check out [eBay’s MIND Patterns](https://ebay.gitbooks.io/mindpatterns/content/disclosure/dialog.html) for dialogs and [A11ycasts’ episode on dialogs](https://www.youtube.com/watch?v=JS68faEUduk).
 
 ### Alert Banners
 
@@ -283,8 +302,8 @@ For more information, reference [WAI-ARIA’s guidelines](https://www.w3.org/TR/
 
 ## ARIA
 
-- Most ARIA roles are implicit in semantic HTML5 elements. Reference this table from the W3C to see if an element needs an explicit ARIA role. If you set an explicit ARIA role, note that each element should only have one role and that you should not set a role that overrides the semantics of an element.
-- `aria-hidden` is an attribute that accepts a boolean that tells screenreaders if they should ignore or show content. If you’re toggling visibility of content, don’t forget to also toggle `aria-hidden`’s boolean.
-- Similar to `aria-hidden`, `aria-disabled` is an attribute that accepts a boolean that tells screenreaders that the element it’s applied to (and its children) are visible but inoperable.
-- `aria-label` and `aria-labeledby` are similar attributes in that they both associate a label to another element. If the label text is visible, use `aria-labeledby`. Otherwise, use `aria-label`.
+- Most ARIA roles are implicit in semantic HTML5 elements. Reference [the document conformance table from the W3C](https://www.w3.org/TR/html-aria/#docconformance) to see if an element needs an explicit ARIA role. If you set an explicit ARIA role, note that each element should only have one role and that you should not set a role that overrides the semantics of an element.
+- `aria-hidden` is an attribute that accepts a boolean that tells screenreaders if they should ignore or show content. If you’re toggling visibility of content, don’t forget to also toggle `aria-hidden`’s boolean. For more information, [view the W3C’s documentation of aria-hidden](https://www.w3.org/TR/wai-aria-1.1/#aria-hidden).
+- Similar to `aria-hidden`, `aria-disabled` is an attribute that accepts a boolean that tells screenreaders that the element it’s applied to (and its children) are visible but inoperable. [view the W3C’s documentation of aria-disabled](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled).
+- `aria-label` and `aria-labelledby` are similar attributes in that they both associate a label to another element. If the label text is visible, use `aria-labelledby`. Otherwise, use `aria-label`. view the W3C’s documentation of [aria-label](https://www.w3.org/TR/wai-aria-1.1/#aria-label) and [aria-labelledby](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby).
 - For more information, reference Google's Intro to ARIA or MDN’s AIRA basics.
