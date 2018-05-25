@@ -1,20 +1,20 @@
 # SVGs
 
-Scalable Vector Graphics - they're retina-friendly by default and lighter than most other image formats. Use them whenever you can! (Here's how…)
+Scalable Vector Graphics - they're Retina-friendly by default and lighter than most other image formats. Use them whenever you can! (Here's how…)
 
 ## Best Practices
 
 There are multiple ways to use an SVG in a webpage (but we stick to two):
 
 * 👉 inline directly in page markup
-* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images  , since SVGs are resolution-independent already)
+* 👉 as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
+* as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images, since SVGs are resolution-independent already)
 * as the `data` attr in an `<object>` tag
 * as a CSS `background-image` with `url('path/to/file.svg')`
-* 👉 as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
 
 By default, we prefer **inline SVG** (see [SVGJar](#SVGJar)), especially when CSS styling of element colors is necessary, or where the layout requires the SVG to define its own space.
 
-For background decorations, we use **background-image SVGs**, but we don't manually manage the inlining. [`narwin-pack`](https://github.com/DockYard/narwin-pack/blob/master/index.js) uses [`postcss-inline-svg`](https://github.com/TrySound/postcss-inline-svg) to convert those to inline data SVGs.
+For background decorations, we use **background-image SVGs**, but we don't manually manage the inlining. [`narwin-pack`](https://github.com/DockYard/narwin-pack/blob/master/index.js) uses [`postcss-inline-svg`](https://github.com/TrySound/postcss-inline-svg) to convert those to inline data SVGs. This `background-image` technique has the advantages using an SVG without creating additional markup, but it lacks the ability to style the SVG or its children with CSS.
 
 ```postcss
 .icon--background {
@@ -59,15 +59,7 @@ _is equivalent to this:_
 }
 ```
 
-If all the inner elements will respond to a color property the same way, use the tag name to style them:
-
-```postcss
-.icon--blue circle {
-  fill: blue;
-}
-```
-
-If inner elements need the same property manipulated differently in CSS, use BEM classes on inner elements:
+Using plain tag names can cause unintended style overlap, so it's safest to use BEM classes to select and style inner elements:
 
 ```xml
 <svg class="icon">
@@ -106,27 +98,15 @@ _You probably want this:_
 .icon path {
   fill: #283ae2;
 
-  button:hover & {
+  .button:hover & {
     fill: #3ae228;
   }
 }
 ```
 
-_Reminder, `button:hover` might not be the best BEM-scoped selector. Refer to BEM docs for guidance there, not this shortened example._
+Don't forget, `currentColor` is a native CSS variable that lets SVG icons inherit colors from their parent elements. This is particularly useful for single-color icons that need to match the color of the text they're set next to:
 
-Don't forget, `currentColor` is a native CSS variable that lets SVG icons inherit colors from their parent elements.
-
-_This SVG_
-
-```html
-<a class="link">
-  <svg class="link__icon">
-    <path fill="currentColor">
-  </svg>
-</a>
-```
-
-_will inherit these colors:_
+_The `.link__icon` SVG will inherit the `.link`'s colors:_
 
 ```postcss
 .link {
@@ -135,6 +115,10 @@ _will inherit these colors:_
   &:hover {
     color: #3ae228
   }
+}
+
+.link__icon {
+  fill: currentColor;
 }
 ```
 
@@ -281,7 +265,7 @@ This component also handles several other useful properties, including `class`, 
 
 ### Previewing Available SVGs
 
-To preview all the SVGs available to SVGJar, go to `https://localhost:4200/ember-svg-jar/index.html`. (Try `http` if your local dev site isn't set to run over `https`.)
+To preview all the SVGs available to SVGJar, go to `{your local dev domain & port number}/ember-svg-jar/index.html`.
 
 This previewer page will also let you quickly copy the Ember component code needed for any available SVG.
 
