@@ -8,7 +8,7 @@ Pixel perfection is regarded by some to be controversial (either [meaningless](h
 * Avoid compounding layout errors
 * Reliable and reusable modularity
 * Improved UX
-* Improved design quality and aesthetics.
+* Improved design quality and aesthetics
 
 ## Suggested reading
 
