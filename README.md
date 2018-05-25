@@ -20,3 +20,4 @@
 + [Onboarding](https://github.com/dockyard/styleguides/blob/master/ux-dev/ux-developer-onboarding.md)
 + [stylelint-config-narwin](https://github.com/dockyard/styleguides/blob/master/ux-dev/stylelint-config-narwin.md)
 + [SEO](https://github.com/dockyard/styleguides/blob/master/ux-dev/seo.md)
++ [SVG](https://github.com/dockyard/styleguides/blob/master/ux-dev/svg.md)
