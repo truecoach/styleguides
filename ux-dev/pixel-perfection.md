@@ -64,4 +64,4 @@ There are times you may be tempted to over-engineer a solution in order to achie
 
 #### Pixel-nudging
 
-If you find yourself using pixel-nudging techniques, such as `top: -1px` or negative margins, to match to designs, you should stop and re-evaluate your approach. Such techniques do not scale well, and they suggest that either the designs may contain minor errors or the design systems are flawed. When established libraries and design systems are consistent with with mockups, there is no need for position-nudging.
+If you find yourself using pixel-nudging techniques, such as `top: -1px` or negative margins, to match to designs, you should stop and re-evaluate your approach. Such techniques may not scale well, and they suggest that either the mockups may contain minor errors or the design systems are flawed. When established libraries and design systems are consistent with with mockups, there is typically no need for pixel-nudging.
