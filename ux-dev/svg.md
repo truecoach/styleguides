@@ -6,19 +6,19 @@ Scalable Vector Graphics - they're retina-friendly by default and lighter than m
 
 There are multiple ways to use an SVG in a webpage (but we stick to two):
 
-* inline directly in page markup
+* 👉 inline directly in page markup
 * as the `src`/`srcset` for an `img` tag (or other media element, like `picture > source` - you might use this for art direction but not responsive images  , since SVGs are resolution-independent already)
 * as the `data` attr in an `<object>` tag
 * as a CSS `background-image` with `url('path/to/file.svg')`
-* as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
+* 👉 as an inlined CSS `background-image` with `url('data:image/svg+xml;utf8,<svg></svg>)`
 
 By default, we prefer **inline SVG** (see [SVGJar](#SVGJar)), especially when CSS styling of element colors is necessary, or where the layout requires the SVG to define its own space.
 
-For background decorations, we use **background-image SVGs**. [`narwin-pack`](https://github.com/DockYard/narwin-pack/blob/master/index.js) uses [`postcss-inline-svg`](https://github.com/TrySound/postcss-inline-svg) to convert those to inline data SVGs.
+For background decorations, we use **background-image SVGs**, but we don't manually manage the inlining. [`narwin-pack`](https://github.com/DockYard/narwin-pack/blob/master/index.js) uses [`postcss-inline-svg`](https://github.com/TrySound/postcss-inline-svg) to convert those to inline data SVGs.
 
 ```postcss
 .icon--background {
-    background-image: svg-load('assets/icons/download.svg', fill=#283ae2, stroke=#fff);
+  background-image: svg-load('assets/icons/download.svg', fill=#283ae2, stroke=#fff);
 }
 ```
 
@@ -28,7 +28,9 @@ You may have heard about icon fonts. [SVG icons are better](https://blog.github.
 
 If you're using an SVG as an image's `src`, follow the normal rules for `alt` text and accessibility.
 
-If the SVG is inline, add `role="presentation"` if it's purely decorative. However, if it needs descriptive text, add an `aria-label` to the SVG tag and consider putting that text in a `<title>` element as well. The `aria-label` will be announced to screen readers and the `<title>` will create a hover "tooltip" for sighted users on devices with pointers.
+If the SVG is inline, add `role="presentation"` if it's purely decorative. However, if it needs descriptive text, add an `aria-label` to the SVG tag and consider putting that text in a [`<title>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc) element as well. The `aria-label` will be announced to screen readers and the `<title>` will create a hover "tooltip" for sighted users on devices with pointers.
+
+You may also consider adding [`<desc>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/desc) elements. If an SVG is rendered in a non-graphical way, `<desc>` elements may be shown/read to users. You can add a `<title>` or a `<desc>` to every `<g>` if needed. Keep your users' needs in mind, however: if assistive tech reading _multiple_ descriptions or titles would be tedious or pedantic, stick with a single description.
 
 ```xml
 <svg aria-label="DockYard Logo">
@@ -39,7 +41,7 @@ If the SVG is inline, add `role="presentation"` if it's purely decorative. Howev
 
 ## Styling SVGs with CSS
 
-SVG children element have lots of attributes that define their appearanc (`fill`, `stroke`, and all their sub-attributes). Many of those are available to CSS as well.
+SVG children element have lots of [attributes that define their visual presentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation) (the most common are `fill`, `stroke`, and all their sub-attributes). Many of those attributes are available to CSS as well.
 
 _This_
 
@@ -134,6 +136,27 @@ _will inherit these colors:_
     color: #3ae228
   }
 }
+```
+
+## Safe Click Events
+
+SVGs (and all their child elements) can intercept a user's click event. Occasionally, you'll find this causing problems when an inline SVG is inside an `a` or `button`. To prevent an SVG or its children from intercepting a click event that should bubble up to the intended parent element, use `pointer-events` - this feature can be set using either attributes or CSS.
+
+_CSS_
+
+```css
+a {
+  svg,
+  svg * {
+    pointer-events: none;
+  }
+}
+```
+
+_XML_
+
+```xml
+<svg pointer-events="none"></svg>
 ```
 
 ## Optimization
