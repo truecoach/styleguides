@@ -55,6 +55,13 @@ There may be issues that result from standardizing distances between baselines v
 
 It may make UX sense for some elements to intentionally deviate from established grids, when the risk to scale is low. At the same time, designers should be cognizant that the established design system is what permits the site to easily scale.
 
-## Avoid over-engineering
+## Common pitfalls
+
+#### Over-engineering
 
 There are times you may be tempted to over-engineer a solution in order to achieve pixel perfection. However, this is in and of itself a risk. Err on the side of caution. Achieving pixel perfection is not always worth the risks if it undermines the existing libraries or design systems that allow a site to scale. Keep your solutions simple.
+
+
+#### Pixel-nudging
+
+If you find yourself using pixel-nudging techniques, such as `top: -1px` or negative margins, to match to designs, you should stop and re-evaluate your approach. Such techniques do not scale well, and they suggest that either the designs may contain minor errors or the design systems are flawed. When established libraries and design systems are consistent with with mockups, there is no need for position-nudging.
