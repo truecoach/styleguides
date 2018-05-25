@@ -14,12 +14,13 @@ and links included within them:
 
 ### Editors:
 
-Regardless of your choice of text editor, it should be easily used by other developers when pairing up and also have the ability to accept `.editorconfig`. See [EditorConfig](http://editorconfig.org/#download) for more information.
+Regardless of your choice of text editor, it should be easily used by other developers when pairing up and also must have the ability to accept `.editorconfig`. See [EditorConfig](http://editorconfig.org/#download) for more information.
 
 * Vim -  [Vim Adventures](http://vim-adventures.com/) is a great resource to getting familiar with Vim.
 * tmux - Read Brian P. Hogan's book __tmux Productive Mouse-Free Development__
 * Sublime Text 3
-* VSCode
+* VS Code
+* Atom
 * And more!
 
 ### Tools:
