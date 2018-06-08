@@ -59,6 +59,8 @@ _is equivalent to this:_
 }
 ```
 
+### BEM
+
 Using plain tag names can cause unintended style overlap, so it's safest to use BEM classes to select and style inner elements:
 
 ```xml
@@ -77,6 +79,8 @@ Using plain tag names can cause unintended style overlap, so it's safest to use 
   fill: #3ae228;
 }
 ```
+
+### Hover (and Other Pseudo-Selector State) Effects
 
 If you need color changes on `:hover` or other pseudo-selector states, remember to put those on the right containing element:
 
@@ -104,6 +108,8 @@ _You probably want this:_
 }
 ```
 
+### Using `currentColor`
+
 Don't forget, `currentColor` is a native CSS variable that lets SVG icons inherit colors from their parent elements. This is particularly useful for single-color icons that need to match the color of the text they're set next to:
 
 _The `.link__icon` SVG will inherit the `.link`'s colors:_
@@ -120,6 +126,26 @@ _The `.link__icon` SVG will inherit the `.link`'s colors:_
 .link__icon {
   fill: currentColor;
 }
+```
+
+### Stroke Scaling
+
+Sometimes you'll need the `stroke` on an SVG to stay at a fixed pixel width, regardless of the image's size. (Normally, `stroke-width` will scale in line with the SVG's coordinate system as the SVG itself is resized.) To do this, add the attribute `vector-effect="non-scaling-stroke"` to the stroke elements (or to the SVG itself, if all elements should have non-scaling `stroke-width`).
+
+_Try this, per element:_
+```xml
+<svg>
+  <circle stroke="red" stroke-width="1" />
+  <circle stroke="blue" stroke-width="1" vector-effect="non-scaling-stroke" />
+</svg>
+```
+
+_Or this, for the whole image:_
+```xml
+<svg vector-effect="non-scaling-stroke">
+  <circle stroke="red" stroke-width="1" />
+  <circle stroke="blue" stroke-width="1" />
+</svg>
 ```
 
 ## Safe Click Events
@@ -247,7 +273,7 @@ Many DY projects use [ember-svg-jar](https://www.npmjs.com/package/ember-svg-jar
 
 ### Adding SVGs
 
-Optimize new SVGs, the drop them in your project's `/public/assets/` directory. If your project has more specific rules (like a `/svgs/` dir in `/assets/`), follow those rules. (SVGJar will find SVGs anywhere in `/public/` and can be configured to look in other directories if a project requires it.)
+Optimize new SVGs, then drop them in your project's `/public/assets/` directory. If your project has more specific rules (like a `/svgs/` dir in `/assets/`), follow those rules. (SVGJar will find SVGs anywhere in `/public/` and can be configured to look in other directories if a project requires it.)
 
 ### Using SVGs in Templates
 
