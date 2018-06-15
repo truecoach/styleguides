@@ -1,6 +1,6 @@
 # Class Naming Conventions
 
-## No IDs for Style Hooks
+## Avoide IDs for Style Hooks
 
 Don’t use IDs to attach visual and interactive styles to elements.
 Everything that needs style can be done without IDs. Avoid usage
