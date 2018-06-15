@@ -43,13 +43,13 @@ An **element** is a child element inside the block. It's written with a double-u
 .nav-item__link {}
 ```
 
-You may occasionally need a grandchild element, but not frequently. Treat that as a "[code smell](https://en.wikipedia.org/wiki/Code_smell)" and consider refactoring. Avoid great-grandchildren.
+You may occasionally need a grandchild element, but not frequently. Great-grandchildren should be treated as a "[code smell](https://en.wikipedia.org/wiki/Code_smell)" that triggers a refactor.
 
 ```css
 /* Maybe refactor */
 .nav-item__link__icon {}
-/* Refactor */
-.card__title__icon__svg {}
+/* Almost always refactor */
+.card__title__author__role {}
 ```
 
 ### Modifiers
@@ -84,37 +84,90 @@ While you might occasionally chain BEM elements to create grandchildren, [avoid 
 .card--prominent .card__title--highlighted {}
 ```
 
-## Prefixes
+## SMACSS Conventions
 
-* `.is-` for state changes, which follows
-  [SMACSS state rules](https://smacss.com/book/type-state).
-  Most common use cases: is-active (Example: `.nav__link.is-active`
-  when a nav link is highlighted to show that it is the current page)
-  and is-hidden (hides content visually, but allows screen readers like
-  VoiceOver to still read it. There are
-  [many different ways of hiding text](https://css-tricks.com/examples/ImageReplacement/),
-  but let’s stick to this one until we find a case where it breaks.
-  ```css
-  .is-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
+BEM is our primary class naming pattern, but we also borrow some SMACSS techniques
+
+### State Classes
+
+The [modifier classes described above](#modifiers) are for style variations that are part of a component's normal start. For style changes that change while the user interacts with the site, [SMACSS's `.is-*` and `.has-*` classes](https://smacss.com/book/type-state) are recommended.
+
+#### `.is-*`
+
+An `.is-*` state class communicates a change on the element itself, for example: `.nav__link.is-active` when a nav link is highlighted to show that it is the current page.
+
+#### `.has-*`
+
+A `.has-*` state class communicates a change having to do with an element's children for example: `.field-group.has-error` when a `fieldset` has an `input` with an invalid value.
+
+#### Scoping States
+
+An state class should not typically be styled globally: a modal with `.is-open` requires different styles from an accordion section with `.is-open`; a form with `.has-error` needs different styles from a baseball player's stat-sheet with `.has-error`.
+
+```scss
+.nav__link {
+  border-bottom: 3px solid transparent;
+  &.is-active {
+    border-bottom-color: currentColor;
   }
-  ```
+}
+.field-group {
+  &.has-error {
+    outline: 2px solid red;
+  }
+}
+```
 
-* `.has-` for shared styles.
-  ![Learnivore](assets/learnivore.png)
-  Here, there are multiple elements that have shared styles of pseudo
-  after classes with an arrow (→). In this case, both would have classes
-  of `.has-arrow`.
-* `.l-` for layout styles modified from
-  [SMACSS layout rules](https://smacss.com/book/type-layout) to include grid layout
-  styles such as wraps, columns, and overflows as well as positioning
-  styles for elements like `.l-header` or `.l-post`.
-* `.t-` for text styles like text color, display text: `.t-display` and
-  paragraph text: `.t-text`.
+### Layout Classes
+
+Use `.l-*` for layout styles modified from [SMACSS layout rules](https://smacss.com/book/type-layout). This includes the `.l-*` element's layout and positioning as well as grid layout styles that afffect child positioning. Typical CSS to use in layout classes includes Flexbox, Grid, wraps, floats, columns, overflows, and positioning.
+
+```css
+.l-card-grid {
+  margin: 40px auto;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Add BEM-like modifiers if needed */
+.l-card-grid--small-cards {
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+```
+
+### Typography Classes
+
+Use `.t-*` for reusable text styles. Typical CSS to use her includes font-related properties, color, letter-spacing, text-transform, etc. Here are some examples:
+
+```css
+/* Headline styles */
+.t-headline {}
+/* Body styles */
+.t-body {}
+```
+
+Avoid putting padding and margin into `.t-*` classes. It's common to modify those properties based on component context; we'd prefer to avoid mixing selectors for those modifications:
+
+```scss
+/* Avoid this */
+.t-headline {
+  margin-bottom: 16px;
+
+  .blog-post & {
+    margin-bottom: 12px;
+  }
+}
+```
 
 ## Suffixes
 
