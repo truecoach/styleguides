@@ -205,7 +205,9 @@ _This, not so much…_
 
 ### Remove `<style>` tags
 
-Many image apps add `fill`, `stroke` or other visual properties to inner elements using classes and a `style` tag. When you're using multiple SVGs in a page, classes can overlap and cause unexpected style issues. Convert all `style` blocks to inline attributes on child elements.
+Many image apps add `fill`, `stroke` or other visual properties to inner elements using classes and a `style` tag. When you're using multiple SVGs in a page, those classes may overlap and cause unexpected style issues. Convert all `style` blocks to inline attributes on child elements.
+
+If an SVG is intended for use as a `background-image`, all `stroke` and `fill` values must be inline on the elements that need them. If an SVG is intended for inline use and interactive styling is necessary, [BEM class names](https://github.com/dockyard/styleguides/blob/master/ux-dev/class-naming-conventions.md) should be added where [CSS style hooks](#BEM) are necessary. These classes allow us to style states (`:hover`, etc) easily. For inline SVGs that contain static illustrations (especially complex ones, [example: DY Design hero image](https://dockyard.com/design-consulting)), inline `stroke` and `fill` are preferable to BEM classes and CSS styling.
 
 _Change this:_
 
