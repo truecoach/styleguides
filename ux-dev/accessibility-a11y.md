@@ -5,7 +5,7 @@
 - [A11ycasts by Google Chrome Developers](https://www.youtube.com/watch?v=HtTyRajRuyY&list=PLNYkxOF6rcICWx0C9LVWWVqvHlYJyqw7g&index=29)
 - [Google Web Accessibility on Udacity](https://www.udacity.com/course/web-accessibility--ud891)
 - [A11y Project](https://a11yproject.com/)
-- [eBay’s MIND Patterns](https://ebay.gitbooks.io/mindpatterns/)
+- [eBay's MIND Patterns](https://ebay.gitbooks.io/mindpatterns/)
 
 ## Discovery/Testing/Audits
 - VoiceOver (Mac only, activate with `⌘F5`)
@@ -17,7 +17,7 @@
   - [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
 - Chrome Accessibility Audit
 - [Tota11y](http://khan.github.io/tota11y/) by Khan Academy
-- [WAVE Evaluation Tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
+- [WAVE Evaluation Tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh) or [WAVE by WebAIM](http://wave.webaim.org/)
 
 ## Process
 
@@ -50,9 +50,9 @@ In addition to ensuring colors have sufficient contrast between fore/background 
 
 As part of the QA process for UXD work, ensure the page/component is accessible with automated audits and manual testing.
 
-As a first pass, use keyboard navigation and screenreader software to ensure all content is navigable, functional, and understandable for non-sighted users. Use [Vox’s Accessibility Checklist](http://accessibility.voxmedia.com) (particularly [the Engineer section](http://accessibility.voxmedia.com/#engineers)) as a guide for review.
+As a first pass, use keyboard navigation and screenreader software to ensure all content is navigable, functional, and understandable for non-sighted users. Use [Vox's Accessibility Checklist](http://accessibility.voxmedia.com) (particularly [the Engineer section](http://accessibility.voxmedia.com/#engineers)) as a guide for review.
 
-As a second pass, take advantage of Chrome’s Accessibility Audit, which can be accessed within Inspector Tools’ Audits tab, to find any issues/areas of opportunity.
+As a second pass, take advantage of Chrome's Accessibility Audit, which can be accessed within Inspector Tools' Audits tab, to find any issues/areas of opportunity.
 
 ## Common Patterns
 
@@ -71,18 +71,22 @@ If any purely-visual element of a UI design is intended to disclose information 
 
 - Ex: An agenda shows a timeline of scheduled event markers of various widths and colors to demonstrate the number, duration, and category of events occurring throughout the month.
   - A hidden text heading/summary of the agenda should be provided before the detailed list of event information. For example,
-  > “Overview of April, 2018.
-  > 32 events from April 2 to April 23 from 5 categories.”
+  > "Overview of April, 2018.
+  > 32 events from April 2 to April 23 from 5 categories."
   - Following the summary, each visual event indicator should contain hidden detail text, including the event category, title, duration, etc. For example,
-  > “Conference event on April 15, 2018 from 9:00 a.m. to 4 p.m.
-Please arrive early and check in at the registration table.”
+  > "Conference event on April 15, 2018 from 9:00 a.m. to 4 p.m.
+Please arrive early and check in at the registration table."
+
+#### The image or element is purely decorative
+
+- Decorative images don't add context or information to a page, and are used solely for layout or visual interest. Decorative images should have an empty alt attribute `alt=""`. Leaving the alt attribute empty means screenreaders will skip over the image.
+- Decorative images or elements can also take advantage of the `role="presentation"` attribute, which removes elements from the accessibility tree
 
 ### Images and Icons
 
-- Decorative images don’t add context or information to a page, and are used solely for layout or visual interest. Decorative images should have an empty alt attribute `alt=“”`. Leaving the alt attribute empty means screenreaders will skip over the image.
-- An effective alt attribute focuses on the function and purpose of the image, rather than a description of the image. It is concise. It avoids phrases such as “picture of,” “graphic of,” etc. For more info, [reference WebAIM’s guidelines](https://webaim.org/techniques/alttext/).
-The alt attribute of a logo doesn’t need to include the word “logo.” A common practice is to set the alt attribute of a logo to the company’s name.
-- To make your SVGs accessible, use a `<title>` and if needed a `<desc>` element. `<title>` should be the first child of their parent container and are used to give a title or brief description of the SVG’s content. To provide more details about an SVG, use the `<desc>` element immediately after the `<title>`. For further
+- An effective alt attribute focuses on the function and purpose of the image, rather than a description of the image. It is concise. It avoids phrases such as "picture of," "graphic of," etc. For more info, [reference WebAIM's guidelines](https://webaim.org/techniques/alttext/).
+The alt attribute of a logo doesn't need to include the word "logo." A common practice is to set the alt attribute of a logo to the company's name.
+- To make your SVGs accessible, reference the accessibility section of the SVG guide.
 
 ### Button/Link Icons
 
@@ -90,7 +94,7 @@ A common UI pattern is to use icon-only interactive buttons/links to make the vi
 
 ```hbs
 <button>
-  <span class=”t-hidden”>Close</span>
+  <span class="t-hidden">Close</span>
   <svg>
     …
   </svg>
@@ -101,20 +105,20 @@ or
 
 ```hbs
 <a href="…">
-  <span class=”t-hidden”>Close</span>
+  <span class="t-hidden">Close</span>
   <svg>
     …
   </svg>
 </a>
 ```
 
-Both `<button>` and `<a>` are phrasing content, which should contain text to be considered valid. For more information, [reference MDN’s Content Categories](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories).
+Both `<button>` and `<a>` are phrasing content, which should contain text to be considered valid. For more information, [reference MDN's Content Categories](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories).
 
 ### Focus States
 
-All interactive elements should have a visible focus state to assist users who rely on keyboard navigation. Ideally, focus states are styled to ensure the focus “ring”/outline meets minimum color contrast requirements to aid users in wayfinding.
+All interactive elements should have a visible focus state to assist users who rely on keyboard navigation. Ideally, focus states are styled to ensure the focus "ring"/outline meets minimum color contrast requirements to aid users in wayfinding.
 
-Because the default focus ring isn’t very visually appealing, a common pattern for buttons and link buttons is simply match the hover and focus state styles:
+Because the default focus ring isn't very visually appealing, a common pattern for buttons and link buttons is simply match the hover and focus state styles:
 
 ```css
 .button {
@@ -129,15 +133,15 @@ However, when evaluating this during keyboard navigation testing, the hover styl
 
 ![IBM Carbon primary and danger button focus examples](assets/ibm-carbon-button-focus-examples.jpg)
 
-Shown above is IBM Carbon’s default, hover, and focus button styles. [View the full button design system](http://carbondesignsystem.com/components/button/code) and use keyboard navigation to view the focus state styles and animations.
+Shown above is IBM Carbon's default, hover, and focus button styles. [View the full button design system](http://carbondesignsystem.com/components/button/code) and use keyboard navigation to view the focus state styles and animations.
 
 ### Custom form elements
 
-Custom form elements often include multiple inputs and buttons that appear as a single input and have a single visual label. For accessibility, each input should have an associated label that can be hidden, and the visual “label” can instead be a heading to help group the inputs as a distinct section.
+Custom form elements often include multiple inputs and buttons that appear as a single input and have a single visual label. For accessibility, each input should have an associated label that can be hidden, and the visual "label" can instead be a heading to help group the inputs as a distinct section.
 
 ```hbs
 <fieldset class="form-field-group">
-  <h3 class=”form-label”>Start and end time</h3>
+  <h3 class="form-label">Start and end time</h3>
   <div class="form-field-duo">
     <div class="form-field-duo__half">
       <label class="t-hidden" for="startTime">Start time</label>
@@ -263,15 +267,15 @@ When a modal/dialog opens, screenreader focus should be brought to the first foc
 
 #### Focus Cycling/Trapping
 
-Dialog markup should be a direct descendant of the `<body>` element, and a sibling of the main content wrapper. By default, the “closed” dialog should have `role=”dialog”` and either/both a `hidden` attribute (if appropriate browser support exists) or `display: none;` to ensure it is not focusable until it is open.
+Dialog markup should be a direct descendant of the `<body>` element, and a sibling of the main content wrapper. By default, the "closed" dialog should have `role="dialog"` and either/both a `hidden` attribute (if appropriate browser support exists) or `display: none;` to ensure it is not focusable until it is open.
 
 When a user interacts with a button that opens a dialog, focus should move from the triggering button to the first focusable child of the dialog. If there are multiple focusable children, focus should proceed through the elements until focus arrives at the dialog close button. If the user continues to `Tab`, focus may proceed to the browser URL bar, but then should cycle back to the first focusable child of the dialog, repeating the cycle.
 
-Focus should be trapped within the dialog when it is open. This is guaranteed by making the sibling main content element “inert”, typically with `aria-hidden=”true”`.
+Focus should be trapped within the dialog when it is open. This is guaranteed by making the sibling main content element "inert", typically with `aria-hidden="true"`.
 
-If the user interacts with the dialog close button, the main content element should be reset to `aria-hidden=”false”`, the dialog markup should be hidden, and focus should return to the button that originally opened the dialog.
+If the user interacts with the dialog close button, the main content element should be reset to `aria-hidden="false"`, the dialog markup should be hidden, and focus should return to the button that originally opened the dialog.
 
-For further reference and example patterns, check out [eBay’s MIND Patterns](https://ebay.gitbooks.io/mindpatterns/content/disclosure/dialog.html) for dialogs and [A11ycasts’ episode on dialogs](https://www.youtube.com/watch?v=JS68faEUduk).
+For further reference and example patterns, check out [eBay's MIND Patterns](https://ebay.gitbooks.io/mindpatterns/content/disclosure/dialog.html) for dialogs and [A11ycasts' episode on dialogs](https://www.youtube.com/watch?v=JS68faEUduk).
 
 ### Alert Banners
 
@@ -298,12 +302,12 @@ Screenreader focus is given to the actionable item within the banner (typically 
 
 Alerts should not automatically disappear without receiving user input. This guarantees users have enough time to read and understand the alert message, and intend for the alert to be dismissed and resume their activity. It is best to provide a dedicated dismissal button that receives screenreader focus upon the alert becoming active.
 
-For more information, reference [WAI-ARIA’s guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog) and [A11ycast’s episode on alerts](https://www.youtube.com/watch?v=5lzAj1ahRSI).
+For more information, reference [WAI-ARIA's guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog) and [A11ycast's episode on alerts](https://www.youtube.com/watch?v=5lzAj1ahRSI).
 
 ## ARIA
 
 - Most ARIA roles are implicit in semantic HTML5 elements. Reference [the document conformance table from the W3C](https://www.w3.org/TR/html-aria/#docconformance) to see if an element needs an explicit ARIA role. If you set an explicit ARIA role, note that each element should only have one role and that you should not set a role that overrides the semantics of an element.
-- `aria-hidden` is an attribute that accepts a boolean that tells screenreaders if they should ignore or show content. If you’re toggling visibility of content, don’t forget to also toggle `aria-hidden`’s boolean. For more information, [view the W3C’s documentation of aria-hidden](https://www.w3.org/TR/wai-aria-1.1/#aria-hidden).
-- Similar to `aria-hidden`, `aria-disabled` is an attribute that accepts a boolean that tells screenreaders that the element it’s applied to (and its children) are visible but inoperable. [view the W3C’s documentation of aria-disabled](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled).
-- `aria-label` and `aria-labelledby` are similar attributes in that they both associate a label to another element. If the label text is visible, use `aria-labelledby`. Otherwise, use `aria-label`. view the W3C’s documentation of [aria-label](https://www.w3.org/TR/wai-aria-1.1/#aria-label) and [aria-labelledby](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby).
-- For more information, reference Google's Intro to ARIA or MDN’s AIRA basics.
+- `aria-hidden` is an attribute that accepts a boolean that tells screenreaders if they should ignore or show content. If you're toggling visibility of content, don't forget to also toggle `aria-hidden`'s boolean. For more information, [view the W3C's documentation of aria-hidden](https://www.w3.org/TR/wai-aria-1.1/#aria-hidden).
+- Similar to `aria-hidden`, `aria-disabled` is an attribute that accepts a boolean that tells screenreaders that the element it's applied to (and its children) are visible but inoperable. [view the W3C's documentation of aria-disabled](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled).
+- `aria-label` and `aria-labelledby` are similar attributes in that they both associate a label to another element. If the label text is visible, use `aria-labelledby`. Otherwise, use `aria-label`. view the W3C's documentation of [aria-label](https://www.w3.org/TR/wai-aria-1.1/#aria-label) and [aria-labelledby](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby).
+- For more information, reference Google's Intro to ARIA or MDN's AIRA basics.
