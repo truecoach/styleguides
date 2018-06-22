@@ -169,34 +169,6 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
 }
 ```
 
-## Suffixes
-
-* `--r` for right side. Example: `.l-col--r` would style a column that
-  often would be positioned on the right side of a page. This does not
-  have to be true when the screen narrows down to mobile phone width.
-* `--l` for left side.
-* `--s` for size small.
-* `--m` for size medium.
-* `--b` for size big (didn’t want it to be `--l`, which would
-  be confused with left). Example:
-  ```css
-  .l-wrap--s,
-  .l-wrap--b {
-    margin-right: auto;
-    margin-left: auto;
-    width: 90%;
-  }
-
-  .l-wrap--s {
-    max-width: 640px;
-  }
-
-  .l-wrap--b {
-    max-width: 1020px;
-  }
-  ```
-
-  If three sizes aren’t enough, we can use xs, s, m, b, xb.
 
 ## Common Patterns
 
