@@ -171,23 +171,16 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
 
 
 ## Common Patterns
+### "Parent" Selectors
 
-* Same content on index and show / detail pages
-  ![RubyGems](assets/rubygems.png)
-  On the left is the gems index of RubyGems.org and on the right is the
-  detail page of a gem. Elements such as the gem name, gem version and gem
-  summary are all repeated content that are styled in different ways. Body
-  / parent classes should be used to scope styles. In this case, the
-  element containing the word "rails" would be called `.gem__name` and it
-  would hold styles in common. If we need to target a specific `.gem__name`,
-  we would style it by nesting (`.gems .gem__name` on the index page and
-  `.gem .gem__name` on the show / detail page).
-* Plurals should be used when possible for groups of items.
-  [Here is a JS bin to illustrate this pattern.](http://jsbin.com/cusese/2/embed?html,css,output)
+  [Here is a JS bin to illustrate this pattern.](http://jsbin.com/jekugoj/edit?html,css,output)
+
   ![Footer](assets/footer.png)
-  Here is a footer with socials links. The group of social links would be
+
+  Here is a footer with social links. The group of social links would be
   called `.socials`, each item is a `.social` and if you need specific
-  style on the Twitter icon, it would be called `.social--twitter`. We
-  would rather use its singular form (`.social`) rather than call each
-  item `.socials__social`. This is sometimes referred to as the
-  [Plural Parent Pattern](http://codepen.io/jlong/pen/IzpEJ/).
+  style on the Twitter icon, it would be called `.social--twitter`.
+
+  We would rather use its singular form (`.social`) than call each item
+  `.socials__social`. This is sometimes referred to as the [Plural Parent
+  Pattern](http://codepen.io/jlong/pen/IzpEJ/).
