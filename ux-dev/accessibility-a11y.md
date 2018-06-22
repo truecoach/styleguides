@@ -86,7 +86,7 @@ Please arrive early and check in at the registration table."
 
 - An effective alt attribute focuses on the function and purpose of the image, rather than a description of the image. It is concise. It avoids phrases such as "picture of," "graphic of," etc. For more info, [reference WebAIM's guidelines](https://webaim.org/techniques/alttext/).
 The alt attribute of a logo doesn't need to include the word "logo." A common practice is to set the alt attribute of a logo to the company's name.
-- To make your SVGs accessible, reference the accessibility section of the SVG guide.
+- To make your SVGs accessible, reference the [accessibility section of the SVG guide](https://github.com/dockyard/styleguides/blob/master/ux-dev/svg.md#accessibility).
 
 ### Button/Link Icons
 
