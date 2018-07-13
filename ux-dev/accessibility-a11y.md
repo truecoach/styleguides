@@ -122,18 +122,42 @@ Both `<button>` and `<a>` are phrasing content, which should contain text to be 
 
 All interactive elements should have a visible focus state to assist users who rely on keyboard navigation. Ideally, focus states are styled to ensure the focus "ring"/outline meets minimum color contrast requirements to aid users in wayfinding.
 
-Because the default focus ring isn't very visually appealing, a common pattern for buttons and link buttons is simply match the hover and focus state styles:
+#### Bad Approach
+
+Because the default focus ring isn't very visually appealing, a common pattern for buttons and link buttons is to simply match the hover and focus state styles:
 
 ```css
 .button {
-  …
+  color: white;
+  background-color: slateblue;
+
   &:hover,
+  &:active,
   &:focus {
-    …
+    background-color: indigo;
   }
 }
 ```
-However, when evaluating this during keyboard navigation testing, the hover styles are often too subtle for users to easily locate their current location on the screen. For this reason, it is best to still provide dedicated styles for focus states that look great, have nice transitions, and help users find their place.
+However, when evaluating this during keyboard navigation testing, the hover styles are often too subtle for users to easily locate their current location on the screen.
+
+#### Good Approach
+
+For these reasons, it is best to still provide dedicated styles for focus states that look great, have nice transitions, and help users find their place:
+
+```css
+.button {
+  color: white;
+  background-color: slateblue;
+
+  &:hover,
+  &:active {
+    background-color: indigo;
+  }
+
+  &:focus {
+    outline: 2px solid indigo;
+  }
+}
 
 ![IBM Carbon primary and danger button focus examples](assets/ibm-carbon-button-focus-examples.jpg)
 
