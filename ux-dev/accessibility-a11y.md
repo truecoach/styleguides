@@ -265,6 +265,8 @@ As a result, we have to be clever in our pseudo selectors on the input to visual
 
 ### Modals/Dialogs
 
+**Please note**: much of the required functionality, focus management, and statefulness for modals will require close collaboration with Engineering to be fully implemented.
+
 #### Announcing
 
 When a modal/dialog opens, screenreader focus should be brought to the first focusable child of the dialog (which is typically the close button in a message dialog). At this point, the screenreader should announce the dialog title and any following content.
@@ -279,9 +281,13 @@ Focus should be trapped within the dialog when it is open. This is guaranteed by
 
 If the user interacts with the dialog close button, the main content element should be reset to `aria-hidden="false"`, the dialog markup should be hidden, and focus should return to the button that originally opened the dialog.
 
+If the user completes an action within the modal that results in a new route (such as submitting a form within a modal), focus should be brought to the first landmark in the new page. It is important to verify that screenreaders successfully re-index the page's contents when the app has routing in place that does not refresh the browser window (a common "single-page-app" pattern in frontend frameworks).
+
 For further reference and example patterns, check out [eBay's MIND Patterns](https://ebay.gitbooks.io/mindpatterns/content/disclosure/dialog.html) for dialogs and [A11ycasts' episode on dialogs](https://www.youtube.com/watch?v=JS68faEUduk).
 
 ### Alert Banners
+
+**Please note**: much of the required functionality, focus management, and statefulness for alert banners will require close collaboration with Engineering to be fully implemented.
 
 Alert banners should have their role attribute set to `alertbanner`. They also should have either: `aria-labelledby` that references the element containing the title of the banner if it has a visible title or an `aria-label` attribute if there is not a visible title. In addition, the element needs an `aria-describedby` attribute that references the content of the alert banner.
 
@@ -306,6 +312,8 @@ Screenreader focus is given to the actionable item within the banner (typically 
 
 Alerts should not automatically disappear without receiving user input. This guarantees users have enough time to read and understand the alert message, and intend for the alert to be dismissed and resume their activity. It is best to provide a dedicated dismissal button that receives screenreader focus upon the alert becoming active.
 
+Upon dismissmal, the user's focus should return to the last focusable element. If the alert banner appears upon a change in route in the application (such as a confirmation/success alert on a new page after the user submits a form), focus should be brought to the first landmark in the new page after the alert banner is dimissed. It is important to verify that screenreaders successfully re-index the page's contents when the app has routing in place that does not refresh the browser window (a common "single-page-app" pattern in frontend frameworks).
+
 For more information, reference [WAI-ARIA's guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog) and [A11ycast's episode on alerts](https://www.youtube.com/watch?v=5lzAj1ahRSI).
 
 ## ARIA
@@ -314,4 +322,4 @@ For more information, reference [WAI-ARIA's guidelines](https://www.w3.org/TR/wa
 - `aria-hidden` is an attribute that accepts a boolean that tells screenreaders if they should ignore or show content. If you're toggling visibility of content, don't forget to also toggle `aria-hidden`'s boolean. For more information, [view the W3C's documentation of aria-hidden](https://www.w3.org/TR/wai-aria-1.1/#aria-hidden).
 - Similar to `aria-hidden`, `aria-disabled` is an attribute that accepts a boolean that tells screenreaders that the element it's applied to (and its children) are visible but inoperable. [view the W3C's documentation of aria-disabled](https://www.w3.org/TR/wai-aria-1.1/#aria-disabled).
 - `aria-label` and `aria-labelledby` are similar attributes in that they both associate a label to another element. If the label text is visible, use `aria-labelledby`. Otherwise, use `aria-label`. view the W3C's documentation of [aria-label](https://www.w3.org/TR/wai-aria-1.1/#aria-label) and [aria-labelledby](https://www.w3.org/TR/wai-aria-1.1/#aria-labelledby).
-- For more information, reference Google's Intro to ARIA or MDN's AIRA basics.
+- For more information, reference Google's Intro to ARIA or MDN's ARIA basics.
