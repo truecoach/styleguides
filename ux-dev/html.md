@@ -3,12 +3,12 @@ At DockYard, we use semantic HTML to ensure content is accessible and conveys me
 
 ## Attribute Order
 We follow the order below for listing attributes on an element:
-* class
-* id, name
-* src, for, type, href, value
-* title, alt
-* role, aria-*
-* data-*
+* `class`
+* `id`, `name`
+* `src`, `for`, `type`, `href`, `value`
+* `title`, `alt`
+* `role`, `aria-*`
+* `data-*`
 
 ## Escaping characters
 * [Use escapes for `&lt;`(<), `&gt;`(>), `&amp;`(&).](https://www.w3.org/International/questions/qa-escapes#use)
@@ -18,26 +18,26 @@ We follow the order below for listing attributes on an element:
 In Handlebars, you can add a tilde `~` character inside tags to remove whitespace before or after a component or output. This is useful for removing line breaks that make code more readable, but negatively impact styles because of browser-rendered whitespace. You don't need to do this with every instance of handlebars and should use this as needed.
 
 You could do this:
-```html
+```hbs
 <section>
   {{~content~}}
 </section>
 ```
 
 Instead of this:
-```html
+```hbs
 <section>{{content}}</section>
 ```
 
 Another example:
-```html
+```hbs
 {{~#each item in model~}}
    {{item}}
 {{~/each~}}
 ```
 ...removes whitespace before and after the list, and between items. While...
 
-```html
+```hbs
 {{#each item in model}}
    {{~item~}}
 {{/each}}
@@ -45,11 +45,11 @@ Another example:
 ...leaves spaces before and after the list, but removes between items.
 
 ## Comments
-The most common HTML comment at DockYard is a TODO. TODOs are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. 
+The most common HTML comment at DockYard is a `TODO`. `TODO`s are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. 
 
-When writing a TODO, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that TODO with an engineer via a tag in the PR, a ping in the project Slack, or both. 
+When writing a `TODO`, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that `TODO` with an engineer via a tag in the PR, a ping in the project Slack, or both. 
 
-When you finish a TODO, delete the comment.
+When you finish a `TODO`, delete the comment.
 
 Example:
 ```html
