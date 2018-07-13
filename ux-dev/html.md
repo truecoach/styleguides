@@ -1,92 +1,66 @@
 # HTML
+At DockYard, we use semantic HTML to ensure content is accessible and conveys meaning and relationships. We don’t add elements to our HTML solely for stylistic purposes. 
 
-Good reads:
-* [HTML section of Mark Otto’s (@mdo) code guide](http://codeguide.co/#html)
-and
-* [Avoiding common HTML5 Mistakes](http://html5doctor.com/avoiding-common-html5-mistakes/).
-* [HTML: A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-
-## Indentation and Line Breaks
-
-Break to a new line if the tag contains another element.
-
-Rather than this:
-
-```html
-<p>This is a <a href="#">link</a>.</p>
-```
-
-We do this:
-
-```html
-<p>
-  This is a
-  <a href="#">link</a>.
-</p>
-```
-
-The period has to be right after the anchor tag in this case because we don’t want an
-[extra space](http://stackoverflow.com/questions/588356/why-does-the-browser-renders-a-newline-as-space)
-when the browser renders it. This makes it easier to see all elements
-even in narrower Vim windows.
-
-But sometimes we can’t avoid it:
-
-```html
-<h2>June 16<sup>th</sup></h2>
-```
-
-because there shouldn’t be a space or possibility of line break
-between the date and its
-[ordinal indicator](http://en.wikipedia.org/wiki/Ordinal_indicator).
-
-## Comments
-
-* [Clear communication through HTML and GitHub](https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
-* [The Art of Comments](https://css-tricks.com/the-art-of-comments/)
-* Add TODO’s for incomplete placeholder links, images and copy. Examples
-  of this happening are when we don’t have final copy or when dev needs
-  to make it dynamic.
-* Explain anything that may be confusing like strange calculations or
-  weird rules like `-webkit-text-size-adjust: 100%;` for solving mobile
-  webkit zooming as told by
-  http://stackoverflow.com/questions/5303263/fix-font-size-issue-on-mobile-safari-iphone-where-text-is-rendered-inconsisten
-
-Example:
-```html
-{{! TODO: Include final copy when it is delivered}}
-<p>Hi! This is fake copy that should never see a production environment</p>
-```
+## Attribute Order
+We follow the order below for listing attributes on an element:
+* class
+* id, name
+* src, for, type, href, value
+* title, alt
+* role, aria-*
+* data-*
 
 ## Escaping characters
-
 * [Use escapes for `&lt;`(<), `&gt;`(>), `&amp;`(&).](http://www.w3.org/International/questions/qa-escapes#use)
-* No need to escape for
-  [smartquotes](http://smartquotesforsmartpeople.com/) or en/em dashes. Makes it
-  easier to read.
+* No need to escape for smart quotes or en/em dashes. 
 
-## QA
+## Line Breaks and White Space
+In Ember, you can as needed add a tilde ~ character inside tags to remove white space before or after a component or output. This is useful for removing line breaks that make code more readable, but negatively impact styles because of browser-rendered white space.
 
-* Check HTML in
-  [WAVE’s outliner plugin](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh?hl=en-US)
-  or your favorite outliner. Does how we broke it down makes sense?
-* Test with screenreader (VoiceOver and
-  [NVDA](http://www.nvaccess.org/)).
-* Make sure
-  [forms are semantic and accessible](http://www.uxbooth.com/articles/styling-forms-accessibly/).
-* Are there any extra elements that are unnecessary?
+Do this:
+```html
+<section>
+  {{~content~}}
+</section>
+```
+
+Not this:
+```html
+<section>{{content}}</section>
+```
+
+## Comments
+The most common HTML comment at DockYard is a TODO. TODOs are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. When writing a TODO, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that TODO with an engineer via a tag in the PR, a ping in the project Slack, or both.
+
+Examples:
+```html
+{{! TODO UXD: Include final copy when it is delivered }}
+<p>Lorem ipsum dolor sit amet, make sure this copy is replaced before this is on prod.</p>
+
+{{! TODO ENG: Toggle class is-active on the button below when a user clicks on it }}
+<button>Add Event</button>
+```
 
 ## Common Patterns
+* [Cites and Blockquotes](http://html5doctor.com/cite-and-blockquote-reloaded/)
+* [Figures and Figcaptions](http://html5doctor.com/the-figure-figcaption-elements/)
+* [Responsive Images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
-* [Cites and blockquotes](http://html5doctor.com/cite-and-blockquote-reloaded/)
-* [Figures and figcaptions](http://html5doctor.com/the-figure-figcaption-elements/)
-* The less elements the better. We try to avoid elements that are only
-  there for styling purposes. It’s simpler to have less elements unless
-  they are needed for semantic reasons.
-```html
-<nav class="nav">
-  <a class="nav__link" href="/about">About</a>
-  <a class="nav__link" href="/team">Team</a>
-  <a class="nav__link" href="/contact">Contact</a>
-</nav>
-```
+## QA
+* Check HTML in [WAVE’s outliner plugin](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh?hl=en-US) or your favorite outliner to ensure markup is accessible. 
+* Test with a screen reader (VoiceOver and/or [NVDA](http://www.nvaccess.org/)).
+* Make sure [forms are semantic and accessible](http://www.uxbooth.com/articles/styling-forms-accessibly/).
+* Remove any elements that are used only for styling.
+* Check to make sure you’re using the most accurate, semantic elements.
+* Ensure your content uses smart quotes and en/em dashes when necessary.
+
+## Resources
+* [HTML section of Mark Otto’s Code Guide](http://codeguide.co/#html) (Note that our attribute order is slightly different)
+* [Avoiding Common HTML5 Mistakes]((http://html5doctor.com/avoiding-common-html5-mistakes/))
+* [MDN’s HTML: A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+* [The Art of Comments](https://css-tricks.com/the-art-of-comments/)
+* [Clear communication through HTML and GitHub](https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
+* [Quotes and Accents](http://quotesandaccents.com/)
+* [Smart Quotes For Smart People](http://smartquotesforsmartpeople.com/) 
+* [Ember White Space Playground](http://emberjs.jsbin.com/nubup/1/edit?html,css,js,output)
+* [MDN’s Element Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
