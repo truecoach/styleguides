@@ -11,33 +11,52 @@ We follow the order below for listing attributes on an element:
 * data-*
 
 ## Escaping characters
-* [Use escapes for `&lt;`(<), `&gt;`(>), `&amp;`(&).](http://www.w3.org/International/questions/qa-escapes#use)
+* [Use escapes for `&lt;`(<), `&gt;`(>), `&amp;`(&).](https://www.w3.org/International/questions/qa-escapes#use)
 * No need to escape for smart quotes or en/em dashes. 
 
-## Line Breaks and White Space
-In Ember, you can as needed add a tilde ~ character inside tags to remove white space before or after a component or output. This is useful for removing line breaks that make code more readable, but negatively impact styles because of browser-rendered white space.
+## Line Breaks and Whitespace
+In Handlebars, you can add a tilde `~` character inside tags to remove whitespace before or after a component or output. This is useful for removing line breaks that make code more readable, but negatively impact styles because of browser-rendered whitespace. You don't need to do this with every instance of handlebars and should use this as needed.
 
-Do this:
+You could do this:
 ```html
 <section>
   {{~content~}}
 </section>
 ```
 
-Not this:
+Instead of this:
 ```html
 <section>{{content}}</section>
 ```
 
+Another example:
+```html
+{{~#each item in model~}}
+   {{item}}
+{{~/each~}}
+```
+...removes whitespace before and after the list, and between items. While...
+
+```html
+{{#each item in model}}
+   {{~item~}}
+{{/each}}
+```
+...leaves spaces before and after the list, but removes between items.
+
 ## Comments
-The most common HTML comment at DockYard is a TODO. TODOs are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. When writing a TODO, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that TODO with an engineer via a tag in the PR, a ping in the project Slack, or both.
+The most common HTML comment at DockYard is a TODO. TODOs are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. 
+
+When writing a TODO, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that TODO with an engineer via a tag in the PR, a ping in the project Slack, or both. 
+
+When you finish a TODO, delete the comment.
 
 Examples:
 ```html
 {{! TODO UXD: Include final copy when it is delivered }}
 <p>Lorem ipsum dolor sit amet, make sure this copy is replaced before this is on prod.</p>
 
-{{! TODO ENG: Toggle class is-active on the button below when a user clicks on it }}
+{{! TODO ENG: Toggle class `is-active` on the button below when a user clicks on it }}
 <button>Add Event</button>
 ```
 
@@ -48,7 +67,7 @@ Examples:
 
 ## QA
 * Check HTML in [WAVE’s outliner plugin](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh?hl=en-US) or your favorite outliner to ensure markup is accessible. 
-* Test with a screen reader (VoiceOver and/or [NVDA](http://www.nvaccess.org/)).
+* Test with a screen reader (VoiceOver and/or [NVDA](https://www.nvaccess.org/)).
 * Make sure [forms are semantic and accessible](http://www.uxbooth.com/articles/styling-forms-accessibly/).
 * Remove any elements that are used only for styling.
 * Check to make sure you’re using the most accurate, semantic elements.
@@ -56,11 +75,13 @@ Examples:
 
 ## Resources
 * [HTML section of Mark Otto’s Code Guide](http://codeguide.co/#html) (Note that our attribute order is slightly different)
-* [Avoiding Common HTML5 Mistakes]((http://html5doctor.com/avoiding-common-html5-mistakes/))
+* [Avoiding Common HTML5 Mistakes](http://html5doctor.com/avoiding-common-html5-mistakes/)
 * [MDN’s HTML: A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 * [The Art of Comments](https://css-tricks.com/the-art-of-comments/)
 * [Clear communication through HTML and GitHub](https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
 * [Quotes and Accents](http://quotesandaccents.com/)
 * [Smart Quotes For Smart People](http://smartquotesforsmartpeople.com/) 
-* [Ember White Space Playground](http://emberjs.jsbin.com/nubup/1/edit?html,css,js,output)
+* [Handlebars Whitespace Control](https://handlebarsjs.com/expressions.html#whitespace-control)
+* [Ember White Space Playground](https://emberjs.jsbin.com/nubup/1/edit?html,css,js,output)
 * [MDN’s Element Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+* [VS Code TODO Highlighter](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
