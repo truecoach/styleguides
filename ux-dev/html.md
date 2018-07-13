@@ -51,11 +51,8 @@ When writing a TODO, specify if it is for UXD or engineering. If it’s for engi
 
 When you finish a TODO, delete the comment.
 
-Examples:
+Example:
 ```html
-{{! TODO UXD: Include final copy when it is delivered }}
-<p>Lorem ipsum dolor sit amet, make sure this copy is replaced before this is on prod.</p>
-
 {{! TODO ENG: Toggle class `is-active` on the button below when a user clicks on it }}
 <button>Add Event</button>
 ```
