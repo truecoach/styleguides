@@ -85,12 +85,14 @@ Please arrive early and check in at the registration table."
 ### Images and Icons
 
 - An effective alt attribute focuses on the function and purpose of the image, rather than a description of the image. It is concise. It avoids phrases such as "picture of," "graphic of," etc. For more info, [reference WebAIM's guidelines](https://webaim.org/techniques/alttext/).
-The alt attribute of a logo doesn't need to include the word "logo." A common practice is to set the alt attribute of a logo to the company's name.
+  - Example: `<img src="puppy.jpg" alt="Golden doodle puppy playing with chew toy">`
+- The alt attribute of a logo doesn't need to include the word "logo." A common practice is to set the alt attribute of a logo to the company's name.
+  - Example: `<img src="logo.png" alt="DockYard, Inc.">`
 - To make your SVGs accessible, reference the [accessibility section of the SVG guide](https://github.com/dockyard/styleguides/blob/master/ux-dev/svg.md#accessibility).
 
 ### Button/Link Icons
 
-A common UI pattern is to use icon-only interactive buttons/links to make the visual presentation easier to scan and save space. While it might be tempting to use `aria-label` attributes on buttons on anchor tags that only contain an icon, it is best to provide hidden text within the button/anchor tag to ensure the markup is valid:
+A common UI pattern is to use icon-only interactive buttons/links to make the visual presentation easier to scan and save space. Don't use `aria-label` attributes on buttons or anchor tags that only contain an icon; instead you should provide hidden text within the button/anchor tag to ensure the markup is valid:
 
 ```hbs
 <button>
@@ -111,6 +113,8 @@ or
   </svg>
 </a>
 ```
+
+#### Rationale
 
 Both `<button>` and `<a>` are phrasing content, which should contain text to be considered valid. For more information, [reference MDN's Content Categories](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories).
 
