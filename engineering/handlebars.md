@@ -4,6 +4,8 @@
 
 * [Quotes](#quotes)
 * [Multiline expressions](#multiline-expressions)
+* [Line Breaks and Whitespace](#line-breaks-and-whitespace)
+* [Comments](#comments)
 
 ## Quotes
 Prefer double quotes to single quotes
