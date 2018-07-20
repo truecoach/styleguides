@@ -76,7 +76,7 @@ When you finish a `TODO`, delete the comment.
 
 Example:
 ```html
-{{! TODO UXD: Add `is-active` style on the button below when a user clicks on it }}
+{{! TODO UXD: Add `is-active` styling for the button below }}
 <button>Add Event</button>
 ```
 
