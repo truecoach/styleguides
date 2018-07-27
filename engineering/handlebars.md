@@ -46,25 +46,58 @@ or helper name.
 
 It can be helpful to have a multi-line expression be on a separate line its parent HTML—particularly when merging in `git`. When needed, you can optionally use [whitespace control](http://handlebarsjs.com/expressions.html#whitespace-control) to remove whitespace before or after an expression.
 
+Whitespace may be omitted from either side of any mustache statement by adding a `~` character by the braces. When applied, all whitespace on that particular side will be removed up to the first handlebars expression or non-whitespace character on that side.
+
 The following example removes whitespace before and after an expression:
+
 ```hbs
 <section>
   {{~content~}}
 </section>
 ```
 
-This removes whitespace before and after the list, and between items:
-```hbs
-{{~#each item in model~}}
-   {{item}}
-{{~/each~}}
-```
-This leaves spaces before and after the list, but removes between items.
+The following example only removes whitespace after an expression:
 
 ```hbs
-{{#each item in model}}
-   {{~item~}}
-{{/each}}
+<section>
+  {{content~}}
+</section>
+```
+
+Here we remove whitespace only between sibling items:
+
+```hbs
+<ul>
+	{{#each items as |item|~}}
+		<li>
+			{{item}}
+		</li>
+	{{~/each}}
+</ul>
+```
+
+To remove whitespace before and after list items, and between items, we do this:
+
+```hbs
+<ul>
+	{{~#each items as |item|~}}
+		<li>
+			{{~item~}}
+		</li>
+	{{~/each~}}
+</ul>
+```
+
+In the next example, we only remove space from inside the individual list items:
+
+```hbs
+<ul>
+	{{#each items as |item|}}
+		<li>
+			{{~item~}}
+		</li>
+	{{/each}}
+</ul>
 ```
 
 ## Comments
