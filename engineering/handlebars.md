@@ -68,11 +68,11 @@ Here we remove whitespace only between sibling items:
 
 ```hbs
 <ul>
-	{{#each items as |item|~}}
-		<li>
-			{{item}}
-		</li>
-	{{~/each}}
+  {{#each items as |item|~}}
+    <li>
+      {{item}}
+    </li>
+  {{~/each}}
 </ul>
 ```
 
@@ -80,11 +80,11 @@ To remove whitespace before and after list items, and between items, we do this:
 
 ```hbs
 <ul>
-	{{~#each items as |item|~}}
-		<li>
-			{{~item~}}
-		</li>
-	{{~/each~}}
+  {{~#each items as |item|~}}
+    <li>
+      {{~item~}}
+   </li>
+  {{~/each~}}
 </ul>
 ```
 
@@ -92,11 +92,11 @@ In the next example, we only remove space from inside the individual list items:
 
 ```hbs
 <ul>
-	{{#each items as |item|}}
-		<li>
-			{{~item~}}
-		</li>
-	{{/each}}
+  {{#each items as |item|}}
+    <li>
+      {{~item~}}
+    </li>
+  {{/each}}
 </ul>
 ```
 
