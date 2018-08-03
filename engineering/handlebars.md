@@ -88,6 +88,8 @@ To remove whitespace before and after list items, and between items, we do this:
 </ul>
 ```
 
+That also removes the whitespace before the first item and after the last one.
+
 In the next example, we only remove space from inside the individual list items:
 
 ```hbs
