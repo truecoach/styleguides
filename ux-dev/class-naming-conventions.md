@@ -151,6 +151,9 @@ for when a `.button` is in a `.nav-menu`. Instead, try writing classes like this
 .button--nav-menu {}
 ```
 
+This will both (a) reduce specificity, and (b) keep all instances of the class
+name `.nav-menu` in the same place.
+
 ## SMACSS Conventions
 
 BEM is our primary class naming pattern, but we also borrow some SMACSS techniques.
