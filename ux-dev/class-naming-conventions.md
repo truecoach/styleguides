@@ -131,6 +131,26 @@ Try this:
 <div class="block block--modifier"></div>
 ```
 
+### BEM Leaks
+
+"BEM leaks" can be loosely defined as styles that apply to blocks outside the scope of a stylesheet. For instance, if your project has blocks called `.nav-menu` and `.button`, it might be tempting to write a selector like this:
+
+```css
+/* button.css */
+.nav-menu .button {}
+```
+
+for when a `.button` is in a `.nav-menu`. Instead, try writing classes like this:
+
+```css
+/* nav-menu.css */
+.nav-menu {}
+
+/* button.css */
+.button {}
+.button--nav-menu {}
+```
+
 ## SMACSS Conventions
 
 BEM is our primary class naming pattern, but we also borrow some SMACSS techniques.
