@@ -226,11 +226,13 @@ Use `.t-*` for reusable type styles. Typical CSS to use here includes font-relat
 .t-body {}
 ```
 
-Avoid putting padding and margin into `.t-*` classes. It's common to modify those properties based on component context; we'd prefer to avoid mixing selectors for those modifications:
+Avoid putting padding and margin into `.t-*` classes. It's common to modify those properties based on component context; we'd prefer to avoid mixing selectors for those modifications.
+
+Avoid this:
 
 ```scss
-/* Avoid this */
 .t-headline {
+  font-size: 12px;
   margin-bottom: 16px;
 
   .blog-post & {
@@ -238,6 +240,35 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
   }
 }
 ```
+
+Prefer this:
+
+```scss
+.t-headline {
+  font-size: 12px;
+}
+
+/* A standalone headline block */
+.headline {
+  margin-bottom: 16px;
+}
+
+/* A headline element inside a blog-post block */
+.blog-post__headline {
+  margin-bottom: 12px;
+}
+```
+
+Accompanying HTML:
+
+```html
+<h4 class="headline t-headline">Lorem ipsum</h4>
+<!-- ... -->
+<article class="blog-post">
+  <h4 class="blog-post__headline t-headline">Dolor sit amet</h4>
+</div>
+```
+
 
 ## Common Patterns
 ### "Parent" Selectors
