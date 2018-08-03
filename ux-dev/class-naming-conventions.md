@@ -182,14 +182,31 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
 ## Common Patterns
 ### "Parent" Selectors
 
-  [Here is a JS bin to illustrate this pattern.](http://jsbin.com/jekugoj/edit?html,css,output)
+```html
+<div class="socials">
+	<a class="social social--github" href="https://github.com/dockyard">
+		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+		<span class="t-hidden">GitHub</span>
+	</a>
+	<a class="social social--twitter" href="https://twitter.com/dockyard">
+		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+		<span class="t-hidden">Twitter</span>
+	</a>
+	<a class="social social--linkedin" href="https://www.linkedin.com/company/dockyard">
+		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+		<span class="t-hidden">LinkedIn</span>
+	</a>
+</div>
+```
 
-  ![Footer](assets/footer.png)
+[Here is a JS bin to illustrate this pattern.](http://jsbin.com/jekugoj/edit?html,css,output)
 
-  Here is a footer with social links. The group of social links would be
-  called `.socials`, each item is a `.social` and if you need specific
-  style on the Twitter icon, it would be called `.social--twitter`.
+![Footer](assets/footer.png)
 
-  We would rather use its singular form (`.social`) than call each item
-  `.socials__social`. This is sometimes referred to as the [Plural Parent
-  Pattern](http://codepen.io/jlong/pen/IzpEJ/).
+Here is a footer with social links. The group of social links would be
+called `.socials`, each item is a `.social` and if you need specific
+style on the Twitter icon, it would be called `.social--twitter`.
+
+We would rather use its singular form (`.social`) than call each item
+`.socials__social`. This is sometimes referred to as the [Plural Parent
+Pattern](http://codepen.io/jlong/pen/IzpEJ/).
