@@ -93,6 +93,44 @@ Avoid creating elements as children of modified blocks. Instead, use [BEM mixes]
 .card--prominent .card__title--highlighted {}
 ```
 
+#### DRY CSS, Wet HTML
+
+When using modifier classes, use both the base class and the modified class in
+your markup. Instead of this:
+
+```css
+.block,
+.block--modifier {
+  margin: 10px 0;
+}
+
+.block--modifier {
+  color: red;
+}
+```
+
+```html
+<div class="block"></div>
+<div class="block--modifier"></div>
+```
+
+Try this:
+
+```css
+.block {
+  margin: 10px 0;
+}
+
+.block--modifier {
+  color: red;
+}
+```
+
+```html
+<div class="block"></div>
+<div class="block block--modifier"></div>
+```
+
 ## SMACSS Conventions
 
 BEM is our primary class naming pattern, but we also borrow some SMACSS techniques.
@@ -177,7 +215,6 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
   }
 }
 ```
-
 
 ## Common Patterns
 ### "Parent" Selectors
