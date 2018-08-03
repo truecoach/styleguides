@@ -158,6 +158,7 @@ For these reasons, it is best to still provide dedicated styles for focus states
     outline: 2px solid indigo;
   }
 }
+```
 
 ![IBM Carbon primary and danger button focus examples](assets/ibm-carbon-button-focus-examples.jpg)
 
