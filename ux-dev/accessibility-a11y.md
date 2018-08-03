@@ -169,7 +169,7 @@ Custom form elements often include multiple inputs and buttons that appear as a 
 
 ```hbs
 <fieldset class="form-field-group">
-  <h3 class="form-label">Start and end time</h3>
+  <legend class="form-label">Start and end time</legend>
   <div class="form-field-duo">
     <div class="form-field-duo__half">
       <label class="t-hidden" for="startTime">Start time</label>
@@ -201,7 +201,7 @@ This is made particularly challenging due to the approach often used for custom 
 
 ```hbs
 <fieldset class="form-field-group">
-  <h3 class="form-label">Options</h3>
+  <legend class="form-label">Options</legend>
   <div class="form-checkbox">
     <input
       class="form-checkbox__input"
