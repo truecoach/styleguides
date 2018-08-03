@@ -66,7 +66,7 @@ While you might occasionally chain BEM elements to create grandchildren, [avoid 
 
 ```css
 /* Avoid */
- .card--shaded--large {}
+.card--shaded--large {}
 
 /* Separate classes for each modifier is good. */
 .card--shaded {}
@@ -74,13 +74,22 @@ While you might occasionally chain BEM elements to create grandchildren, [avoid 
 
 /* Using a functional (not visual) modifier is also good. */
 .card--prominent {}
-```
-
-```css
-/* That's OK. */
-.card--prominent__title--highlighted {}
 
 /* This is good too, but be aware of the increased specificity. */
+.card--prominent .card__title--highlighted {}
+```
+
+Avoid creating elements as children of modified blocks. Instead, use [BEM mixes](https://en.bem.info/forum/4/)
+
+```css
+/* Instead of this: */
+.card--prominent__title--highlighted {}
+
+/* Do this: */
+.card__title--highlighted {}
+.card__title--prominent {}
+
+/* Or this: */
 .card--prominent .card__title--highlighted {}
 ```
 
