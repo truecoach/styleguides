@@ -244,18 +244,18 @@ Avoid putting padding and margin into `.t-*` classes. It's common to modify thos
 
 ```html
 <div class="socials">
-	<a class="social social--github" href="https://github.com/dockyard">
-		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
-		<span class="t-hidden">GitHub</span>
-	</a>
-	<a class="social social--twitter" href="https://twitter.com/dockyard">
-		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
-		<span class="t-hidden">Twitter</span>
-	</a>
-	<a class="social social--linkedin" href="https://www.linkedin.com/company/dockyard">
-		<svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
-		<span class="t-hidden">LinkedIn</span>
-	</a>
+  <a class="social social--github" href="https://github.com/dockyard">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <span class="t-hidden">GitHub</span>
+  </a>
+  <a class="social social--twitter" href="https://twitter.com/dockyard">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <span class="t-hidden">Twitter</span>
+  </a>
+  <a class="social social--linkedin" href="https://www.linkedin.com/company/dockyard">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <span class="t-hidden">LinkedIn</span>
+  </a>
 </div>
 ```
 
