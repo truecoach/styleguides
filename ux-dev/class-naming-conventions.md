@@ -79,7 +79,7 @@ While you might occasionally chain BEM elements to create grandchildren, [avoid 
 .card--prominent .card__title--highlighted {}
 ```
 
-Avoid creating elements as children of modified blocks. Instead, use [BEM mixes](https://en.bem.info/forum/4/)
+Avoid creating elements as children of modified blocks. Instead, use BEM mixes ([1](https://en.bem.info/methodology/key-concepts/#mix), [2](https://en.bem.info/forum/4/))
 
 ```css
 /* Instead of this: */
