@@ -196,28 +196,13 @@ A state class should not typically be styled globally: a modal with `.is-open` r
 
 ### Layout Classes
 
-Use `.l-*` for layout styles - borrowed from [SMACSS layout rules](https://smacss.com/book/type-layout). These styles include the `.l-*` element's layout and positioning as well as grid layout styles that afffect child positioning. Typical CSS to use in layout classes includes Flexbox, Grid, wraps, floats, columns, overflows, and positioning.
+`layout.css` should only contain global (app-wide), generic layout components, such as `.l-main`, and should be the only file to contain classes with the `.l-` prefix.
 
 ```css
-.l-card-grid {
-  margin: 40px auto;
-  padding: 0 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-/* Add BEM modifiers if needed */
-.l-card-grid--small-cards {
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5px;
-
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(8, 1fr);
-  }
+.l-main {
+  width: calc(100% - 80px);
+  max-width: 1280px;
+  margin: 0 auto;
 }
 ```
 
