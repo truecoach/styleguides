@@ -145,10 +145,16 @@ for when a `.button` is in a `.nav-menu`. Instead, try writing classes like this
 ```css
 /* nav-menu.css */
 .nav-menu {}
+.nav-menu__toggle {}
 
 /* button.css */
 .button {}
-.button--nav-menu {}
+```
+
+```html
+<nav class="nav-menu">
+  <button class="nav-menu__toggle button"></button>
+</nav>
 ```
 
 This will both (a) reduce specificity, and (b) keep all instances of the class
