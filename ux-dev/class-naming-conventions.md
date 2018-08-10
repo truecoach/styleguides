@@ -172,7 +172,7 @@ A `.has-*` state class communicates a change having to do with an element's chil
 
 #### Scoping States
 
-An state class should not typically be styled globally: a modal with `.is-open` requires different styles from an accordion section with `.is-open`; a form with `.has-error` needs different styles from a baseball player's stat-sheet with `.has-error`.
+A state class should not typically be styled globally: a modal with `.is-open` requires different styles from an accordion section with `.is-open`; a form with `.has-error` needs different styles from a baseball player's stat-sheet with `.has-error`.
 
 ```scss
 .nav__link {
