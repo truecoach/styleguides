@@ -157,8 +157,7 @@ for when a `.button` is in a `.nav-menu`. Instead, try writing classes like this
 </nav>
 ```
 
-This will both (a) reduce specificity, and (b) keep all instances of the class
-name `.nav-menu` in the same place.
+This will both (a) reduce specificity, and (b) keep all instances of the class name `.nav-menu` in the same place.
 
 ## SMACSS Conventions
 
@@ -260,8 +259,8 @@ Accompanying HTML:
 </div>
 ```
 
-
 ## Common Patterns
+
 ### "Parent" Selectors
 
 ```html
