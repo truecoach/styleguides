@@ -16,7 +16,7 @@ Rarely, you may be required to style markup that you can't edit where an ID is t
 .third-party-markup [id*='embed-'] {}
 ```
 
-For more on attribute selectors, read [CSS-Tricks "The Skinny on Attribute Selectors" post](https://css-tricks.com/attribute-selectors/).
+For more on attribute selectors, read [CSS-Tricks' "The Skinny on Attribute Selectors" post](https://css-tricks.com/attribute-selectors/).
 
 ## BEM Naming Conventions
 
