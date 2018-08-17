@@ -12,15 +12,15 @@ Rarely, you may be required to style markup that you can't edit where an ID is t
 /* Targets the exact ID in the 3rd-party content */
 .third-party-markup [id='embed-element'] {}
 
-/* targets any ID that contains `embed-` in the 3rd-party content */
+/* Targets any ID that contains `embed-` in the 3rd-party content */
 .third-party-markup [id*='embed-'] {}
 ```
 
-For more on attribute selectors, read this [CSS-Tricks post](https://css-tricks.com/attribute-selectors/).
+For more on attribute selectors, read [CSS-Tricks "The Skinny on Attribute Selectors" post](https://css-tricks.com/attribute-selectors/).
 
 ## BEM Naming Conventions
 
-Use `.block__element--modifier` syntax for naming classes. Refer to [CSS Wizardry’s MindBEMding blog post](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) and the [BEM website](https://bem.info/method/definitions/).
+Use `.block__element--modifier` syntax for naming classes. Refer to [CSS Wizardry’s "MindBEMding" blog post](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) and the [BEM website](https://bem.info/method/definitions/).
 
 ### Blocks
 
@@ -48,13 +48,14 @@ You may occasionally need a grandchild element, but not frequently. Great-grandc
 ```css
 /* Maybe refactor */
 .nav-item__link__icon {}
+
 /* Almost always refactor */
 .card__title__author__role {}
 ```
 
 ### Modifiers
 
-A **modifier** is a style variation for an element. Attach a modifier to the end of a block or element with a double-hyphen (`block--modifier`, `block__element--modifier`).
+A **modifier** is a style variation for a block or element. Attach a modifier to the end of a block or element with a double-hyphen (`block--modifier`, `block__element--modifier`).
 
 ```css
 .card--shadow {}
@@ -83,14 +84,13 @@ Avoid creating elements as children of modified blocks. Instead, use BEM mixes (
 
 ```css
 /* Instead of this: */
-.card--prominent__title--highlighted {}
+.card--prominent__title {}
 
 /* Do this: */
-.card__title--highlighted {}
 .card__title--prominent {}
 
 /* Or this: */
-.card--prominent .card__title--highlighted {}
+.card--prominent .card__title {}
 ```
 
 #### DRY CSS, Wet HTML
@@ -182,6 +182,7 @@ A state class should not typically be styled globally: a modal with `.is-open` r
 ```scss
 .nav__link {
   border-bottom: 3px solid transparent;
+
   &.is-active {
     border-bottom-color: currentColor;
   }
@@ -212,6 +213,7 @@ Use `.t-*` for reusable type styles. Typical CSS to use here includes font-relat
 ```css
 /* Headline styles */
 .t-headline {}
+
 /* Body styles */
 .t-body {}
 ```
