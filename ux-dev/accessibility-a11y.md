@@ -26,10 +26,12 @@ Possible screenreaders to use to test your work include:
 - [NVDA](https://www.nvaccess.org/) (cross-platform)
 
 For VoiceOver, the following keyboard commands are helpful:
-- `control + option + H` to navigate between headings
-- `control + option + X` to navigate between lists
-- `control + option + T` to navigate between tables
+- `Control + Option + H` to navigate between headings
+- `Control + Option + X` to navigate between lists
+- `Control + Option + T` to navigate between tables
 - Arrow keys to navigate between radio buttons, select/dropdown options, sliders, and tab panels
+
+For a full keyboard shortcut reference, [view Deque University's VoiceOver Shortcut Guide](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts).
 
 Jessica Jordan wrote a very helpful article [deep diving into testing with VoiceOver](http://uncaughtreferenceerror.com/a-crash-course-to-screenreaders-for-sighted-developers/).
 
@@ -47,13 +49,38 @@ Jessica Jordan wrote a very helpful article [deep diving into testing with Voice
 
 ## Process
 
-### Document Outline
+### Start with Clean, Semantic Markup
 
 When beginning the UXD process for any new page or component, always start with a plain HTML outline to carefully plan a clean, semantic structure.
 
 This process is helpful for taking advantage of semantic HTML5 elements wherever possible, and also providing an intuitive/valid hierarchy for headings and content. Additionally, this exercise reveals where additional information not provided in the visual design will be required to add context for users who rely on screenreaders, thereby providing helpful hidden text that otherwise might be overlooked.
 
 For further learning, reference [HTML: A good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML) for guidance as you draft HTML markup.
+
+#### `lang` Attribute
+
+Don't forget to include the `lang="…"` attribute on the `<html>` element, and specify the content's language. This allows screen readers to understand the content's langauge for proper pronounciation, and screen readers can even read multiple languages fluidly to the user. The `lang` attribute also facilitates translations.
+
+The `lang` attribute can also be used on a more granular level. If content within a page is in a different language, that specific content can be wrapped in an element that has it's own dedicated `lang` attribute with the corresponding value.
+
+#### Use ARIA with Caution
+
+The WAI-ARIA documentation begins with ["No ARIA is better than bad ARIA"](https://www.w3.org/TR/wai-aria-practices-1.1/#no_aria_better_bad_aria). ARIA is very powerful in its ability to provide additional context, semantics, and even functionality for screen reader users. But, this comes with great responsibility, as using ARIA incorrectly can be more damaging to the user experience than simply not using it at all.
+
+#### Landmark Regions
+
+Landmark regions, such as `<nav>`, `<header>`, or `<aside>`, should represent unique content regions within a page. If these semantic HTML elements are repeated within the same page, they should have a dedicated label to help different their unique purpose. This can be achieved with `aria-labeledby` that points to an ID of the region's heading, or an `aria-label` if no heading is present. These labels should be brief and not include the name of the region. Reference the [General Principles of Landmark Design](https://www.w3.org/TR/wai-aria-practices-1.1/#general-principles-of-landmark-design) for further guidance.
+
+Example:
+```hbs
+<nav aria-label="Site">
+  …
+</nav>
+…
+<nav aria-label="Profile">
+  …
+</nav>
+```
 
 ### Color Contrast
 
@@ -116,9 +143,9 @@ Please arrive early and check in at the registration table."
   - Example: `<img src="logo.png" alt="DockYard, Inc.">`
 - To make your SVGs accessible, reference the [accessibility section of the SVG guide](https://github.com/dockyard/styleguides/blob/master/ux-dev/svg.md#accessibility).
 
-### Button/Link Icons
+### Icon Buttons/Links
 
-A common UI pattern is to use icon-only interactive buttons/links to make the visual presentation easier to scan and save space. Don't use `aria-label` attributes on buttons or anchor tags that only contain an icon; instead you should provide hidden text within the button/anchor tag to ensure the markup is valid:
+A common UI pattern is to use icon-only interactive buttons/links to make the visual presentation easier to scan and save space. Because `aria-label` cannot be translated, and we avoid empty `<button>` or `<a>` tags, instead provide visually-hidden text within the button/anchor tag:
 
 ```hbs
 <button>
@@ -139,10 +166,6 @@ or
   </svg>
 </a>
 ```
-
-#### Rationale
-
-Both `<button>` and `<a>` are phrasing content, which should contain text to be considered valid. For more information, [reference MDN's Content Categories](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories).
 
 ### Focus States
 
@@ -189,6 +212,38 @@ For these reasons, it is best to still provide dedicated styles for focus states
 ![IBM Carbon primary and danger button focus examples](assets/ibm-carbon-button-focus-examples.jpg)
 
 Shown above is IBM Carbon's default, hover, and focus button styles. [View the full button design system](http://carbondesignsystem.com/components/button/code) and use keyboard navigation to view the focus state styles and animations.
+
+### Heights
+
+Hardcoding heights can introduce issues when users zoom the browser in and out, as enlarged text might overflow a container, causing visual disruption and also cause content to be illegible.
+
+#### Bad Approach
+
+Setting heights to hardcoded pixel values makes containers inflexible and unresponsive to browser zooming:
+
+```css
+.header {
+  height: 128px;
+}
+```
+
+#### Good Approach
+
+Use `min-height` to set a default container height, but allow the container to grow if text is enlarged or wraps to a new line due to browser zooming:
+
+```css
+.header {
+  min-height: 8rem;
+}
+```
+
+### Units
+
+Pixel units hardcoded dimensions into a UI, and can prevent users from updating their browser default root font size, or zooming the interface as desired.
+
+Use `rem` and `em` as the units of choice. They can be used for all dimensions, including media queries, without downsides.
+
+Note: avoid using "scaled" `rem`s, such as `html { font-size: 62.5%; }`. This causes inconsistencies across browsers in how `rem` is measured withinin media queries. Instead, just use default `rem` for all work.
 
 ### Custom form elements
 
@@ -377,7 +432,7 @@ High level tips for animation:
 - Be careful of too much motion
 - If there is continuous motion, include ways for users to stop and hide the animation ([W3C Criteria 2.2.2](https://www.w3.org/TR/WCAG20-TECHS/F16.html)), and strongly consider having the motion paused by default.
 - Avoid strobing and fast motion
-- Utilize the [`prefers-reduced-motion`](https://css-tricks.com/introduction-reduced-motion-media-query/) media query for users who have opted to reduce motion at an OS level. 
+- Utilize the [`prefers-reduced-motion`](https://css-tricks.com/introduction-reduced-motion-media-query/) media query for users who have opted to reduce motion at an OS level.
 
 
 ## ARIA

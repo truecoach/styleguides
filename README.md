@@ -18,7 +18,7 @@
 + [stylelint-config-narwin](https://github.com/dockyard/styleguides/blob/master/ux-dev/stylelint-config-narwin.md)
 + [Beginning a project](https://github.com/dockyard/styleguides/blob/master/ux-dev/beginning-a-project.md)
 + [Onboarding](https://github.com/dockyard/styleguides/blob/master/ux-dev/ux-developer-onboarding.md)
-+ [Accessibility/A11y](https://github.com/dockyard/styleguides/blob/master/ux-dev/accessibility-a11y.md)
++ [Accessibility](https://github.com/dockyard/styleguides/blob/master/ux-dev/accessibility-a11y.md)
 + [SEO](https://github.com/dockyard/styleguides/blob/master/ux-dev/seo.md)
 + [SVG](https://github.com/dockyard/styleguides/blob/master/ux-dev/svg.md)
 + [Pixel Perfection](https://github.com/dockyard/styleguides/blob/master/ux-dev/pixel-perfection.md)
