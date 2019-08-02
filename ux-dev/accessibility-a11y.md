@@ -8,16 +8,42 @@
 - [eBay's MIND Patterns](https://ebay.gitbooks.io/mindpatterns/)
 
 ## Discovery/Testing/Audits
-- VoiceOver (Mac only, activate with `⌘F5`)
+
+### Keyboard Testing
+Testing your work with a keyboard allows you to ensure that you have distinct focus states and that the tab order is logical.
+
+The following keyboard commands are helpful:
+- `tab` to navigate between interactive elements
+- `shift + tab` to navigate backwards
+- `enter` to activate links and buttons
+- `space` to activate checkboxes and buttons
+
+### Screenreader Testing
+All screenreaders will read markup in slightly different ways. Manually testing your work with a screenreader is important because it allows you to confirm that any items that need hidden text have it available, that your hidden text makes sense, and that any extraneous information is hidden from the screenreaders.
+
+Possible screenreaders to use to test your work include:
+ - VoiceOver (Mac only, activate with `⌘ + F5`)
 - [NVDA](https://www.nvaccess.org/) (cross-platform)
+
+For VoiceOver, the following keyboard commands are helpful:
+- `control + option + H` to navigate between headings
+- `control + option + X` to navigate between lists
+- `control + option + T` to navigate between tables
+- Arrow keys to navigate between radio buttons, select/dropdown options, sliders, and tab panels
+
+Jessica Jordan wrote a very helpful article [deep diving into testing with VoiceOver](http://uncaughtreferenceerror.com/a-crash-course-to-screenreaders-for-sighted-developers/).
+
+### Automated Testing
+- Lighthouse Accessibility Audit (in Chrome Dev Tools)
+- [Tota11y](http://khan.github.io/tota11y/) by Khan Academy
+- [WAVE Evaluation Tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh) or [WAVE by WebAIM](http://wave.webaim.org/)
+
+### Color Contrast Testing
 - Contrast ratio checkers
   - [http://accessible-colors.com/](http://accessible-colors.com/)
   - [http://jxnblk.com/colorable/demos/text/](http://jxnblk.com/colorable/demos/text/) (helpful for quickly finding a passing alternative by only adjusting the lightness value)
   - [Color Oracle](http://colororacle.org/) (also includes tests for color blindness)
   - [Contrast Analyser](https://developer.paciellogroup.com/resources/contrastanalyser/)
-- Chrome Accessibility Audit
-- [Tota11y](http://khan.github.io/tota11y/) by Khan Academy
-- [WAVE Evaluation Tool](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh) or [WAVE by WebAIM](http://wave.webaim.org/)
 
 ## Process
 
@@ -340,6 +366,19 @@ Alerts should not automatically disappear without receiving user input. This gua
 Upon dismissmal, the user's focus should return to the last focusable element. If the alert banner appears upon a change in route in the application (such as a confirmation/success alert on a new page after the user submits a form), focus should be brought to the first landmark in the new page after the alert banner is dimissed. It is important to verify that screenreaders successfully re-index the page's contents when the app has routing in place that does not refresh the browser window (a common "single-page-app" pattern in frontend frameworks).
 
 For more information, reference [WAI-ARIA's guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog) and [A11ycast's episode on alerts](https://www.youtube.com/watch?v=5lzAj1ahRSI).
+
+## Helpful Tips
+
+### Animation
+
+Animation can be used to help with wayfinding or to surprise and delight users. It's important to use animation in a responsible way as it can trigger [vestibular disorders](https://a11yproject.com/posts/understanding-vestibular-disorders/). For a deep dive, read Val Head's article on [animating responsibly](http://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity/).
+
+High level tips for animation:
+- Be careful of too much motion
+- If there is continuous motion, include ways for users to stop and hide the animation ([W3C Criteria 2.2.2](https://www.w3.org/TR/WCAG20-TECHS/F16.html)), and strongly consider having the motion paused by default.
+- Avoid strobing and fast motion
+- Utilize the [`prefers-reduced-motion`](https://css-tricks.com/introduction-reduced-motion-media-query/) media query for users who have opted to reduce motion at an OS level. 
+
 
 ## ARIA
 
