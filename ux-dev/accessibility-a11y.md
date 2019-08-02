@@ -13,10 +13,10 @@
 Testing your work with a keyboard allows you to ensure that you have distinct focus states and that the tab order is logical.
 
 The following keyboard commands are helpful:
-- `tab` to navigate between interactive elements
-- `shift + tab` to navigate backwards
-- `enter` to activate links and buttons
-- `space` to activate checkboxes and buttons
+- `Tab` to navigate between interactive elements
+- `Shift + Tab` to navigate backwards
+- `Enter` to activate links and buttons
+- `Space` to activate checkboxes and buttons
 
 ### Screenreader Testing
 All screenreaders will read markup in slightly different ways. Manually testing your work with a screenreader is important because it allows you to confirm that any items that need hidden text have it available, that your hidden text makes sense, and that any extraneous information is hidden from the screenreaders.
