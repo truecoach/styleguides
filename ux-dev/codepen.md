@@ -1,4 +1,4 @@
-# Codepen Best Practices
+# CodePen Best Practices
 
 ## Personal vs DockYard Account
 
