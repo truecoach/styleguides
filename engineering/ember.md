@@ -15,17 +15,19 @@
 
 ### Import what you use, do not use globals
 
-For Ember Data, we should import `Model`, `attr` and other ember-data modules
-from `ember-data`, and then destructure our desired modules.
 For Ember, we should only import those modules that will be used.
 Ember's imports can be found in the [JavaScript Module API RFC](https://github.com/emberjs/rfcs/blob/master/text/0176-javascript-module-api.md) and in the [Ember API docs](https://emberjs.com/api/ember/).
 
+For Ember Data, we should import `DS` from `ember-data`, and then destructure our desired modules.
+
 ```javascript
 // Good
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import DS from 'ember-data';
+
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
+
+const { Model, attr, belongsTo, hasMany } = DS;
 
 export default Model.extend({
   firstName: attr('string'),
@@ -60,9 +62,9 @@ export default DS.Model.extend({
 });
 ```
 
-### Don't use Ember's prototype extensions
+### Don't use Ember's Date prototype extensions
 
-Avoid Ember's `Date`, `Function` and `String` prototype extensions. Prefer the
+Avoid Ember's `Date` prototype extensions. Prefer the
 corresponding functions from the `Ember` object.
 
 Preferably turn the prototype extensions off by updating the
@@ -73,53 +75,32 @@ module.exports = function(environment) {
   var ENV = {
     EmberENV: {
       EXTEND_PROTOTYPES: {
-        Date: false,
-        Function: false,
-        String: false
+        Date: false
       }
     }
 ```
 
-```javascript
-// Good
-
-export default Model.extend({
-  hobbies: w('surfing skateboarding skydiving'),
-  fullName: computed('firstName', 'lastName', function() { ... }),
-  didError: on('error', function() { ... })
-});
-
-// Bad
-
-export default Model.extend({
-  hobbies: 'surfing skateboarding skydiving'.w(),
-  fullName: function() { ... }.property('firstName', 'lastName'),
-  didError: function() { ... }.on('error')
-});
-```
-
-### Use `get` and `set`
+### Use `this.get` and `this.set`
 
 Calling `someObj.get('prop')` couples your code to the fact that
-`someObj` is an Ember Object. It prevents you from passing in a
-POJO, which is sometimes preferable in testing. It also yields a more
-informative error when called with `null` or `undefined`.
+`someObj` is an Ember Object. This is informative for developers. 
+It prevents you from passing in a POJO, which is sometimes preferable in testing, but then we are ensure whether we're dealing with a POJO or Ember Object.
 
-Although when defining a method in a controller, component, etc. you
+When defining a method in a controller, component, etc. you
 can be fairly sure `this` is an Ember Object, for consistency with the
 above, we still use `get`/`set`.
 
 ```js
 // Good
+
+this.set('isSelected', true);
+this.get('isSelected');
+
+// Bad
 import { get, set } from '@ember/object';
 
 set(this, 'isSelected', true);
 get(this, 'isSelected');
-
-// Bad
-
-this.set('isSelected', true);
-this.get('isSelected');
 ```
 
 ### Use brace expansion
@@ -150,18 +131,18 @@ scan.
    Start with properties that configure the module's behavior. Examples are
    `tagName` and `classNames` on components and `queryParams` on controllers and
    routes. Followed by any other simple properties, like default values for properties.
+   
+2. __Lifecycle hooks__
 
-2. __Single line computed property macros__
+   The hooks should be chronologically ordered by the order they are invoked in.
+
+3. __Single line computed property macros__
 
    E.g. `alias`, `sort` and other macros. Start with service injections. If the
    module is a model, then `attr` properties should be first, followed by
    `belongsTo` and `hasMany`.
 
-3. __Multi line computed property functions__
-
-4. __Lifecycle hooks__
-
-   The hooks should be chronologically ordered by the order they are invoked in.
+4. __Multi line computed property functions__
 
 5. __Functions__
 
@@ -173,6 +154,16 @@ scan.
 export default Component.extend({
   // Plain properties
   tagName: 'span',
+  
+    // Lifecycle hooks
+  init() {
+    this._super(...arguments);
+  },
+  
+  didReceiveAttrs() {
+    this._super(...arguments);
+    // code
+  },
 
   // Single line CP
   post: alias('myPost'),
@@ -182,16 +173,11 @@ export default Component.extend({
     // code
   }),
 
-  // Lifecycle hooks
-  didReceiveAttrs() {
-    this._super(...arguments);
-    // code
-  },
-
   // Functions
   someFunction() {
     // code
   },
+  
 
   actions: {
     someAction() {
@@ -213,26 +199,25 @@ order. [Don't Don't Override Init](https://dockyard.com/blog/2015/10/19/2015-don
 
 Models should be grouped as follows:
 
-* Attributes
 * Associations
+* Attributes
 * Computed Properties
 
 Within each section, the attributes should be ordered alphabetically.
 
 ```js
 // Good
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 import { computed } from '@ember/object';
+const { Model, attr, hasMany } = DS;
 
 export default Model.extend({
+  // Associations
+  children: hasMany('child'),
+  
   // Attributes
   firstName: attr('string'),
   lastName: attr('string'),
-
-  // Associations
-  children: hasMany('child'),
 
   // Computed Properties
   fullName: computed('firstName', 'lastName', function() {
@@ -241,10 +226,9 @@ export default Model.extend({
 });
 
 // Bad
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
 import { computed } from '@ember/object';
+const { Model, attr, hasMany } = DS;
 
 export default Model.extend({
   children: hasMany('child'),
@@ -300,7 +284,7 @@ Use the hash helper to yield what you need instead.
 
 Contents of your each blocks should be a single line, use components
 when more than one line is needed. This will allow you to test the
-contents in isolation via unit tests, as your loop will likely contain
+contents in isolation via unit and integration tests, as your loop will likely contain
 more complex logic in this case.
 
 ```hbs
@@ -378,14 +362,14 @@ this.route('foo', { path: ':fooId' });
 [Example with broken
 links](https://ember-twiddle.com/0fea52795863b88214cb?numColumns=3).
 
-### Perform all async actions required for the page to load in route `model` hooks
+~~### Perform all async actions required for the page to load in route `model` hooks~~
 
-The model hooks are async hooks, and will wait for any promises returned
+~~The model hooks are async hooks, and will wait for any promises returned
 to resolve. An example of this would be models needed to fill a drop
 down in a form, you don't want to render this page without the options
 in the dropdown. A counter example would be comments on a page. The
 comments should be fetched along side the model, but should not block
-your page from loading if the required model is there.
+your page from loading if the required model is there.~~
 
 ## Ember Data
 
