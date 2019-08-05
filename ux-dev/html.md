@@ -1,5 +1,5 @@
 # HTML
-At DockYard, we use semantic HTML to ensure content is accessible and conveys meaning and relationships. We don’t add elements to our HTML solely for stylistic purposes. 
+At TrueCoach, we use semantic HTML to ensure content is accessible and conveys meaning and relationships. We don’t add elements to our HTML solely for stylistic purposes. 
 
 ## Attribute Order
 We follow the order below for listing attributes on an element:
@@ -45,15 +45,17 @@ Another example:
 ...leaves spaces before and after the list, but removes between items.
 
 ## Comments
-The most common HTML comment at DockYard is a `TODO`. `TODO`s are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work. 
+The most common Handlebars comment at TureCoach is a `TODO`. `TODO`s are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work.
 
-When writing a `TODO`, specify if it is for UXD or engineering. If it’s for engineering, make sure to communicate that `TODO` with an engineer via a tag in the PR, a ping in the project Slack, or both. 
+When writing a `TODO`, specify if it is for User Exerperience Development (UXD) or Engineering (ENG). If it’s for UXD, make sure to communicate that `TODO` with a UXD team member via a tag in the PR, a ping in the project Slack, or both.
+
+`TODO` comments should never be merged into a `feature`, `develop`, or `master` branch. 
 
 When you finish a `TODO`, delete the comment.
 
 Example:
 ```html
-{{! TODO ENG: Toggle class `is-active` on the button below when a user clicks on it }}
+{{! TODO ENG: Add `is-active` styling for the button below }}
 <button>Add Event</button>
 ```
 
