@@ -1,7 +1,9 @@
 # TrueCoach Styleguides
 
 
-*The TrueCoach styleguides are a work in progess*
+*The TrueCoach styleguides are a clone of [DockYard/styleguides](https://github.com/DockYard/styleguides).*
+
+*Sections which have yet to be upated are marked as [wip] or work in progess*
 
 
 ### Engineering
