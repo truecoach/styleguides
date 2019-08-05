@@ -106,42 +106,28 @@ else
   jumpOnCouch();
 ```
 
-+ Use explicit conditions when checking for non `null`, `undefined`, `true`,
-`false` values.
-
-```javascript
-const foo = 'foo';
-const arr = [1, 2, 3];
-
-// good
-if (arr.length > 0) {
-  return;
-}
-
-if (foo !== '') {
-  // code
-}
-
-// bad
-if (!arr.length) {
-  return;
-}
-
-if (!foo) {
-  return;
-}
-```
-
 + Use multiline format.
 
 ```javascript
 // good
 if (foo === 'bar') {
-  return;
+  this.greeting = 'hello';
 }
 
 // bad
+if (foo === 'bar') { this.greeting = 'hello'; }
+```
+
++ Exception: Use singleline format for conditional return statments.
+
+```javascript
+// good
 if (foo === 'bar') { return; }
+
+// good (also)
+if (foo === 'bar') {
+  this.greeting = 'hello';
+}
 ```
 
 + Avoid use of `switch` statements. It is too easy to make logic mistakes in the code and can increase the code complexity. The same logic can be managed better using [polymorphism](https://sourcemaking.com/refactoring/replace-conditional-with-polymorphism).
@@ -735,16 +721,10 @@ const name = 'Derek Zoolander';
 const age = 25;
 
 // good
-const foo = {
-  name,
-  age
-};
+const foo = { name, age };
 
 // bad
-const foo = {
-  name: name,
-  age: age
-};
+const foo = { name: name, age: age };
 ```
 
 + Group shorthand properties at the beginning.
@@ -795,7 +775,7 @@ const foo = {
 // good
 foo[propertyName];
 
-// do you even javascript
+// bad
 foo.propertyName;
 ```
 
@@ -894,22 +874,12 @@ const foo = {
 };
 ```
 
-+ Always use parentheses around arguments.
-
-```javascript
-// good
-[1, 2, 3].map((x) => x * x);
-
-// bad
-[1, 2, 3].map(x => x * x);
-```
-
 + If the function body fits on one line, feel free to omit the braces and use
 implicit return. Otherwise, add the braces and use a return statement.
 
 ```javascript
 // good
-[1, 2, 3].map((x) => x * x);
+[1, 2, 3].map(x => x * x);
 
 // good
 [1, 2, 3].map((x) => {
@@ -919,7 +889,9 @@ implicit return. Otherwise, add the braces and use a return statement.
 
 ## Function Arguments
 
-+ Never use `arguments` – use rest instead.
++ Never use `arguments` – use rest instead. 
+
+_Ember has many exceptions to this rule, since best practices pass `...arguments` to `_super()` methods._
 
 ```javascript
 // good
