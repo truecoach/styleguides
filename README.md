@@ -1,5 +1,9 @@
 # TrueCoach Styleguides
 
+
+*The TrueCoach styleguides are a work in progess*
+
+
 ### Engineering
 
 #### Work In Progress
