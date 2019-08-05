@@ -20,20 +20,31 @@ Prefer double quotes to single quotes
 ## Multiline expressions
 
 Multi-line expressions should specify attributes starting on the second
-line, and should be indented one deeper than the start of the component
-or helper name.
+line, and should be indented starting at the component or helper name.
 ```hbs
 {{! good }}
 {{x-thing
-    value=blah
-    options=options
-    label="thing"}}
+  value=blah
+  options=options
+  label="thing"}}
+  
+{{#x-thing
+   value=blah
+   options=options
+   label="thing"}}
+{{/x-thing}}
 
 {{! bad }}
 {{x-thing
   value=blah
   options=options
   label="thing"}}
+  
+{{#x-thing
+  value=blah
+  options=options
+  label="thing"}}
+{{/x-thing}}
 
 {{! this will be annoying to re-indent if you rename your component }}
 {{x-thing value=blah
