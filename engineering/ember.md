@@ -9,6 +9,7 @@
 * [Templates](#templates)
 * [Routing](#routing)
 * [Ember data](#ember-data)
+* [Fetching data](#fetching-data)
 
 
 ## General
@@ -371,7 +372,7 @@ in the dropdown. A counter example would be comments on a page. The
 comments should be fetched along side the model, but should not block
 your page from loading if the required model is there.~~
 
-## Ember Data
+## Ember data
 
 ### Be explicit with Ember Data attribute types
 
@@ -393,4 +394,117 @@ export default Model.extend({
   firstName: attr(),
   jerseyNumber: attr()
 });
+```
+
+## Fetching data
+
+### Fetch the main model(s) for a url in Route `model` hooks
+
+The model hooks are async hooks, and will wait for any promises returned
+to resolve. An example of this would be viewing a trainer on a trainer's show page. 
+A counter example would be viewing the clients for a trainer on a trainer's show page. The
+clients should be fetched along side the trainer model, but should not block
+your page from loading if the required model is there.
+
+```javascript
+// Good
+
+// routes/trainer/show.js
+export default Route.extend({
+  model({ trainer_id }) {
+    return this.store.findRecord('trainer', trainer_id);
+  }
+});
+
+// Bad
+
+// routes/trainer/show.js
+export default Route.extend({
+  model({ trainer_id }) {
+    return this.store.findRecord('trainer', trainer_id);
+  },
+  
+  afterModel(trainer) {
+    return trainer.get('clients'); // async hasMany association
+  }
+});
+```
+
+### Fetch supporting model(s) in Component
+By fetcing supporting models for a page outside of a Route's model hook, we enable support for skeleton screen loading. See why [Skeleton Screen Loading in Ember](https://emberway.io/skeleton-screen-loading-in-ember-js-2f7ac2384d63) can be useful. We have developed patterns that allow us to support empty state, loading state, and the resolved state of asynchronous fetches. 
+
+
+#### Fetch supporting model(s) in `init` hooks
+
+We can fetch supporting models for a page in the `init` hook of the component. This is convininent when we need to make a request via the ember-data `store`. Ex: `this.get('store').findAll('client');`
+
+```hbs
+{{!-- templates/trainer/show.hbs --}}
+{{clients-list trainer=trainer}}
+```
+
+```javascript
+// components/clients-list.js
+export default Component.extend({
+  store: service(),
+  
+  init() {
+    this._super(...arguments);
+
+    this.set('clients', []);
+    this.get('fetchClients').perform();
+  }
+  
+  isLoading: readOnly('fetch.isRunning'),
+  
+  fetchClients: task(function * (trainer) {
+    // fetch all clients for a trainer
+    const clients = yield this.get('store').query('client', { trainer_id: trainer.id });
+    this.set('clients', clients);
+  }),
+});
+```
+
+```hbs
+{{!-- template/components/clients-list.hbs --}}
+{{#each clients as |client|}}
+  {{!-- resolved state --}}
+  {{client-list-item client=client}}
+  
+{{else unless isLoading}}
+  {{!-- empty state --}} 
+ 
+{{else each (repeat 10)}}
+  {{!-- loading state --}}
+  {{client-list-item/skeleton}}
+{{/each}}
+```
+
+
+#### Fetch supporting model(s) using `await-promise` component
+
+We can fetch supporting models for a page in the `init` hook of the component. This is convininent when we need to make a request via an ember-data records' `belongsTo` and `hasMany` associations. Ex: `trainer.get('clients');`
+
+The `await-promise` component takes a promise as the first argument and yields the original `promise` and resolved value as the first and second argument respectively. If the promise is not yet resolved it will yield `null` as the second argument.
+
+```hbs
+{{!-- templates/trainer/show.hbs --}}
+{{clients-list trainer=trainer}}
+```
+
+```hbs
+{{!-- template/components/clients-list.hbs --}}
+{{#await-promise trainer.clients as |promise clients|}}
+  {{#each clients as |client|}}
+    {{!-- resolved state --}}
+    {{client-list-item client=client}}
+  
+  {{else unless (is-pending promise)}}
+    {{!-- empty state --}} 
+    
+  {{else each (repeat 10)}}
+    {{!-- loading state --}}
+    {{client-list-item/skeleton}}
+  {{/each}}
+{{/await-promise}}
 ```
