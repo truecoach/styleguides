@@ -6,24 +6,22 @@
 
 ### Engineering
 
-#### Work In Progress
-+ [Ember](https://github.com/truecoach/styleguides/blob/master/engineering/ember.md)
-+ [Handlebars](https://github.com/truecoach/styleguides/blob/master/engineering/handlebars.md)
-+ [JavaScript](https://github.com/truecoach/styleguides/blob/master/engineering/javascript.md)
-+ [Ruby](https://github.com/truecoach/styleguides/blob/master/engineering/ruby.md)
-+ [Ruby on Rails](https://github.com/truecoach/styleguides/blob/master/engineering/rails.md)
++ [Ember](https://github.com/truecoach/styleguides/blob/master/engineering/ember.md) **[wip]**
++ [Handlebars](https://github.com/truecoach/styleguides/blob/master/engineering/handlebars.md) **[wip]**
++ [JavaScript](https://github.com/truecoach/styleguides/blob/master/engineering/javascript.md) **[wip]**
++ [Ruby](https://github.com/truecoach/styleguides/blob/master/engineering/ruby.md) **[wip]**
++ [Ruby on Rails](https://github.com/truecoach/styleguides/blob/master/engineering/rails.md) **[wip]**
 
 ### UX Development
 
-#### Work In Progress
-+ [HTML](https://github.com/truecoach/styleguides/blob/master/ux-dev/html.md)
-+ [Class naming conventions](https://github.com/truecoach/styleguides/blob/master/ux-dev/class-naming-conventions.md)
-+ [CSS](https://github.com/truecoach/styleguides/blob/master/ux-dev/css.md)
-+ [PostCSS](https://github.com/truecoach/styleguides/blob/master/ux-dev/postcss.md)
-+ [stylelint-config-narwin](https://github.com/truecoach/styleguides/blob/master/ux-dev/stylelint-config-narwin.md)
-+ [Beginning a project](https://github.com/truecoach/styleguides/blob/master/ux-dev/beginning-a-project.md)
-+ [Onboarding](https://github.com/truecoach/styleguides/blob/master/ux-dev/ux-developer-onboarding.md)
-+ [Accessibility](https://github.com/truecoach/styleguides/blob/master/ux-dev/accessibility-a11y.md)
-+ [SEO](https://github.com/truecoach/styleguides/blob/master/ux-dev/seo.md)
-+ [SVG](https://github.com/truecoach/styleguides/blob/master/ux-dev/svg.md)
-+ [Pixel Perfection](https://github.com/truecoach/styleguides/blob/master/ux-dev/pixel-perfection.md)
++ [HTML](https://github.com/truecoach/styleguides/blob/master/ux-dev/html.md) **[wip]**
++ [Class naming conventions](https://github.com/truecoach/styleguides/blob/master/ux-dev/class-naming-conventions.md) **[wip]**
++ [CSS](https://github.com/truecoach/styleguides/blob/master/ux-dev/css.md) **[wip]**
++ [PostCSS](https://github.com/truecoach/styleguides/blob/master/ux-dev/postcss.md) **[wip]**
++ [stylelint-config-narwin](https://github.com/truecoach/styleguides/blob/master/ux-dev/stylelint-config-narwin.md) **[wip]**
++ [Beginning a project](https://github.com/truecoach/styleguides/blob/master/ux-dev/beginning-a-project.md) **[wip]**
++ [Onboarding](https://github.com/truecoach/styleguides/blob/master/ux-dev/ux-developer-onboarding.md) **[wip]**
++ [Accessibility](https://github.com/truecoach/styleguides/blob/master/ux-dev/accessibility-a11y.md) **[wip]**
++ [SEO](https://github.com/truecoach/styleguides/blob/master/ux-dev/seo.md) **[wip]**
++ [SVG](https://github.com/truecoach/styleguides/blob/master/ux-dev/svg.md) **[wip]**
++ [Pixel Perfection](https://github.com/truecoach/styleguides/blob/master/ux-dev/pixel-perfection.md) **[wip]**
