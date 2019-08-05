@@ -6,7 +6,8 @@
 
 ### Engineering
 
-+ [Ember](https://github.com/truecoach/styleguides/blob/master/engineering/ember.md) **[wip]**
++ [Ember](https://github.com/truecoach/styleguides/blob/master/engineering/ember.md)
+
 + [Handlebars](https://github.com/truecoach/styleguides/blob/master/engineering/handlebars.md) **[wip]**
 + [JavaScript](https://github.com/truecoach/styleguides/blob/master/engineering/javascript.md) **[wip]**
 + [Ruby](https://github.com/truecoach/styleguides/blob/master/engineering/ruby.md) **[wip]**
