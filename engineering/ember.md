@@ -254,6 +254,8 @@ export default Model.extend({
 
 ## Controllers
 
+Controllers should be used when defining query params. For all other use-cases reach for components. 
+
 ### Define query params first
 
 For consistency and ease of discover, list your query params first in
@@ -268,6 +270,21 @@ components
 ```javascript
 export default Controller.extend({
   user: alias('model')
+});
+```
+
+If your Route does not require a Controller, you can still name your model `user` in the `setupController` hook of the Route. 
+
+```javascript
+export default Route.extend({
+  model() {
+    // return promise;
+  },
+  
+  setupController(controller, model) {
+    this._super(...arguments);
+    controller.set('user', model);
+  }
 });
 ```
 
