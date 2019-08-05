@@ -31,7 +31,9 @@ line, and should be indented starting at the component or helper name.
 {{#x-thing
    value=blah
    options=options
-   label="thing"}}
+   label="thing"
+   as |thing|
+}}
 {{/x-thing}}
 
 {{! bad }}
@@ -43,7 +45,9 @@ line, and should be indented starting at the component or helper name.
 {{#x-thing
   value=blah
   options=options
-  label="thing"}}
+  label="thing"
+  as |thing|
+}}
 {{/x-thing}}
 
 {{! this will be annoying to re-indent if you rename your component }}
