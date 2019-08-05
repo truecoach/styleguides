@@ -116,7 +116,7 @@ In the next example, we only remove space from inside the individual list items:
 ## Comments
 The most common Handlebars comment at TureCoach is a `TODO`. `TODO`s are used to track items that need to be completed at a later date (such as incomplete placeholder links, images, and copy) or when engineering is needed to complete the work.
 
-When writing a `TODO`, specify if it is for User Exerperience Design (UXD) or engineering (ENG). If it’s for UXD, make sure to communicate that `TODO` with a UXD team member via a tag in the PR, a ping in the project Slack, or both.
+When writing a `TODO`, specify if it is for User Exerperience Development (UXD) or Engineering (ENG). If it’s for UXD, make sure to communicate that `TODO` with a UXD team member via a tag in the PR, a ping in the project Slack, or both.
 
 `TODO` comments should never be merged into a `feature`, `develop`, or `master` branch. 
 
