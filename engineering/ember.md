@@ -475,7 +475,7 @@ export default Component.extend({
   
   fetchClients: task(function * (trainer) {
     // fetch all clients for a trainer
-    const clients = yield this.get('store').query('client', { trainer_id: trainer.id });
+    let clients = yield this.get('store').query('client', { trainer_id: trainer.id });
     this.set('clients', clients);
   }),
 });
