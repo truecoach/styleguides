@@ -499,9 +499,9 @@ export default Component.extend({
 
 #### Fetch supporting model(s) using `await-promise` component
 
-We can fetch supporting models for a page in the `init` hook of the component. This is convininent when we need to make a request via an ember-data records' `belongsTo` and `hasMany` associations. Ex: `trainer.get('clients');`
+We can fetch supporting models for a page in the component's template. This is convininent when we need to make a request via an ember-data records' `belongsTo` or `hasMany` association. Ex: `trainer.get('clients');`
 
-The `await-promise` component takes a promise as the first argument and yields the original `promise` and resolved value as the first and second argument respectively. If the promise is not yet resolved it will yield `null` as the second argument.
+The `await-promise` component takes a promise as the first argument. It yields the original `promise` and resolved value as the first and second argument respectively. If the promise is not yet resolved it will yield `null` as the second argument.
 
 ```hbs
 {{!-- templates/trainer/show.hbs --}}
