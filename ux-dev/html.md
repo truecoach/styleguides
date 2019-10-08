@@ -1,5 +1,5 @@
 # HTML
-At TrueCoach, we use semantic HTML to ensure content is accessible and conveys meaning and relationships. We don’t add elements to our HTML solely for stylistic purposes. 
+At TrueCoach, we use semantic HTML to ensure content is accessible and conveys meaning and relationships. We don’t add elements to our HTML solely for stylistic or testing purposes. 
 
 ## Attribute Order
 We follow the order below for listing attributes on an element:
