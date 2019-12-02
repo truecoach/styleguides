@@ -20,47 +20,47 @@ For more on attribute selectors, read [CSS-Tricks' "The Skinny on Attribute Sele
 
 ## BEM Naming Conventions
 
-Use `.block__element--modifier` syntax for naming classes. Refer to [CSS Wizardry’s "MindBEMding" blog post](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) and the [BEM website](https://bem.info/method/definitions/).
+Use `.block-element--modifier` syntax for naming classes. Refer to [CSS Wizardry’s "MindBEMding" blog post](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) and the [BEM website](https://bem.info/method/definitions/).
 
 ### Blocks
 
-A **block** is a distinct component. Its name can contain single-hyphens ('-') for compound words. The following are all valid blocks:
+A **block** is a distinct component. Its name can be camelCased for compound words. The following are all valid blocks:
 
 ```css
 .card {}
-.twitter-embed {}
-.nav-item {}
-.first-world-problem {}
+.twitterEmbed {}
+.navItem {}
+.firstWorldProblem {}
 ```
 
 ### Elements
 
-An **element** is a child element inside the block. It's written with a double-underscore between the block and the element: `block__element`. Here are some examples of valid element selectors:
+An **element** is a child element inside the block. It's written with a single-hyphen between the block and the element: `block-element`. Here are some examples of valid element selectors:
 
 ```css
-.card__title {}
-.twitter-embed__username {}
-.nav-item__link {}
+.card-title {}
+.twitterEmbed-username {}
+.navItem-link {}
 ```
 
 You may occasionally need a grandchild element, but not frequently. Great-grandchildren should be treated as a "[code smell](https://en.wikipedia.org/wiki/Code_smell)" that triggers a refactor.
 
 ```css
 /* Maybe refactor */
-.nav-item__link__icon {}
+.navItem-link-icon {}
 
 /* Almost always refactor */
-.card__title__author__role {}
+.card-title-author-role {}
 ```
 
 ### Modifiers
 
-A **modifier** is a style variation for a block or element. Attach a modifier to the end of a block or element with a double-hyphen (`block--modifier`, `block__element--modifier`).
+A **modifier** is a style variation for a block or element. Attach a modifier to the end of a block or element with a double-hyphen (`block--modifier`, `block-element--modifier`).
 
 ```css
 .card--shadow {}
-.twitter-embed--featured {}
-.nav-item__link--inverted {}
+.twitterEmbed--featured {}
+.navItem-link--inverted {}
 ```
 
 While you might occasionally chain BEM elements to create grandchildren, [avoid chaining modifiers](http://reefpoints.dockyard.com/2015/01/05/avoid-chaining-modifiers.html). Here are some examples of multiple modifier solutions:
@@ -77,20 +77,20 @@ While you might occasionally chain BEM elements to create grandchildren, [avoid 
 .card--prominent {}
 
 /* This is good too, but be aware of the increased specificity. */
-.card--prominent .card__title--highlighted {}
+.card--prominent .card-title--highlighted {}
 ```
 
 Avoid creating elements as children of modified blocks. Instead, use BEM mixes ([1](https://en.bem.info/methodology/key-concepts/#mix), [2](https://en.bem.info/forum/4/))
 
 ```css
 /* Instead of this: */
-.card--prominent__title {}
+.card--prominent-title {}
 
 /* Do this: */
-.card__title--prominent {}
+.card-title--prominent {}
 
 /* Or this: */
-.card--prominent .card__title {}
+.card--prominent .card-title {}
 ```
 
 #### DRY CSS, Wet HTML
@@ -137,27 +137,27 @@ Try this:
 
 ```css
 /* button.css */
-.nav-menu .button {}
+.navMenu .button {}
 ```
 
-for when a `.button` is in a `.nav-menu`. Instead, try writing classes like this:
+for when a `.button` is in a `.navMenu`. Instead, try writing classes like this:
 
 ```css
-/* nav-menu.css */
-.nav-menu {}
-.nav-menu__toggle {}
+/* navMenu.css */
+.navMenu {}
+.navMenu-toggle {}
 
 /* button.css */
 .button {}
 ```
 
 ```html
-<nav class="nav-menu">
-  <button class="nav-menu__toggle button"></button>
+<nav class="navMenu">
+  <button class="navMenu-toggle button"></button>
 </nav>
 ```
 
-This will both (a) reduce specificity, and (b) keep all instances of the class name `.nav-menu` in the same place.
+This will both (a) reduce specificity, and (b) keep all instances of the class name `.navMenu` in the same place.
 
 ## SMACSS Conventions
 
@@ -169,7 +169,7 @@ The [modifier classes described above](#modifiers) are for style variations that
 
 #### `.is-*`
 
-An `.is-*` state class communicates a change on the element itself, for example: `.nav__link.is-active` when a nav link is highlighted to show that it is the current page.
+An `.is-*` state class communicates a change on the element itself, for example: `.nav-link.is-active` when a nav link is highlighted to show that it is the current page.
 
 #### `.has-*`
 
@@ -180,14 +180,14 @@ A `.has-*` state class communicates a change having to do with an element's chil
 Typically, a state class should not be styled globally: a modal with `.is-open` requires different styles from an accordion section with `.is-open`; a form with `.has-error` needs different styles from a baseball player's stat-sheet with `.has-error`.
 
 ```scss
-.nav__link {
+.nav-link {
   border-bottom: 3px solid transparent;
 
   &.is-active {
     border-bottom-color: currentColor;
   }
 }
-.field-group {
+.fieldGroup {
   &.has-error {
     outline: 2px solid red;
   }
@@ -227,7 +227,7 @@ Avoid this:
   font-size: 12px;
   margin-bottom: 16px;
 
-  .blog-post & {
+  .blogPost & {
     margin-bottom: 12px;
   }
 }
@@ -245,8 +245,8 @@ Prefer this:
   margin-bottom: 16px;
 }
 
-/* A headline element inside a blog-post block */
-.blog-post__headline {
+/* A headline element inside a blogPost block */
+.blogPost-headline {
   margin-bottom: 12px;
 }
 ```
@@ -256,8 +256,8 @@ Accompanying HTML:
 ```html
 <h4 class="headline t-headline">Lorem ipsum</h4>
 <!-- ... -->
-<article class="blog-post">
-  <h4 class="blog-post__headline t-headline">Dolor sit amet</h4>
+<article class="blogPost">
+  <h4 class="blogPost-headline t-headline">Dolor sit amet</h4>
 </div>
 ```
 
@@ -268,15 +268,15 @@ Accompanying HTML:
 ```html
 <div class="socials">
   <a class="social social--github" href="https://github.com/dockyard">
-    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
     <span class="t-hidden">GitHub</span>
   </a>
   <a class="social social--twitter" href="https://twitter.com/dockyard">
-    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
     <span class="t-hidden">Twitter</span>
   </a>
   <a class="social social--linkedin" href="https://www.linkedin.com/company/dockyard">
-    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="..."/></svg>
     <span class="t-hidden">LinkedIn</span>
   </a>
 </div>
@@ -291,5 +291,5 @@ called `.socials`, each item is a `.social` and if you need specific
 style on the Twitter icon, it would be called `.social--twitter`.
 
 We would rather use its singular form (`.social`) than call each item
-`.socials__social`. This is sometimes referred to as the [Plural Parent
+`.socials-social`. This is sometimes referred to as the [Plural Parent
 Pattern](http://codepen.io/jlong/pen/IzpEJ/).
