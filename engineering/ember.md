@@ -164,7 +164,7 @@ import { inject as service } from '@ember/service';
 
 export default Component.extend({
   // Injected Services
-  store: service(),
+  @service: store,
 
   // Module properties
   tagName: 'span',
@@ -196,11 +196,9 @@ export default Component.extend({
     // code
   },
 
-
-  actions: {
-    someAction() {
-      // Code
-    }
+  @action
+  someAction() {
+    // Code
   }
 });
 ```
