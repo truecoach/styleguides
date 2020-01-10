@@ -317,7 +317,7 @@ more complex logic in this case.
 ```hbs
 {{! Good }}
 {{#each posts as |post|}}
-  {{post-summary post=post}}
+  <PostSummary @post={{post}} />
 {{/each}}
 
 {{! Bad }}
@@ -325,25 +325,24 @@ more complex logic in this case.
   <article>
     <img src={{post.image}} />
     <h1>{{post.title}}</h2>
-    <p>{{post.summar}}</p>
+    <p>{{post.summary}}</p>
   </article>
 {{/each}}
 ```
 
-### Always use the `action` keyword to pass actions.
+### Use angle bracket components
 
-Although it's not strictly needed to use the `action` keyword to pass on
-actions that have already been passed with the `action` keyword once,
-it's recommended to always use the `action` keyword when passing an action
-to another component. This will prevent some potential bugs that can happen
-and also make it more clear that you are passing an action.
+Although it's not strictly needed to use Angle Bracket Components,
+Angle Brackets are a feature of Ember since 3.4 that does not change a
+component's behavior.
 
 ```hbs
 {{! Good }}
-{{edit-post post=post deletePost=(action deletePost)}}
+<EditPost @post={{@post}} @deletePost={{this.deletePost}} />
 
 {{! Bad }}
-{{edit-post post=post deletePost=deletePost}}
+{{edit-post post=post deletePost=(action deletePost)}}
+
 ```
 
 ### Ordering static attributes, dynamic attributes, and action helpers for HTML elements
@@ -457,7 +456,7 @@ We can fetch supporting models for a page in the `init` hook of the component. T
 
 ```hbs
 {{!-- templates/trainer/show.hbs --}}
-{{clients-list trainer=trainer}}
+<ClientList @trainer={{this.trainer}} />
 ```
 
 ```javascript
@@ -486,14 +485,14 @@ export default Component.extend({
 {{!-- template/components/clients-list.hbs --}}
 {{#each clients as |client|}}
   {{!-- resolved state --}}
-  {{client-list-item client=client}}
   
+  <ClientListItem @client={{client}} />
 {{else unless isLoading}}
   {{!-- empty state --}} 
  
 {{else each (repeat 10)}}
   {{!-- loading state --}}
-  {{client-list-item/skeleton}}
+  <ClientListItem::Skeleton />
 {{/each}}
 ```
 
@@ -506,22 +505,22 @@ The `await-promise` component takes a promise as the first argument and yields t
 
 ```hbs
 {{!-- templates/trainer/show.hbs --}}
-{{clients-list trainer=trainer}}
+<ClientsList @trainer={{this.trainer}} />
 ```
 
 ```hbs
 {{!-- template/components/clients-list.hbs --}}
-{{#await-promise trainer.clients as |promise clients|}}
+<AwaitPromise @trainer.clients as |promise clients|>
   {{#each clients as |client|}}
     {{!-- resolved state --}}
-    {{client-list-item client=client}}
-  
+    <ClientListItem @client={{client}} />
+
   {{else unless (is-pending promise)}}
-    {{!-- empty state --}} 
-    
+    {{!-- empty state --}}
+
   {{else each (repeat 10)}}
     {{!-- loading state --}}
-    {{client-list-item/skeleton}}
+    <ClientListItem::Skeleton />
   {{/each}}
-{{/await-promise}}
+</AwaitPromise>
 ```
