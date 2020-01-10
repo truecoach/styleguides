@@ -1,14 +1,12 @@
 <!--
-Thank you for contributing!
+Don't forget to include:
+  - Full link to PT story when possible
+  - Bracketed PT id link in a commit, e.g. `[#12345]` (for automation)
+  - Contextful, atomic commits
+  - Thorough commit messages: intent and reasoning for the change is in the commit message at least, may be duplicated in the PR description.
 
 Here are a few things that will increase the chance that your pull request will get accepted:
- - Write tests, preferably in a test driven style.
+ - Write tests.
  - Add documentation for the changes you made.
- - Follow our styleguide: https://github.com/dockyard/styleguides
+ - Follow our styleguide: https://github.com/truecoach/styleguides
 -->
-
-<!-- If this pull request addresses an issue please provide the issue number here -->
-Closes # .
-
-## Changes proposed in this pull request
-<!-- Please describe here what this pull request changes -->
