@@ -131,29 +131,33 @@ scan.
 
    Define services that configure the module's behavior.
 
-2. __Plain properties__
+2. __Module properties__
 
-   Define properties that configure the module's behavior. Examples are
-   `tagName` and `classNames` on components and `queryParams` on controllers and
-   routes. Followed by any other simple properties, like default values for properties.
-   
-3. __Lifecycle hooks__
+    Examples are `tagName` and `classNames` on components and
+    `queryParams` on controllers and routes.
+
+3. __Plain properties__
+
+   Define properties that configure the module's behavior. Simple
+   properties, like default values for properties.
+
+4. __Lifecycle hooks__
 
    The hooks should be chronologically ordered by the order they are invoked in.
 
-4. __Single line computed property macros__
+5. __Single line computed property macros__
 
    E.g. `alias`, `sort` and other macros. Start with service injections. If the
    module is a model, then `attr` properties should be first, followed by
    `belongsTo` and `hasMany`.
 
-5. __Multi line computed property functions__
+6. __Multi line computed property functions__
 
-6. __Functions__
+7. __Functions__
 
    Public functions first, internal functions after.
 
-7. __Actions__
+8. __Actions__
 
 ```js
 import { inject as service } from '@ember/service';
@@ -161,15 +165,19 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   // Injected Services
   store: service(),
-  
-  // Plain properties
+
+  // Module properties
   tagName: 'span',
-  
+
+  // Plain properties
+  model: null,
+  isActive: false,
+
   // Lifecycle hooks
   init() {
     this._super(...arguments);
   },
-  
+
   didReceiveAttrs() {
     this._super(...arguments);
     // code
@@ -187,7 +195,7 @@ export default Component.extend({
   someFunction() {
     // code
   },
-  
+
 
   actions: {
     someAction() {
@@ -224,7 +232,7 @@ const { Model, attr, hasMany } = DS;
 export default Model.extend({
   // Associations
   children: hasMany('child'),
-  
+
   // Attributes
   firstName: attr('string'),
   lastName: attr('string'),
@@ -254,7 +262,7 @@ export default Model.extend({
 
 ## Controllers
 
-Controllers should be used when defining query params. For all other use-cases reach for components. 
+Controllers should be used when defining query params. For all other use-cases reach for components.
 
 ### Define query params first
 
@@ -273,14 +281,14 @@ export default Controller.extend({
 });
 ```
 
-If your Route does not require a Controller, you can still name your model `user` in the `setupController` hook of the Route. 
+If your Route does not require a Controller, you can still name your model `user` in the `setupController` hook of the Route.
 
 ```javascript
 export default Route.extend({
   model() {
     // return promise;
   },
-  
+
   setupController(controller, model) {
     this._super(...arguments);
     controller.set('user', model);
@@ -418,7 +426,7 @@ export default Model.extend({
 ### Fetch the main model(s) for a url in Route `model` hooks
 
 The model hooks are async hooks, and will wait for any promises returned
-to resolve. An example of this would be viewing a trainer on a trainer's show page. 
+to resolve. An example of this would be viewing a trainer on a trainer's show page.
 A counter example would be viewing the clients for a trainer on a trainer's show page. The
 clients should be fetched along side the trainer model, but should not block
 your page from loading if the required model is there.
@@ -440,7 +448,7 @@ export default Route.extend({
   model({ trainer_id }) {
     return this.store.findRecord('trainer', trainer_id);
   },
-  
+
   afterModel(trainer) {
     return trainer.get('clients'); // async hasMany association
   }
@@ -448,7 +456,7 @@ export default Route.extend({
 ```
 
 ### Fetch supporting model(s) in Component
-By fetcing supporting models for a page outside of a Route's model hook, we enable support for skeleton screen loading. See why [Skeleton Screen Loading in Ember](https://emberway.io/skeleton-screen-loading-in-ember-js-2f7ac2384d63) can be useful. We have developed patterns that allow us to support empty state, loading state, and the resolved state of asynchronous fetches. 
+By fetcing supporting models for a page outside of a Route's model hook, we enable support for skeleton screen loading. See why [Skeleton Screen Loading in Ember](https://emberway.io/skeleton-screen-loading-in-ember-js-2f7ac2384d63) can be useful. We have developed patterns that allow us to support empty state, loading state, and the resolved state of asynchronous fetches.
 
 
 #### Fetch supporting model(s) in `init` hooks
@@ -464,16 +472,16 @@ We can fetch supporting models for a page in the `init` hook of the component. T
 // components/clients-list.js
 export default Component.extend({
   store: service(),
-  
+
   init() {
     this._super(...arguments);
 
     this.set('clients', []);
     this.get('fetchClients').perform();
   }
-  
+
   isLoading: readOnly('fetch.isRunning'),
-  
+
   fetchClients: task(function * (trainer) {
     // fetch all clients for a trainer
     const clients = yield this.get('store').query('client', { trainer_id: trainer.id });
@@ -487,10 +495,10 @@ export default Component.extend({
 {{#each clients as |client|}}
   {{!-- resolved state --}}
   {{client-list-item client=client}}
-  
+
 {{else unless isLoading}}
-  {{!-- empty state --}} 
- 
+  {{!-- empty state --}}
+
 {{else each (repeat 10)}}
   {{!-- loading state --}}
   {{client-list-item/skeleton}}
@@ -515,10 +523,10 @@ The `await-promise` component takes a promise as the first argument and yields t
   {{#each clients as |client|}}
     {{!-- resolved state --}}
     {{client-list-item client=client}}
-  
+
   {{else unless (is-pending promise)}}
-    {{!-- empty state --}} 
-    
+    {{!-- empty state --}}
+
   {{else each (repeat 10)}}
     {{!-- loading state --}}
     {{client-list-item/skeleton}}
