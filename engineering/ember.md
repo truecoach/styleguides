@@ -167,7 +167,7 @@ export default Component.extend({
   @service: store,
 
   // Module properties
-  tagName: 'span',
+  tagName: '',
 
   // Plain properties
   model: null,
@@ -176,11 +176,6 @@ export default Component.extend({
   // Lifecycle hooks
   init() {
     this._super(...arguments);
-  },
-
-  didReceiveAttrs() {
-    this._super(...arguments);
-    // code
   },
 
   // Single line CP
