@@ -77,28 +77,26 @@ module.exports = function(environment) {
       }
     }
 ```
+### Use `set`
 
-### Use `this.get` and `this.set`
+Calling `someObj.set('prop', value)` couples your code to the fact that
+`someObj` is an Ember Object. It prevents you from passing in a
+POJO, which is sometimes preferable in testing. It also yields a more
+informative error when called with `null` or `undefined`.
 
-Calling `someObj.get('prop')` couples your code to the fact that
-`someObj` is an Ember Object. This is informative for developers. 
-It prevents you from passing in a POJO, which is sometimes preferable in testing, but then we are ensure whether we're dealing with a POJO or Ember Object.
-
-When defining a method in a controller, component, etc. you
+Although when defining a method in a controller, component, etc. you
 can be fairly sure `this` is an Ember Object, for consistency with the
-above, we still use `get`/`set`.
+above, we still use `set`.
 
 ```js
 // Good
-
-this.set('isSelected', true);
-this.get('isSelected');
-
-// Bad
-import { get, set } from '@ember/object';
+import { set } from '@ember/object';
 
 set(this, 'isSelected', true);
-get(this, 'isSelected');
+
+// Bad
+
+this.set('isSelected', true);
 ```
 
 ### Use brace expansion
