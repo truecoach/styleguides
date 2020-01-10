@@ -21,6 +21,9 @@ Prefer double quotes to single quotes
 
 Multi-line expressions should specify attributes starting on the second
 line, and should be indented starting at the component or helper name.
+
+Positional params should be specified on the same line as the component name.
+
 ```hbs
 {{! good }}
 {{x-thing
@@ -36,6 +39,11 @@ line, and should be indented starting at the component or helper name.
 }}
 {{/x-thing}}
 
+{{x-thing param1 param2
+  value=blah
+  options=options
+  label="thing"}}
+
 {{! bad }}
 {{x-thing
   value=blah
@@ -49,6 +57,13 @@ line, and should be indented starting at the component or helper name.
   as |thing|
 }}
 {{/x-thing}}
+
+{{x-thing 
+  param1 
+  param2
+  value=blah
+  options=options
+  label="thing"}}
 
 {{! this will be annoying to re-indent if you rename your component }}
 {{x-thing value=blah
