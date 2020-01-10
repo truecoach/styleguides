@@ -313,20 +313,23 @@ console.log(a); // ReferenceError
 console.log(b); // ReferenceError
 ```
 
-+ Group your `const`s and then group your `let`s.
++ Group your `const`s and then group your `let`s. 
++ Put non-assigning declarations before assigning declarations.
++ Alpha-sort by variable names.
 
 ```javascript
 // good
 const isTrue = true;
-const bar = 123;
-let foo;
-let arr = [1, 2, 3];
+const value = 123;
+let bar, foo;
+let numbers = [1, 2, 3];
 
 // bad
+let bar;
 let foo;
-const bar = 123;
-let arr = [1, 2, 3];
 const isTrue = true;
+let numbers = [1, 2, 3];
+const value = 123;
 ```
 
 + Put all non-assigning declarations on one line.
@@ -362,8 +365,8 @@ function mutate(thing) {
 
 // good
 function bar() {
-  const itemToPush = 'foo';
   const coolList = [1, 2, 3, 4, 5, 6];
+  const itemToPush = 'foo';  
   let updatedList = coolList.filter((item) => {
     return (item % 2) === 0;
   });
@@ -464,14 +467,12 @@ const foo = {} ;
 
 ```javascript
 // good
-function foo(bar) {
-}
+function foo(bar) {}
 
 foo(1);
 
 // bad
-function foo (bar) {
-}
+function foo (bar) {}
 
 foo (1);
 ```
