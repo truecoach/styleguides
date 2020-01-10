@@ -288,11 +288,6 @@ export default Route.extend({
 
 ## Templates
 
-### Do not use partials
-
-Always use components. Partials share scope with the parent view, use
-components will provide a consistent scope.
-
 ### Don't yield `this`
 
 Use the hash helper to yield what you need instead.
