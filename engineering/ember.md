@@ -217,7 +217,6 @@ Within each section, the attributes should be ordered alphabetically.
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { computed } from '@ember/object';
-import { computed } from '@ember/object';
 
 export default Model.extend({
   // Associations
