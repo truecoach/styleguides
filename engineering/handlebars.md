@@ -122,7 +122,7 @@ The most common Handlebars comment at TureCoach is a `TODO`. `TODO`s are used to
 
 When writing a `TODO`, specify if it is for User Exerperience Development (UXD) or Engineering (ENG). If it’s for UXD, make sure to communicate that `TODO` with a UXD team member via a tag in the PR, a ping in the project Slack, or both.
 
-`TODO` comments should never be merged into a `feature`, `develop`, or `master` branch. 
+`TODO` comments should never be merged into a `develop`, or `master` branch. 
 
 When you finish a `TODO`, delete the comment.
 
@@ -135,6 +135,6 @@ Example:
 ## Resources
 * [The Art of Comments](https://css-tricks.com/the-art-of-comments/)
 * [Clear communication through HTML and GitHub](https://dockyard.com/blog/2015/09/02/clear-communication-through-html)
-* [Handlebars Whitespace Control](https://handlebarsjs.com/expressions.html#whitespace-control)
+* [Handlebars Whitespace Control](https://handlebarsjs.com/guide/expressions.html#whitespace-control)
 * [Ember White Space Playground](https://emberjs.jsbin.com/nubup/1/edit?html,css,js,output)
 * [VS Code TODO Highlighter](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
