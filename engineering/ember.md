@@ -300,29 +300,6 @@ Use the hash helper to yield what you need instead.
 {{yield this}}
 ```
 
-### Use components in `{{#each}}` blocks
-
-Contents of your each blocks should be a single line, use components
-when more than one line is needed. This will allow you to test the
-contents in isolation via unit and integration tests, as your loop will likely contain
-more complex logic in this case.
-
-```hbs
-{{! Good }}
-{{#each posts as |post|}}
-  {{post-summary post=post}}
-{{/each}}
-
-{{! Bad }}
-{{#each posts as |post|}}
-  <article>
-    <img src={{post.image}} />
-    <h1>{{post.title}}</h2>
-    <p>{{post.summar}}</p>
-  </article>
-{{/each}}
-```
-
 ### Always use the `action` keyword to pass actions.
 
 Although it's not strictly needed to use the `action` keyword to pass on
