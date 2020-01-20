@@ -11,8 +11,7 @@
 + [Ember](https://github.com/truecoach/styleguides/blob/master/engineering/ember.md)
 + [Handlebars](https://github.com/truecoach/styleguides/blob/master/engineering/handlebars.md)
 + [JavaScript](https://github.com/truecoach/styleguides/blob/master/engineering/javascript.md)
-+ [Ruby](https://github.com/truecoach/styleguides/blob/master/engineering/ruby.md) **[wip]**
-+ [Ruby on Rails](https://github.com/truecoach/styleguides/blob/master/engineering/rails.md) **[wip]**
++ [Ruby](https://github.com/truecoach/styleguides/blob/master/engineering/ruby.md)
 
 ### UX Development
 
