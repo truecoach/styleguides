@@ -339,27 +339,25 @@ and also make it more clear that you are passing an action.
 {{edit-post post=post deletePost=deletePost}}
 ```
 
-### Ordering static attributes, dynamic attributes, and action helpers for HTML elements
+### Ordering attributes, arguments, and modfiers for Components and HTML elements
 
 Ultimately, we should make it easier for other developers to read templates.
-Ordering attributes and then action helpers will provide clarity.
+Ordering arguments, then attributes and then modifiers will provide clarity.
 
 ```hbs
 {{! Bad }}
 
-<button disabled={{isDisabled}} data-auto-id="click-me" {{action (action click)}} name="wonderful-button" class="wonderful-button">Click me</button>
+<Message::Avatar class="{{if @isCurrentUser "current-user"}}" {{on "click" this.changeAvatar}} @isActive={{@userIsActive}} />
 ```
 
 ```hbs
 {{! Good }}
 
-<button class="wonderful-button"
-  data-auto-id="click-me"
-  name="wonderful-button"
-  disabled={{isDisabled}}
-  onclick={{action click}}>
-    Click me
-</button>
+<Message::Avatar
+  @isActive={{@userIsActive}}
+  class="{{if @isCurrentUser "current-user"}}"
+  {{on "click" this.changeAvatar}}
+/>
 ```
 
 ## Routing
