@@ -735,8 +735,8 @@ const age = 25;
 
 // good
 const foo = {
-  name,
   age,
+  name,  
   currentShow: 'Derelicte',
   enemy: 'Hansel'
 };
@@ -747,6 +747,29 @@ const foo = {
   name,
   enemy: 'Hansel',
   age
+};
+```
+
++ Alpha-sort grouped properties.
+
+```javascript
+const name = 'Derek Zoolander';
+const age = 25;
+
+// good
+const foo = {
+  age,
+  name,  
+  currentShow: 'Derelicte',
+  enemy: 'Hansel'
+};
+
+// bad
+const foo = {
+  name,
+  age,
+  enemy: 'Hansel',
+  currentShow: 'Derelicte'
 };
 ```
 
