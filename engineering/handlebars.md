@@ -11,10 +11,10 @@
 Prefer double quotes to single quotes
 ```hbs
 {{! good }}
-<button {{action "doThing"}}>Do Thing</button>
+<button {{on "click" this.increment}}>+1</button/>
 
 {{! bad }}
-<button {{action 'doThing'}}>Do Thing</button>
+<button {{on 'click' this.increment}}>+1</button/>
 ```
 
 ## Multiline expressions
