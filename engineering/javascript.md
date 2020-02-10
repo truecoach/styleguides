@@ -538,6 +538,19 @@ const foo = {
 };
 ```
 
++ Use indicative variable names for booleans
+
+```javascript
+//good
+
+const isEmailNotificationsEnabled = true;
+
+//bad
+
+const emailNotifications = true;
+
+```
+
 ## Constructors
 
 + Use `class` instead of manipulating `prototype`.
