@@ -679,6 +679,16 @@ const max = Math.max.apply(Math, values);
 const max = Math.max(...values);
 ```
 
++ Use spread to initialize an array in a loop
+
+```javascript
+// good
+const foo = [...Array(100)].map((_, i) => i);
+
+// bad
+const foo = [1, 2, 3, 4, 5, ...]);
+```
+
 + Join single line array items with a space.
 
 ```javascript
