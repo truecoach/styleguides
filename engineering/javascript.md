@@ -908,28 +908,6 @@ function foo() {
 
 + `arguments` object must not be passed or leaked anywhere. See the [reference](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#3-managing-arguments).
 
-+ Don't re-assign the arguments.
-
-```javascript
-// good
-// Use a new variable if you need to assign the value of an argument
-function fooBar(opt) {
-  let _opt = opt;
-
-  _opt = 3;
-}
-
-// bad
-function fooBar() {
-  arguments = 3;
-}
-
-// bad
-function fooBar(opt) {
-  opt = 3;
-}
-```
-
 + Use default params instead of mutating them.
 
 ```javascript
