@@ -885,6 +885,9 @@ implicit return. Otherwise, add the braces and use a return statement.
 [1, 2, 3].map((x) => {
   return { number: x };
 });
+
+// good
+if (shouldReturn) return;
 ```
 
 ## Function Arguments
