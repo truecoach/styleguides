@@ -1,5 +1,6 @@
-# TrueCoach Styleguides
+# Archived TrueCoach Styleguides
 
+These were aspirational styleguides that were never really implemented.
 
 *The TrueCoach styleguides are a fork of [DockYard/styleguides](https://github.com/DockYard/styleguides).*
 
